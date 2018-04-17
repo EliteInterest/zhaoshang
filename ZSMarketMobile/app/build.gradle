@@ -17,7 +17,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.zs.marketmobile"
+        applicationId "com.zx.zsmarketmobile"
         minSdkVersion 19
         targetSdkVersion 21
         versionCode 18

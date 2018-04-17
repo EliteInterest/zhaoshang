@@ -37,7 +37,7 @@
             android:src="@mipmap/task_right" />
     </LinearLayout>
 
-    <com.zs.marketmobile.view.FullGridView
+    <com.zx.zsmarketmobile.view.FullGridView
         android:id="@+id/gv_itemStatistic"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
