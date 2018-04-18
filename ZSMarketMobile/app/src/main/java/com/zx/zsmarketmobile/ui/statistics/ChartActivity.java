@@ -162,6 +162,10 @@ public class ChartActivity extends BaseActivity implements IChartListener {
 
         mItemInfo = (StatisticsItemInfo) getIntent().getSerializableExtra("task");
         setMidText(mItemInfo.name);
+        if (mItemInfo.tableTitle.equals("所属板块") || mItemInfo.tableTitle.equals("项目状态") || mItemInfo.tableTitle.equals("资金来源")) {
+            tvValue.setText("2017");
+            tvPercent.setText("2018");
+        }
 
         mChartUtil = new ChartUtil(mContext);
 
@@ -257,14 +261,14 @@ public class ChartActivity extends BaseActivity implements IChartListener {
             case "项目状态":
                 countHzpList.loadData(mItemInfo.name);
                 break;
-            case "数量分析":
-                caseDep.loadData("", "");
+            case "数量对比":
+                caseDep.loadData("2017,2018");
                 break;
             case "状态对比":
-                caseType.loadData("", "");
+                caseType.loadData("2017,2018");
                 break;
             case "资金对比":
-                caseIsCase.loadData("", "");
+                caseIsCase.loadData("2017,2018");
                 break;
             case "增长对比":
                 caseIsCase.loadData(spChartyear.getSelectedItem());
@@ -453,6 +457,7 @@ public class ChartActivity extends BaseActivity implements IChartListener {
                 keyList.addAll(sampleList);
                 mAdapter.notifyDataSetChanged();
                 break;
+
             default:
                 break;
         }
@@ -549,7 +554,13 @@ public class ChartActivity extends BaseActivity implements IChartListener {
                 getMyColor(R.color.chart3), getMyColor(R.color.chart4), getMyColor(R.color.chart5), getMyColor(R.color.chart6),
                 getMyColor(R.color.chart7), getMyColor(R.color.chart8)};
         mChartUtil.setColors(colors);
-        String[] titles = new String[]{mItemInfo.name};
+
+        int size = barValues.size();
+        String[] titles = new String[size];
+        for (int i = 0; i < size; i++) {
+            titles[i] = mItemInfo.name;
+        }
+
         if (mItemInfo.name.equals("特种设备隐患")) {
             titles = new String[]{"安全附件", "安保合同", "下次检修"};
         } else if (mItemInfo.name.equals("药品检查") || mItemInfo.name.equals("工业产品检查")) {

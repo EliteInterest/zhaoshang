@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -1524,22 +1525,22 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                     params.putParams("fEntityGuid", objects[0]);
                     break;
                 case HTTP_ID_statistics_case_queryDep:
-                    params.setApiUrl(baseUrl + "/TJCase/statistics/queryDep.do");
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countByNumContrast.do");
                     params.setRequestMothod(HTTP_MOTHOD.GET);
-                    params.putParams("regDateMin", objects[0]);
-                    params.putParams("regDateMax", objects[1]);
+                    params.putParams("date", objects[0]);
+//                    params.putParams("regDateMax", objects[1]);
                     break;
                 case HTTP_ID_statistics_case_queryType:
-                    params.setApiUrl(baseUrl + "/TJCase/statistics/queryType.do");
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countByStageContrast.do");
                     params.setRequestMothod(HTTP_MOTHOD.GET);
-                    params.putParams("regDateMin", objects[0]);
-                    params.putParams("regDateMax", objects[1]);
+                    params.putParams("date", objects[0]);
+//                    params.putParams("regDateMax", objects[1]);
                     break;
                 case HTTP_ID_statistics_case_queryIsCase:
-                    params.setApiUrl(baseUrl + "/TJCase/statistics/queryIsCase.do");
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countByMoneyContrast.do");
                     params.setRequestMothod(HTTP_MOTHOD.GET);
-                    params.putParams("regDateMin", objects[0]);
-                    params.putParams("regDateMax", objects[1]);
+                    params.putParams("date", objects[0]);
+//                    params.putParams("regDateMax", objects[1]);
                     break;
                 case HTTP_ID_statistics_case_queryClosedCount:
                     params.setApiUrl(baseUrl + "/TJCase/statistics/getClosedCount.do");
@@ -3234,8 +3235,118 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                             result.setEntry(pictureBeans);
                             break;
                         case HTTP_ID_statistics_case_queryDep:
+                            jsonArray = getJSONArray(jsonObject, "data");
+                            int[] data1 = new int[12];
+                            int[] data2 = new int[12];
+                            int data1sum = 0;
+                            int data2sum = 0;
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                                String name = getStringValue(jsonObject1, "name");
+                                JSONArray jsonArray1 = getJSONArray(jsonObject1, "data");
+                                for (int j = 0; j < Util.area.length; j++) {
+                                    int d = jsonArray1.getInt(j);
+                                    if (i == 0) {
+                                        data1[j] = d;
+                                        data1sum += d;
+                                    } else {
+                                        data2[j] = d;
+                                        data2sum += d;
+                                    }
+                                }
+                            }
+
+                            List<KeyValueInfo> melds = new ArrayList<>();
+                            KeyValueInfo info;
+                            for (int i = 0; i < Util.area.length; i++) {
+                                info = new KeyValueInfo();
+                                info.key = Util.area[i];
+                                info.value = String.valueOf(data1[i]);
+                                info.value1 = String.valueOf(data2[i]);
+                                melds.add(info);
+                            }
+                            info = new KeyValueInfo();
+                            info.key = "合计";
+                            info.value = String.valueOf(data1sum);
+                            info.value1 = String.valueOf(data2sum);
+                            melds.add(info);
+                            result.setEntry(melds);
+                            break;
                         case HTTP_ID_statistics_case_queryType:
+                            jsonArray = getJSONArray(jsonObject, "data");
+                            data1 = new int[6];
+                            data2 = new int[6];
+                            data1sum = 0;
+                            data2sum = 0;
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                                String name = getStringValue(jsonObject1, "name");
+                                JSONArray jsonArray1 = getJSONArray(jsonObject1, "data");
+                                for (int j = 0; j < Util.status.length; j++) {
+                                    int d = jsonArray1.getInt(j);
+                                    if (i == 0) {
+                                        data1[j] = d;
+                                        data1sum += d;
+                                    } else {
+                                        data2[j] = d;
+                                        data2sum += d;
+                                    }
+                                }
+                            }
+
+                            melds = new ArrayList<>();
+                            for (int i = 0; i < Util.status.length; i++) {
+                                info = new KeyValueInfo();
+                                info.key = Util.status[i];
+                                info.value = String.valueOf(data1[i]);
+                                info.value1 = String.valueOf(data2[i]);
+                                melds.add(info);
+                            }
+                            info = new KeyValueInfo();
+                            info.key = "合计";
+                            info.value = String.valueOf(data1sum);
+                            info.value1 = String.valueOf(data2sum);
+                            melds.add(info);
+                            result.setEntry(melds);
+                            break;
                         case HTTP_ID_statistics_case_queryIsCase:
+                            jsonArray = getJSONArray(jsonObject, "data");
+                            data1 = new int[12];
+                            data2 = new int[12];
+                            data1sum = 0;
+                            data2sum = 0;
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                                String name = getStringValue(jsonObject1, "name");
+                                JSONArray jsonArray1 = getJSONArray(jsonObject1, "data");
+                                for (int j = 0; j < Util.type.length; j++) {
+                                    int d = jsonArray1.getInt(j);
+                                    if (i == 0) {
+                                        data1[j] = d;
+                                        data1sum += d;
+                                    } else {
+                                        data2[j] = d;
+                                        data2sum += d;
+                                    }
+                                }
+                            }
+
+                            melds = new ArrayList<>();
+                            for (int i = 0; i < Util.type.length; i++) {
+                                info = new KeyValueInfo();
+                                info.key = Util.type[i];
+                                info.value = String.valueOf(data1[i]);
+                                info.value1 = String.valueOf(data2[i]);
+                                melds.add(info);
+                            }
+
+                            info = new KeyValueInfo();
+                            info.key = "合计";
+                            info.value = String.valueOf(data1sum);
+                            info.value1 = String.valueOf(data2sum);
+                            melds.add(info);
+                            result.setEntry(melds);
+                            break;
                         case HTTP_ID_statistics_case_queryClosedCount:
                         case HTTP_ID_statistics_entity_equipmentType:
                         case HTTP_ID_statistics_super_countTask:

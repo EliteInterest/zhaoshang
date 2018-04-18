@@ -217,10 +217,10 @@ public class HomeActivity extends BaseActivity implements OnClickListener {
     private StatisticsInfo createStatisticeData() {
         StatisticsInfo info = new StatisticsInfo();
         info.labelName = "对比分析";
-        info.itemList.add(new StatisticsItemInfo("数量分析", 0, "类别", R.mipmap.statis_zxrws));
-        info.itemList.add(new StatisticsItemInfo("状态对比", 0, "类别", R.mipmap.statis_rwlx));
-        info.itemList.add(new StatisticsItemInfo("资金对比", 0, "类别", R.mipmap.statis_tzsb));
-        info.itemList.add(new StatisticsItemInfo("增长对比", 0, "类别", R.mipmap.statis_xbwq));
+        info.itemList.add(new StatisticsItemInfo("数量对比", 0, "所属板块", R.mipmap.statis_zxrws));
+        info.itemList.add(new StatisticsItemInfo("状态对比", 0, "项目状态", R.mipmap.statis_rwlx));
+        info.itemList.add(new StatisticsItemInfo("资金对比", 0, "资金来源", R.mipmap.statis_tzsb));
+        info.itemList.add(new StatisticsItemInfo("增长对比", 0, "所属板块", R.mipmap.statis_xbwq));
         return info;
     }
 
