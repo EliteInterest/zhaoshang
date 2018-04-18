@@ -220,7 +220,7 @@ public class SuperviseDetailActivity extends BaseActivity implements OnClickList
                 } else if (mStatus.equals("待核审") && mSuperviseDetailInfo.getfLeaderUserId().length() == 0) {
                     mStatus = "待终审";
                 }
-                mStatusupdateData.loadData(mOperation, mSuperviseDetailInfo.getGuid(), mStatus, remark, userInfo.getId());
+                mStatusupdateData.loadData(mOperation, mSuperviseDetailInfo.getGuid(), mStatus, remark, userInfo.getUserId());
             }
         });
         mCheckDialog.show();

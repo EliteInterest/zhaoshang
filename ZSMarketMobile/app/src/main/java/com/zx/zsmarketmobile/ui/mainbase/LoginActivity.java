@@ -255,7 +255,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
                         mEditTextPwd.setText("");
                     }
                     HttpLoginEntity loginInfo = (HttpLoginEntity) b.getEntry();
-                    loginInfo.setIsLogin(true);
+//                    loginInfo.setIsLogin(true);
                     loginInfo.setPassword(mEditTextPwd.getText().toString().trim());
                     loginInfo.setUserName(mEditTextName.getText().toString().trim());
                     userManager.setUser(LoginActivity.this, loginInfo);

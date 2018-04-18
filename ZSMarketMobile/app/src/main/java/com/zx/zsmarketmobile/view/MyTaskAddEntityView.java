@@ -101,7 +101,7 @@ public class MyTaskAddEntityView implements BaseRequestData.OnHttpLoadingListene
         tvLongitude = view.findViewById(R.id.et_addNew_longitude);
         tvMap = view.findViewById(R.id.tv_addNew_map);
 
-        userStation = userInfo.getDepartmentAlias();
+        userStation = userInfo.getDepartment();
         if ("湖潮乡".equals(userStation) ||
                 "高峰镇".equals(userStation) ||
                 "党武镇".equals(userStation) ||
@@ -225,7 +225,7 @@ public class MyTaskAddEntityView implements BaseRequestData.OnHttpLoadingListene
     private void showYesNo(final int position) {
         ZXDialogUtil.showYesNoDialog(mFragment.getActivity(), "提示", "是否添加该主体", (dialogInterface, i) -> {
             if (position < 0) {
-                String department = userInfo.getDepartmentAlias();
+                String department = userInfo.getDepartment();
                 if (spinner.getVisibility() == View.VISIBLE) {
                     department = departments.get(spinner.getSelectedItemPosition());
                 }
@@ -233,10 +233,10 @@ public class MyTaskAddEntityView implements BaseRequestData.OnHttpLoadingListene
                 String longitude = tvLongitude.getText().toString().length() > 17 ? tvLongitude.getText().toString().substring(0, 17) : tvLongitude.getText().toString();
 //                addNewEntity.loadData(mEntity.getFTaskId(), etNewName.getText().toString().trim(), mEntity.getF_GUID(),
                 addNewEntity.loadData(mEntity.getId(), etNewName.getText().toString().trim(), mEntity.getUserId(),
-                        etNewAddress.getText().toString().trim(), department, "", userInfo.getId(), latitude, longitude);
+                        etNewAddress.getText().toString().trim(), department, "", userInfo.getUserId(), latitude, longitude);
             } else {
 //                addNewEntity.loadData(mEntity.getFTaskId(), mTaskList.get(position).getFEntityName(), mEntity.getF_GUID(), "", "", mTaskList.get(position).getFEntityGuid(), userInfo.getId(), "", "");?
-                addNewEntity.loadData(mEntity.getId(), mTaskList.get(position).getFEntityName(), mEntity.getUserId(), "", "", mTaskList.get(position).getFEntityGuid(), userInfo.getId(), "", "");
+                addNewEntity.loadData(mEntity.getId(), mTaskList.get(position).getFEntityName(), mEntity.getUserId(), "", "", mTaskList.get(position).getFEntityGuid(), userInfo.getUserId(), "", "");
             }
         });
     }

@@ -62,7 +62,7 @@ public class MessageCenterActivity extends BaseActivity implements MyItemClickLi
         mMessageSRl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mLoadMsgData.loadData(userInfo.getId());
+                mLoadMsgData.loadData(userInfo.getUserId());
             }
         });
         mMessageRV.setLayoutManager(new LinearLayoutManager(this));
@@ -75,7 +75,7 @@ public class MessageCenterActivity extends BaseActivity implements MyItemClickLi
         }
         String type = msg.getType();
         if ("启动".equals(type)) {//打开应急任务详情
-            mLoadEventDetail.loadData(msg.getEventId(), userInfo.getId());
+            mLoadEventDetail.loadData(msg.getEventId(), userInfo.getUserId());
 
         } else if ("指令下发".equals(type)) {//打开指令内容
             Util.showDetailInfoDialog(this, "应急指令", msg.getContent(),
@@ -86,14 +86,14 @@ public class MessageCenterActivity extends BaseActivity implements MyItemClickLi
                             if (Util.dialog != null && Util.dialog.isShowing()) {
                                 Util.dialog.cancel();
                             }
-                            mLoadMsgData.loadData(userInfo.getId());
+                            mLoadMsgData.loadData(userInfo.getUserId());
                         }
                     }, Linkify.PHONE_NUMBERS);
-            mLoadSetMsgRead.loadData(msg.getGuid(), userInfo.getId());
+            mLoadSetMsgRead.loadData(msg.getGuid(), userInfo.getUserId());
 
         } else if ("投诉举报任务指派".equals(type)) {//打开投诉举报任务详情
             mLoadTaskDetailData.loadData(msg.getContent(), 1);
-            mLoadSetMsgRead.loadData(msg.getGuid(), userInfo.getId());
+            mLoadSetMsgRead.loadData(msg.getGuid(), userInfo.getUserId());
         }
     }
 
@@ -117,7 +117,7 @@ public class MessageCenterActivity extends BaseActivity implements MyItemClickLi
     @Override
     protected void onResume() {
         super.onResume();
-        mLoadMsgData.loadData(userInfo.getId());
+        mLoadMsgData.loadData(userInfo.getUserId());
     }
 
 //    @Override

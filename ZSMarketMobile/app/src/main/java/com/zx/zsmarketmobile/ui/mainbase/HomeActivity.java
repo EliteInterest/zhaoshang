@@ -93,8 +93,8 @@ public class HomeActivity extends BaseActivity implements OnClickListener {
             case 0://监管任务
                 setMidText("监管任务");
                 String departName = "";
-                if (userInfo != null && !TextUtils.isEmpty(userInfo.getDepartmentAlias())) {
-                    departName = userInfo.getDepartmentAlias();
+                if (userInfo != null && !TextUtils.isEmpty(userInfo.getDepartment())) {
+                    departName = userInfo.getDepartment();
                 }
                 Log.i(TAG, "departName is " + departName);
 //                if (!departName.equals("管理员")) {

@@ -50,7 +50,7 @@ public class TaskNumFragment extends BaseFragment {
         SRL_taskLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                countMonitorTask.loadData(userInfo.getId());
+                countMonitorTask.loadData(userInfo.getUserId());
             }
         });
 

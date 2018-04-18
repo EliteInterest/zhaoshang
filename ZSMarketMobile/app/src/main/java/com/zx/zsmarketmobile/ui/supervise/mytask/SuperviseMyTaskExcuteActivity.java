@@ -114,7 +114,7 @@ public class SuperviseMyTaskExcuteActivity extends BaseActivity {
                 sendTask.setLoadingListener(this);
                 getProcessingPeople.setLoadingListener(this);
                 getSubDirector.setLoadingListener(this);
-                getProcessingPeople.loadData(userInfo.getId());
+                getProcessingPeople.loadData(userInfo.getUserId());
             } else if (taskState == 1) {//待审核  进去执行审核操作
                 radioButton0.setText("未通过");
                 radioButton1.setText("通过");
@@ -127,7 +127,7 @@ public class SuperviseMyTaskExcuteActivity extends BaseActivity {
                 opitionLayout.setVisibility(View.GONE);
                 spinnerLayout.setVisibility(View.VISIBLE);
                 getProcessingPeople.setLoadingListener(this);
-                getProcessingPeople.loadData(userInfo.getId());
+                getProcessingPeople.loadData(userInfo.getUserId());
             } else if (taskState == 3) {//待反馈
                 topLayout.setVisibility(View.GONE);
                 opitionLayout.setVisibility(View.VISIBLE);
@@ -153,7 +153,7 @@ public class SuperviseMyTaskExcuteActivity extends BaseActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     if (taskState == 2) {//待下发
-                        getProcessingPeople.loadData(userInfo.getId());
+                        getProcessingPeople.loadData(userInfo.getUserId());
                     }
                 }
             }
@@ -164,7 +164,7 @@ public class SuperviseMyTaskExcuteActivity extends BaseActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     if (taskState == 2) {//待下发
-                        getSubDirector.loadData(userInfo.getId());
+                        getSubDirector.loadData(userInfo.getUserId());
                     }
                 }
             }
@@ -246,13 +246,13 @@ public class SuperviseMyTaskExcuteActivity extends BaseActivity {
                                 if (ids.contains(",")) {
                                     ids = ids.substring(0, ids.lastIndexOf(","));
                                 }
-                                sendTask.loadData(mEntity.getId(), "", userId, userInfo.getId(), ids, names);
+                                sendTask.loadData(mEntity.getId(), "", userId, userInfo.getUserId(), ids, names);
                             }
                         }
                     } else if (radioButton1.isChecked()) {//分局
                         if (mutiSpinner.getCheckedOptions().size() > 0) {
                             String userId = getSubDirectorId(mutiSpinner.getCheckedOptions());
-                            sendTask.loadData(mEntity.getId(), userId, "", userInfo.getId(), "", "");
+                            sendTask.loadData(mEntity.getId(), userId, "", userInfo.getUserId(), "", "");
                         } else {
                             showToast("请选择下发单位！");
                         }
@@ -260,9 +260,9 @@ public class SuperviseMyTaskExcuteActivity extends BaseActivity {
                     }
                 } else if (taskState == 1) {//待审核
                     if (radioButton0.isChecked()) {//未通过
-                        examineTaskInfo.loadData(0, mEntity.getId(), editText.getText().toString(), userInfo.getId());
+                        examineTaskInfo.loadData(0, mEntity.getId(), editText.getText().toString(), userInfo.getUserId());
                     } else if (radioButton1.isChecked()) {//通过
-                        examineTaskInfo.loadData(1, mEntity.getId(), editText.getText().toString(), userInfo.getId());
+                        examineTaskInfo.loadData(1, mEntity.getId(), editText.getText().toString(), userInfo.getUserId());
                     }
                 } else if (taskState == 2) {//待指派
                     String userId = getProcessingPeopleId(spinner.getSelectedItem().toString());
@@ -292,18 +292,18 @@ public class SuperviseMyTaskExcuteActivity extends BaseActivity {
                             if (ids.contains(",")) {
                                 ids = ids.substring(0, ids.lastIndexOf(","));
                             }
-                            assignTaskInfo.loadData(userId, mEntity.getId(), userInfo.getId(), ids, names);
+                            assignTaskInfo.loadData(userId, mEntity.getId(), userInfo.getUserId(), ids, names);
                         }
                     }
 
                 } else if (taskState == 1) {//待核审
                     if (radioButton0.isChecked()) {//回退
-                        reviewTask.loadData(mEntity.getUserId(), 0, editText.getText().toString(), userInfo.getId());
+                        reviewTask.loadData(mEntity.getUserId(), 0, editText.getText().toString(), userInfo.getUserId());
                     } else if (radioButton1.isChecked()) {//通过
-                        reviewTask.loadData(mEntity.getUserId(), 1, editText.getText().toString(), userInfo.getId());
+                        reviewTask.loadData(mEntity.getUserId(), 1, editText.getText().toString(), userInfo.getUserId());
                     }
                 } else if (taskState == 3) {//待反馈
-                    feedbackTask.loadData(mEntity.getUserId(), mEntity.getId(), editText.getText().toString(), userInfo.getId());
+                    feedbackTask.loadData(mEntity.getUserId(), mEntity.getId(), editText.getText().toString(), userInfo.getUserId());
                 }
             }
         });

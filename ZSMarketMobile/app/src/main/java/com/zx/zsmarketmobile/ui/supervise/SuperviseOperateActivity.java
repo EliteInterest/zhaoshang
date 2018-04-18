@@ -83,14 +83,14 @@ public class SuperviseOperateActivity extends BaseActivity implements OnClickLis
         switch (v.getId()) {
             case id.btnActSuperviseOparate_untread:
                 if ("待初审".equals(mSuperviseDetailInfo.getTaskProgress())) {
-                    disposeData.loadData(userInfo.getId(), mGuid, "rollback");
+                    disposeData.loadData(userInfo.getUserId(), mGuid, "rollback");
                 } else {
                     showToast("待初审的任务才能退回！");
                 }
                 break;
             case id.btnActSuperviseOparate_transfer:
                 if ("待初审".equals(mSuperviseDetailInfo.getTaskProgress())) {
-                    disposeData.loadData(userInfo.getId(), mGuid, "handover");
+                    disposeData.loadData(userInfo.getUserId(), mGuid, "handover");
                 } else {
                     showToast("待初审的任务才能移交支队！");
                 }

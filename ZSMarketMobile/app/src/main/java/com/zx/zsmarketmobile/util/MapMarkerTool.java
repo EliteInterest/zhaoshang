@@ -527,7 +527,7 @@ public class MapMarkerTool implements BaseRequestData.OnHttpLoadingListener<Base
                                 if (zt != null) {
                                     setfEntityType(zt.getEnterpriseType());
                                 }
-                                taskData.loadData(userInfo.getId(), zt.getId(), zt.getCreditCode(), zt.getEnterpriseName());
+                                taskData.loadData(userInfo.getUserId(), zt.getId(), zt.getCreditCode(), zt.getEnterpriseName());
                                 break;
                             case ConstStrings.MapType_ZtDetail:// 主体详情查看地图
                                 activity.finish();
@@ -842,13 +842,13 @@ public class MapMarkerTool implements BaseRequestData.OnHttpLoadingListener<Base
         int taskType = task.getTaskType();
         switch (taskType) {
             case 0:
-                taskSuperviseDetailData.loadData(task.getTaskId(), task.getGuid(), userInfo.getId());
+                taskSuperviseDetailData.loadData(task.getTaskId(), task.getGuid(), userInfo.getUserId());
                 break;
             case 1:
                 taskComplaintDetailData.loadData(task.getGuid(), taskType);
                 break;
             case 2:
-                eventDetailData.loadData(task.getGuid(), userInfo.getId());
+                eventDetailData.loadData(task.getGuid(), userInfo.getUserId());
                 break;
 
             default:
@@ -1084,21 +1084,21 @@ public class MapMarkerTool implements BaseRequestData.OnHttpLoadingListener<Base
         switch (mType) {
             case ConstStrings.MapType_TaskDetail:
                 HttpTaskEntity taskdetail = mTaskList.get(index);
-                mChangeposData.loadData(taskdetail.getEntityGuid(), userInfo.getId(), mLongitude, mLatitude,
+                mChangeposData.loadData(taskdetail.getEntityGuid(), userInfo.getUserId(), mLongitude, mLatitude,
                         taskdetail.getGuid());
                 break;
             case ConstStrings.MapType_Task:
                 HttpTaskEntity task = mTaskList.get(index);
-                mChangeposData.loadData(task.getEntityGuid(), userInfo.getId(), mLongitude, mLatitude,
+                mChangeposData.loadData(task.getEntityGuid(), userInfo.getUserId(), mLongitude, mLatitude,
                         task.getGuid());
                 break;
             case ConstStrings.MapType_SearchZt:
                 HttpZtEntity zt = mSearchZtEntity.getZtList().get(index);
-                mChangeposData.loadData(zt.getId(), userInfo.getId(), mLongitude, mLatitude, null);
+                mChangeposData.loadData(zt.getId(), userInfo.getUserId(), mLongitude, mLatitude, null);
                 break;
             case ConstStrings.MapType_ZtDetail:
                 HttpZtEntity zt2 = mSearchZtEntity.getZtList().get(index);
-                mChangeposData.loadData(zt2.getId(), userInfo.getId(), mLongitude, mLatitude, null);
+                mChangeposData.loadData(zt2.getId(), userInfo.getUserId(), mLongitude, mLatitude, null);
                 break;
             default:
                 break;

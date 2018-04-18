@@ -214,7 +214,7 @@ public class SuperviseDisposeActivity extends BaseActivity implements OnClickLis
                 if (!TextUtils.isEmpty(str)) {
                     mStrCheckResult += "-" + str;
                 }
-                submitData.loadData(userInfo.getId(), mGuid, mStrCheckResult, mCheckResult, new Gson().toJson(mCheckList));
+                submitData.loadData(userInfo.getUserId(), mGuid, mStrCheckResult, mCheckResult, new Gson().toJson(mCheckList));
             }
         });
         mCheckDialog.show();
@@ -261,7 +261,7 @@ public class SuperviseDisposeActivity extends BaseActivity implements OnClickLis
                     finish();
                     break;
                 case ApiData.HTTP_ID_submitLocation:
-                    submitData.loadData(userInfo.getId(), mGuid, "", "", "");
+                    submitData.loadData(userInfo.getUserId(), mGuid, "", "", "");
                     break;
                 default:
                     break;

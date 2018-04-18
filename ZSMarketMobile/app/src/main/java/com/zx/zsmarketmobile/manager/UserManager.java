@@ -48,44 +48,44 @@ public class UserManager {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         HttpConstant.AppCode = sp.getString("loginCode", "first");
         user = new HttpLoginEntity();
-        user.setId(sp.getString("id", null));
-        user.setRealName(sp.getString("realname", null));
-        user.setGender(sp.getString("gender", null));
-        user.setAge(sp.getString("age", null));
+        user.setUserId(sp.getString("id", null));
+        user.setGender(sp.getInt("gender", 0));
+        user.setAge(sp.getInt("age", 0));
         user.setUserName(sp.getString("username", null));
-        user.setDuty(sp.getString("duty", null));
         user.setDepartment(sp.getString("department", null));
-        user.setDepartmentCode(sp.getString("departmentCode", ""));
-        user.setDepartmentAlias(sp.getString("departmentAlias", null));
-        user.setDesc(sp.getString("desc", null));
         user.setTelephone(sp.getString("telephone", null));
-        user.setAuthority(sp.getString("authority", null));
-        // user.setPassword(sp.getParams(id).get("password").toString(), null);
         user.setPassword(sp.getString("password", null));
-        user.setGrid(sp.getString("grid", null));
         user.setIsLogin(sp.getBoolean("isLogin", false));
         user.setRole(Arrays.asList(sp.getString("role", "").split(",")));
+        user.setOfficeTel(sp.getString("officeTel", null));
+        user.setRegion(sp.getString("region", null));
+        user.setRegionCode(sp.getString("regionCode", null));
+        user.setStatus(sp.getInt("status", 0));
+        user.setUserHigher(sp.getString("userHigher", null));
+        user.setToken(sp.getString("token", null));
     }
 
     public void setUser(Context context, HttpLoginEntity userinfo) {
         user = userinfo;
         Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
-        editor.putString("id", user.getId());
-        editor.putString("realname", user.getRealName());
-        editor.putString("gender", user.getGender());
-        editor.putString("age", user.getAge());
+        editor.putString("id", user.getUserId());
+        editor.putInt("gender", user.getGender());
+        editor.putInt("age", user.getAge());
         editor.putString("username", user.getUserName());
-        editor.putString("duty", user.getDuty());
         editor.putString("department", user.getDepartment());
-        editor.putString("departmentAlias", user.getDepartmentAlias());
-        editor.putString("desc", user.getDesc());
-        editor.putString("telephone", user.getTelphone());
+        editor.putString("telephone", user.getTelephone());
         editor.putString("password", user.getPassword());
-        editor.putString("authority", user.getAuthority());
-        editor.putString("grid", user.getGrid());
         editor.putBoolean("isLogin", user.isLogin());
-        editor.putString("departmentCode", user.getDepartmentCode());
         editor.putString("role", user.getRoleString());
+
+        editor.putString("officeTel", user.getOfficeTel());
+        editor.putString("region", user.getRegion());
+        editor.putString("regionCode", user.getRegionCode());
+        editor.putInt("status", user.getStatus());
+        editor.putString("userHigher", user.getUserHigher());
+        editor.putString("token", user.getToken());
+
+
         editor.commit();
     }
 

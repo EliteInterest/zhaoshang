@@ -112,7 +112,7 @@ public class EntityListActivity extends BaseActivity implements OnClickListener,
         EntitySimpleInfo info = mEntityList.get(position);
         boolean mIsDetail = true;
         if (mIsDetail) {
-            taskSuperviseDetailData.loadData(mTaskId, info.getF_Guid(), userInfo.getId());
+            taskSuperviseDetailData.loadData(mTaskId, info.getF_Guid(), userInfo.getUserId());
         } else {
             Intent intent = new Intent(this, SuperviseOperateActivity.class);
             intent.putExtra("guid", info.getF_Guid());
@@ -125,15 +125,15 @@ public class EntityListActivity extends BaseActivity implements OnClickListener,
             if (mSuperviseInfo != null) {
                 String value = mSuperviseInfo.getF_GROUP_ID();
                 if ("任务监控".equals(mStatus)){
-                    taskEntityData.loadData(mPageNo, mPageSize, mTaskId, "", mSearchType, value, userInfo.getId());
+                    taskEntityData.loadData(mPageNo, mPageSize, mTaskId, "", mSearchType, value, userInfo.getUserId());
                 }else{
-                    taskEntityData.loadData(mPageNo, mPageSize, mTaskId, mStatus, mSearchType, value, userInfo.getId());
+                    taskEntityData.loadData(mPageNo, mPageSize, mTaskId, mStatus, mSearchType, value, userInfo.getUserId());
                 }
             }
         } else if (mQueryEntityType == 1) {
-            taskQueryData.loadData(userInfo.getId(), mStatus, mTaskId, mPageNo, mPageSize);
+            taskQueryData.loadData(userInfo.getUserId(), mStatus, mTaskId, mPageNo, mPageSize);
         } else if (mQueryEntityType == 2) {
-            taskUserQueryData.loadData(userInfo.getId(), mStatus, mTaskId, mPageNo, mPageSize);
+            taskUserQueryData.loadData(userInfo.getUserId(), mStatus, mTaskId, mPageNo, mPageSize);
         } else {//mQueryEntityType == 3
 //            taskStatusQueryData.loadData(userinfo.getId(), mPageNo + "", mPageSize + "", mTaskId, mSearchType, mType, mRow);
         }

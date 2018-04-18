@@ -96,7 +96,7 @@ public class LegalSelectLawFragment extends BaseFragment implements LoadMoreList
             } else if (legalEntity.getSelecteRadio() == 2) {
                 getInfoStandar.loadData(searchText, "", legalEntity.getParentId(), "", "", "");
             } else {
-                getInfoStandar.loadData(searchText, "", "", "", userInfo.getId(), userInfo.getDepartmentCode());
+                getInfoStandar.loadData(searchText, "", "", "", userInfo.getUserId(), userInfo.getDepartment());
             }
         } else {
             srlTodo.setRefreshing(false);

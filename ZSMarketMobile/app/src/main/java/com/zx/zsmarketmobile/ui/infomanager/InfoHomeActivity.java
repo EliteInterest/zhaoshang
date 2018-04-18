@@ -327,7 +327,7 @@ public class InfoHomeActivity extends BaseActivity implements OnClickListener {
 //                findViewById(R.id.infoHome_search_radios).setVisibility(View.VISIBLE);
 //                findViewById(R.id.infoHome_search_edit).setVisibility(View.VISIBLE);
                 llRadioButton.setVisibility(View.VISIBLE);
-                legalSelectFragment = LegalSelectFragment.newInstance(userManager.getUser(this).getId(), userManager.getUser(this).getDepartmentCode());
+                legalSelectFragment = LegalSelectFragment.newInstance(userManager.getUser(this).getUserId(), userManager.getUser(this).getDepartment());
                 myPagerAdapter.addFragment(legalSelectFragment, "查询菜单");
                 legalSelectLawFragment = LegalSelectLawFragment.newInstance();
                 myPagerAdapter.addFragment(legalSelectLawFragment, "法律法规搜索");

@@ -1878,9 +1878,9 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                     break;
                 //TODO
             }
-//            if (id != HTTP_ID_login) {
-//                params.putParams("tokenId", UUID);
-//            }
+            if (id != HTTP_ID_login) {
+                params.putParams("token", UUID);
+            }
         } catch (ArrayIndexOutOfBoundsException e) {
             if (LogUtil.DEBUG) {
                 LogUtil.e(this, "请求参数错误 请检查loadData()是否未带参数");
@@ -1926,7 +1926,7 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                         case HTTP_ID_login: {
                             list = getJSONObject(jsonObject, "data");
                             HttpLoginEntity loginEntity = gson.fromJson(list.toString(), HttpLoginEntity.class);
-                            UUID = loginEntity.getTokenId();
+                            UUID = loginEntity.getToken();
                             result.setEntry(loginEntity);
                         }
                         break;

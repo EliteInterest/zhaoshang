@@ -78,9 +78,9 @@ public class TaskStateMonitorFragment extends BaseFragment implements MyItemClic
                 break;
         }
         if (curState.equals(ConstStrings.SUPERVISESTATES[0])){
-            getMonitorTask.loadData(mPageNo, mPageSize, 1,userInfo.getId(),type,"");
+            getMonitorTask.loadData(mPageNo, mPageSize, 1,userInfo.getUserId(),type,"");
         }else{
-            getMonitorTask.loadData(mPageNo, mPageSize, 1,userInfo.getId(),type,curState);
+            getMonitorTask.loadData(mPageNo, mPageSize, 1,userInfo.getUserId(),type,curState);
         }
 
     }

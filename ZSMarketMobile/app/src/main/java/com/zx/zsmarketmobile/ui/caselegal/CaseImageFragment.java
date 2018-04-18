@@ -118,7 +118,7 @@ public class CaseImageFragment extends BaseFragment {
                     if (!TextUtils.isEmpty(realNameListStr)) {
                         String fUploadPerson = userInfo.getUserName();
                         if (!TextUtils.isEmpty(mEntity.getId()) && !TextUtils.isEmpty(fUploadPerson)) {
-                            caseSave.loadData(mEntity.getId(), userInfo.getId(), realNameListStr, fileNameListStr);
+                            caseSave.loadData(mEntity.getId(), userInfo.getUserId(), realNameListStr, fileNameListStr);
                         }
                     }
                 }

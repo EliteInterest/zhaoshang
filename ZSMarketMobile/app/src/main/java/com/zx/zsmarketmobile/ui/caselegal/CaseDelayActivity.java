@@ -137,7 +137,7 @@ public class CaseDelayActivity extends BaseActivity implements RadioGroup.OnChec
 
     //根据环节编码，执行完成操作
     private void doExcuteByCode() {
-        String userId = userInfo.getId();
+        String userId = userInfo.getUserId();
         String description = etDelayOpinion.getText().toString().trim();
         String taskId = mEntity.getTaskId();
         if (etDelayOpinion.getVisibility() == View.VISIBLE && description.length() == 0) {

@@ -83,10 +83,10 @@ public class SuperviseListFragment extends BaseFragment implements MyItemClickLi
                     type = "逾期";
                     break;
             }
-            taskMonitorData.loadData(userInfo.getId(), "", mPageNo, mPageSize, type);
+            taskMonitorData.loadData(userInfo.getUserId(), "", mPageNo, mPageSize, type);
         } else {
-            taskData.loadData(userInfo.getId(), mPageNo, mPageSize, mTaskStatus, userInfo.getDepartment(),
-                    mTaskProcedure, userInfo.getDuty());
+//            taskData.loadData(userInfo.getUserId(), mPageNo, mPageSize, mTaskStatus, userInfo.getDepartment(),
+//                    mTaskProcedure, userInfo.getDuty());
         }
     }
 

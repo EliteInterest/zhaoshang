@@ -53,7 +53,7 @@ public class SuperviseMyTaskFlowFragment extends BaseFragment {
         fId = mEntity.getId();
         superviseDetialFlowAdapter = new SuperviseDetialFlowAdapter(getActivity(), dataInfoList);
         mRvInfo.setAdapter(superviseDetialFlowAdapter);
-        getLcgj.loadData(fId, userInfo.getId());
+        getLcgj.loadData(fId, userInfo.getUserId());
 
         return view;
     }
@@ -63,7 +63,7 @@ public class SuperviseMyTaskFlowFragment extends BaseFragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && dataInfoList.size() == 0) {
-            getLcgj.loadData(fId, userInfo.getId());
+            getLcgj.loadData(fId, userInfo.getUserId());
         }
     }
 

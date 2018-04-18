@@ -119,7 +119,7 @@ public class SuperviseSearchActivity extends BaseActivity implements OnClickList
         findViewById(id.ll_FmSearchTask_select).setVisibility(View.GONE);
 
         if ("待核审".equals(mTaskInfo.status) || "待终审".equals(mTaskInfo.status)) {
-            taskReviewListData.loadData(mTaskInfo.status, userInfo.getId());
+            taskReviewListData.loadData(mTaskInfo.status, userInfo.getUserId());
         } else {
             taskListData.loadData();
         }
@@ -222,9 +222,9 @@ public class SuperviseSearchActivity extends BaseActivity implements OnClickList
                             type = "逾期";
                             break;
                     }
-                    taskMonitorData.loadData(userInfo.getId(), mTaskId, mPageNo, mPageSize, type);
+                    taskMonitorData.loadData(userInfo.getUserId(), mTaskId, mPageNo, mPageSize, type);
                 } else {
-                    taskDetailData.loadData(mTaskId, mTaskInfo.status,userInfo.getId());
+                    taskDetailData.loadData(mTaskId, mTaskInfo.status,userInfo.getUserId());
                 }
             }
             mSuperviseSearchAdapter.setTaskId(mTaskId);
@@ -414,13 +414,13 @@ public class SuperviseSearchActivity extends BaseActivity implements OnClickList
                 break;
             case id.btnActSearchSupervise_opt:
                 if ("待处置".equals(mTaskInfo.status)) {
-                    taskUserQueryData.loadData(userInfo.getId(), mTaskInfo.status, mTaskId, mPageNo, mPageSize);
+                    taskUserQueryData.loadData(userInfo.getUserId(), mTaskInfo.status, mTaskId, mPageNo, mPageSize);
                 } else if ("待初审".equals(mTaskInfo.status)) {
-                    taskAllQueryData.loadData(userInfo.getId(), mTaskInfo.status, mTaskId, mPageNo, mPageSize);
+                    taskAllQueryData.loadData(userInfo.getUserId(), mTaskInfo.status, mTaskId, mPageNo, mPageSize);
                 } else if ("待核审".equals(mTaskInfo.status)) {
-                    taskAllQueryData.loadData(userInfo.getId(), mTaskInfo.status, mTaskId, mPageNo, mPageSize);
+                    taskAllQueryData.loadData(userInfo.getUserId(), mTaskInfo.status, mTaskId, mPageNo, mPageSize);
                 } else if ("待终审".equals(mTaskInfo.status)) {
-                    taskAllQueryData.loadData(userInfo.getId(), mTaskInfo.status, mTaskId, mPageNo, mPageSize);
+                    taskAllQueryData.loadData(userInfo.getUserId(), mTaskInfo.status, mTaskId, mPageNo, mPageSize);
                 }
                 break;
             default:

@@ -103,7 +103,7 @@ public class ComplainExcuteActivity extends BaseActivity {
         switch (mEntity.getBaseInfo().getFStatus()) {
             case 10://待受理
                 btnExcute.setText("受理");
-                if (!"09".equals(userManager.getUser(this).getDepartmentCode())
+                if (!"09".equals(userManager.getUser(this).getDepartment())
                         && mEntity.getBaseInfo().getfShuntRole() != null && mEntity.getBaseInfo().getfShuntRole().length() > 0) {
                     btnCancel.setText("退回");
                     btnCancel.setVisibility(View.VISIBLE);
@@ -123,7 +123,7 @@ public class ComplainExcuteActivity extends BaseActivity {
                 mprvComplain.setVisibility(View.GONE);
                 break;
             case 30://待指派
-                getUserByDept.loadData(userInfo.getDepartmentCode(), "1002");
+                getUserByDept.loadData(userInfo.getDepartment(), "1002");
                 llAssign.setVisibility(View.VISIBLE);
                 etTjOpinion.setVisibility(View.VISIBLE);
                 mprvComplain.setVisibility(View.GONE);
