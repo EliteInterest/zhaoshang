@@ -202,10 +202,10 @@ public class HomeActivity extends BaseActivity implements OnClickListener {
         StatisticsInfo dataInfo = new StatisticsInfo();
         dataInfo.labelName = "结构分析";
 //        dataInfo.itemList.add(new StatisticsItemInfo("任务主体", 0, "类别", R.mipmap.statistic_qyfb));
-        dataInfo.itemList.add(new StatisticsItemInfo("资金来源", 0, "类别", R.mipmap.statis_rwlx));
+        dataInfo.itemList.add(new StatisticsItemInfo("资金来源", 2, "类别", R.mipmap.statis_rwlx));
         dataInfo.itemList.add(new StatisticsItemInfo("所属板块", 0, "类别", R.mipmap.statis_jczt));
-        dataInfo.itemList.add(new StatisticsItemInfo("产业分布", 0, "类别", R.mipmap.statis_zxrws));
-        dataInfo.itemList.add(new StatisticsItemInfo("项目状态", 0, "类别", R.mipmap.statis_xbwq));
+        dataInfo.itemList.add(new StatisticsItemInfo("产业分布", 2, "类别", R.mipmap.statis_zxrws));
+        dataInfo.itemList.add(new StatisticsItemInfo("项目状态", 2, "类别", R.mipmap.statis_xbwq));
         return dataInfo;
     }
 

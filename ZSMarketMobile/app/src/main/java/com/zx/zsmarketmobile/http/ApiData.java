@@ -84,6 +84,7 @@ import com.zx.zsmarketmobile.http.BaseHttpParams.HTTP_MOTHOD;
 import com.zx.zsmarketmobile.util.ConstStrings;
 import com.zx.zsmarketmobile.util.LogUtil;
 import com.zx.zsmarketmobile.util.MD5Util;
+import com.zx.zsmarketmobile.util.Util;
 import com.zx.zsmarketmobile.view.ZXExpandBean;
 
 import org.json.JSONArray;
@@ -427,7 +428,7 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                 case HTTP_ID_login:
                     String url = baseUrl + "/investpromotion_portal/user/login.do";
                     params.setApiUrl(url);
-                    Log.i("wangwansheng","url is " + url);
+                    Log.i("wangwansheng", "url is " + url);
                     params.setRequestMothod(HTTP_MOTHOD.POST);
                     params.putParams("userName", objects[0]);
 //                    params.putParams("password", MD5Util.encoderPassword(objects[1].toString()));
@@ -768,9 +769,12 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                     params.putParams("type", objects[5]);
                     params.putParams("fRow", objects[6]);
                     break;
-                case HTTP_ID_statistics_single_parameter:
                 case HTTP_ID_statistics_hzp:
-                    params.setApiUrl(baseUrl + "GaClientService.do");
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countProjByStage.do");
+                    params.setRequestMothod(HTTP_MOTHOD.GET);
+                    break;
+                case HTTP_ID_statistics_single_parameter:
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countProjByStage.do");
                     params.setRequestMothod(HTTP_MOTHOD.POST);
                     params.putParams("method", "countStatisticsWithSingleResult");
                     params.putParams("key", objects[0]);
@@ -782,13 +786,13 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                     }
                     break;
                 case HTTP_ID_device_security_risk_parameter:
-                    params.setApiUrl(baseUrl + "GaClientService.do");
-                    params.setRequestMothod(HTTP_MOTHOD.POST);
-                    params.putParams("method", "getEquitHiddendangerNumByStation");
-                    params.putParams("key", objects[0]);
-                    params.putParams("param0", objects[1]);
-                    params.putParams("param1", objects[2]);
-                    params.putParams("queryByType", objects[3]);
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countProjByDept.do");
+                    params.setRequestMothod(HTTP_MOTHOD.GET);
+//                    params.putParams("method", "getEquitHiddendangerNumByStation");
+//                    params.putParams("key", objects[0]);
+//                    params.putParams("param0", objects[1]);
+//                    params.putParams("param1", objects[2]);
+//                    params.putParams("queryByType", objects[3]);
                     break;
                 case HTTP_ID_security_flaws_parameter:
                     params.setApiUrl(baseUrl + "GaClientService.do");
@@ -814,10 +818,10 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                     params.putParams("time", objects[0]);
                     break;
                 case HTTP_ID_industrial_product_parameter:
-                    params.setApiUrl(baseUrl + "GaClientService.do");
-                    params.setRequestMothod(HTTP_MOTHOD.POST);
-                    params.putParams("method", "countInProRandCheckByStation");
-                    params.putParams("time", objects[0]);
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countProjByType.do");
+                    params.setRequestMothod(HTTP_MOTHOD.GET);
+//                    params.putParams("method", "countInProRandCheckByStation");
+//                    params.putParams("time", objects[0]);
                     break;
                 case HTTP_ID_statistics_four_parameter:
                     params.setApiUrl(baseUrl + "GaClientService.do");
@@ -1878,9 +1882,9 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                     break;
                 //TODO
             }
-            if (id != HTTP_ID_login) {
-                params.putParams("token", UUID);
-            }
+//            if (id != HTTP_ID_login) {
+//                params.putParams("token", UUID);
+//            }
         } catch (ArrayIndexOutOfBoundsException e) {
             if (LogUtil.DEBUG) {
                 LogUtil.e(this, "请求参数错误 请检查loadData()是否未带参数");
@@ -2527,26 +2531,27 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                             break;
                         case HTTP_ID_countEntityType:
                         case HTTP_ID_statistics_single_parameter:
+                        case HTTP_ID_industrial_product_parameter:
                             JSONArray statisticsJson = getJSONArray(jsonObject, "data");
                             List<KeyValueInfo> keyList = new ArrayList<>();
-                            double countNum = 0;
+                            int countNum = 0;
                             boolean hasCount = false;
                             for (int i = 0; i < statisticsJson.length(); i++) {
                                 KeyValueInfo keyValue = new KeyValueInfo();
                                 keyValue.key = getStringValue(statisticsJson.getJSONObject(i), "name");
-                                double dNum = getDoubleValue(statisticsJson.getJSONObject(i), "num");
+                                int dNum = getIntValue(statisticsJson.getJSONObject(i), "value");
                                 if ("总计".equals(keyValue.key) || "总数".equals(keyValue.key) || "合计".equals(keyValue.key)) {
                                     hasCount = true;
                                 } else {
                                     countNum += dNum;
                                 }
-                                if (dNum % 1.0 == 0) {
-                                    keyValue.value = String.valueOf((long) dNum);
-                                } else {
-                                    Double d = getDoubleValue(statisticsJson.getJSONObject(i), "num");
-                                    DecimalFormat df = new DecimalFormat("0.00");
-                                    keyValue.value = df.format(d);
-                                }
+//                                if (dNum % 1.0 == 0) {
+                                keyValue.value = String.valueOf((long) dNum);
+//                                } else {
+//                                    Double d = getDoubleValue(statisticsJson.getJSONObject(i), "num");
+//                                    DecimalFormat df = new DecimalFormat("0.00");
+//                                    keyValue.value = df.format(d);
+//                                }
                                 keyList.add(keyValue);
                                 if (statisticsJson.getJSONObject(i).has("code")) {
                                     keyValue.code = getStringValue(statisticsJson.getJSONObject(i), "code");
@@ -2555,84 +2560,94 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                             if (!hasCount) {
                                 KeyValueInfo keyValue = new KeyValueInfo();
                                 keyValue.key = "总计";
-                                if (countNum % 1.0 == 0) {
-                                    keyValue.value = String.valueOf((long) countNum);
-                                } else {
-                                    Double d = countNum;
-                                    DecimalFormat df = new DecimalFormat("0.00");
-                                    keyValue.value = df.format(d);
-                                }
+//                                if (countNum % 1.0 == 0) {
+//                                    keyValue.value = String.valueOf((long) countNum);
+//                                } else {
+                                int d = countNum;
+//                                    DecimalFormat df = new DecimalFormat("0.00");
+                                keyValue.value = String.valueOf(d);
+//                                }
                                 keyList.add(keyValue);
                             }
 
                             result.setEntry(keyList);
                             break;
                         case HTTP_ID_statistics_hzp:
-                            JSONArray hzpArray = getJSONArray(jsonObject, "data");
-                            List<KeyValueInfo> hzpList = new ArrayList<>();
-                            double countNumhzp1 = 0;
-                            double countNumhzp2 = 0;
-                            for (int i = 0; i < hzpArray.length(); i++) {
+                            statisticsJson = getJSONArray(jsonObject, "data");
+                            keyList = new ArrayList<>();
+                            countNum = 0;
+                            hasCount = false;
+                            for (int i = 0; i < statisticsJson.length(); i++) {
                                 KeyValueInfo keyValue = new KeyValueInfo();
-                                keyValue.key = getStringValue(hzpArray.getJSONObject(i), "NAME");
-                                double dNum1 = getDoubleValue(hzpArray.getJSONObject(i), "美容");
-                                double dNum2 = getDoubleValue(hzpArray.getJSONObject(i), "美发");
-                                countNumhzp1 += dNum1;
-                                countNumhzp2 += dNum2;
-                                if (dNum1 % 1.0 == 0) {
-                                    keyValue.value = String.valueOf((long) dNum1);
+                                keyValue.key = getStringValue(statisticsJson.getJSONObject(i), "status");
+                                int dNum = getIntValue(statisticsJson.getJSONObject(i), "number");
+                                if ("总计".equals(keyValue.key) || "总数".equals(keyValue.key) || "合计".equals(keyValue.key)) {
+                                    hasCount = true;
                                 } else {
-                                    Double d = getDoubleValue(hzpArray.getJSONObject(i), "num");
-                                    DecimalFormat df = new DecimalFormat("0.00");
-                                    keyValue.value = df.format(d);
+                                    countNum += dNum;
                                 }
-                                if (dNum2 % 1.0 == 0) {
-                                    keyValue.value1 = String.valueOf((long) dNum2);
-                                } else {
-                                    Double d = getDoubleValue(hzpArray.getJSONObject(i), "num");
-                                    DecimalFormat df = new DecimalFormat("0.00");
-                                    keyValue.value1 = df.format(d);
+//                                if (dNum % 1.0 == 0) {
+                                keyValue.value = String.valueOf((long) dNum);
+//                                } else {
+//                                    Double d = getDoubleValue(statisticsJson.getJSONObject(i), "num");
+//                                    DecimalFormat df = new DecimalFormat("0.00");
+//                                    keyValue.value = df.format(d);
+//                                }
+                                keyList.add(keyValue);
+                                if (statisticsJson.getJSONObject(i).has("code")) {
+                                    keyValue.code = getStringValue(statisticsJson.getJSONObject(i), "code");
                                 }
-                                hzpList.add(keyValue);
                             }
-                            KeyValueInfo keyValue = new KeyValueInfo();
-                            keyValue.key = "总计";
-                            if (countNumhzp1 % 1.0 == 0) {
-                                keyValue.value = String.valueOf((long) countNumhzp1);
-                            } else {
-                                Double d = countNumhzp1;
-                                DecimalFormat df = new DecimalFormat("0.00");
-                                keyValue.value = df.format(d);
+                            if (!hasCount) {
+                                KeyValueInfo keyValue = new KeyValueInfo();
+                                keyValue.key = "总计";
+//                                if (countNum % 1.0 == 0) {
+//                                    keyValue.value = String.valueOf((long) countNum);
+//                                } else {
+                                int d = countNum;
+//                                    DecimalFormat df = new DecimalFormat("0.00");
+                                keyValue.value = String.valueOf(d);
+//                                }
+                                keyList.add(keyValue);
                             }
-                            if (countNumhzp2 % 1.0 == 0) {
-                                keyValue.value1 = String.valueOf((long) countNumhzp2);
-                            } else {
-                                Double d = countNumhzp2;
-                                DecimalFormat df = new DecimalFormat("0.00");
-                                keyValue.value1 = df.format(d);
-                            }
-                            hzpList.add(keyValue);
 
-                            result.setEntry(hzpList);
+                            result.setEntry(keyList);
                             break;
                         case HTTP_ID_device_security_risk_parameter:
                             JSONArray statisticsSecurityRiskArray = getJSONArray(jsonObject, "data");
-                            List<DeviceSecurityRiskEntity> deviceSecurityRiskEntityList = new ArrayList<>();
-                            for (int i = 0; i < statisticsSecurityRiskArray.length(); i++) {
-                                DeviceSecurityRiskEntity deviceSecurityRiskEntity = new DeviceSecurityRiskEntity();
-                                deviceSecurityRiskEntity.setType(getStringValue(statisticsSecurityRiskArray.getJSONObject(i), "type"));
-                                if (statisticsSecurityRiskArray.getJSONObject(i).has("安全附件")) {
-                                    deviceSecurityRiskEntity.setSecurityFile(getStringValue(statisticsSecurityRiskArray.getJSONObject(i), "安全附件"));
-                                }
-                                if (statisticsSecurityRiskArray.getJSONObject(i).has("安保合同")) {
-                                    deviceSecurityRiskEntity.setSecurityContract(getStringValue(statisticsSecurityRiskArray.getJSONObject(i), "安保合同"));
-                                }
-                                if (statisticsSecurityRiskArray.getJSONObject(i).has("下次检修")) {
-                                    deviceSecurityRiskEntity.setNextOverhaul(getStringValue(statisticsSecurityRiskArray.getJSONObject(i), "下次检修"));
-                                }
-                                deviceSecurityRiskEntityList.add(deviceSecurityRiskEntity);
+                            keyList = new ArrayList<>();
+                            countNum = 0;
+                            KeyValueInfo keyValue;
+                            for (int i = 0; i < statisticsSecurityRiskArray.length() - 1; i++) {
+                                keyValue = new KeyValueInfo();
+                                keyValue.key = Util.area[i];
+                                int dNum = statisticsSecurityRiskArray.getInt(i);
+                                keyValue.value = String.valueOf(dNum);
+                                countNum += dNum;
+                                keyList.add(keyValue);
                             }
-                            result.setEntry(deviceSecurityRiskEntityList);
+                            keyValue = new KeyValueInfo();
+                            keyValue.key = "总计";
+                            keyValue.value = String.valueOf(countNum);
+                            keyList.add(keyValue);
+                            result.setEntry(keyList);
+
+//                            List<DeviceSecurityRiskEntity> deviceSecurityRiskEntityList = new ArrayList<>();
+//                            for (int i = 0; i < statisticsSecurityRiskArray.length(); i++) {
+//                                DeviceSecurityRiskEntity deviceSecurityRiskEntity = new DeviceSecurityRiskEntity();
+//                                deviceSecurityRiskEntity.setType(getStringValue(statisticsSecurityRiskArray.getJSONObject(i), "type"));
+//                                if (statisticsSecurityRiskArray.getJSONObject(i).has("安全附件")) {
+//                                    deviceSecurityRiskEntity.setSecurityFile(getStringValue(statisticsSecurityRiskArray.getJSONObject(i), "安全附件"));
+//                                }
+//                                if (statisticsSecurityRiskArray.getJSONObject(i).has("安保合同")) {
+//                                    deviceSecurityRiskEntity.setSecurityContract(getStringValue(statisticsSecurityRiskArray.getJSONObject(i), "安保合同"));
+//                                }
+//                                if (statisticsSecurityRiskArray.getJSONObject(i).has("下次检修")) {
+//                                    deviceSecurityRiskEntity.setNextOverhaul(getStringValue(statisticsSecurityRiskArray.getJSONObject(i), "下次检修"));
+//                                }
+//                                deviceSecurityRiskEntityList.add(deviceSecurityRiskEntity);
+//                            }
+//                            result.setEntry(deviceSecurityRiskEntityList);
                             break;
                         case HTTP_ID_security_flaws_parameter:
                             JSONArray securityJson = getJSONArray(jsonObject, "data");
@@ -2674,16 +2689,16 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                                 }
                             result.setEntry(qualitySampleEntityList);
                             break;
-                        case HTTP_ID_industrial_product_parameter:
-                            JSONArray productJson = getJSONArray(jsonObject, "data");
-                            List<QualitySampleEntity> industrialQualitySampleEntityList = new ArrayList<>();
-                            if (productJson != null && productJson.length() > 0)
-                                for (int i = 0; i < productJson.length(); i++) {
-                                    QualitySampleEntity qualitySampleEntity = new Gson().fromJson(productJson.getString(i), QualitySampleEntity.class);
-                                    industrialQualitySampleEntityList.add(qualitySampleEntity);
-                                }
-                            result.setEntry(industrialQualitySampleEntityList);
-                            break;
+//                        case HTTP_ID_industrial_product_parameter:
+//                            JSONArray productJson = getJSONArray(jsonObject, "data");
+//                            List<QualitySampleEntity> industrialQualitySampleEntityList = new ArrayList<>();
+//                            if (productJson != null && productJson.length() > 0)
+//                                for (int i = 0; i < productJson.length(); i++) {
+//                                    QualitySampleEntity qualitySampleEntity = new Gson().fromJson(productJson.getString(i), QualitySampleEntity.class);
+//                                    industrialQualitySampleEntityList.add(qualitySampleEntity);
+//                                }
+//                            result.setEntry(industrialQualitySampleEntityList);
+//                            break;
                         case HTTP_ID_statistics_four_parameter:
                             JSONArray statisticsArray = getJSONArray(jsonObject, "data");
                             List<StatisticsNum> numList = new ArrayList<>();

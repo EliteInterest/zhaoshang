@@ -20,6 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.SocketTimeoutException;
 import java.net.URISyntaxException;
 import java.util.Collections;
@@ -190,7 +191,7 @@ public abstract class BaseRequestData<HttpClientParam, loadDataParam, Result ext
                         if (LogUtil.DEBUG) {
                             LogUtil.e("requestData params:", String.valueOf(getUrl));
                         }
-                        getJson(getUrl, params.isRetry());
+                        getJson(getUrl, Request.Method.GET, params.isRetry());
                         break;
                     case POST:
                         if (LogUtil.DEBUG) {
@@ -200,7 +201,28 @@ public abstract class BaseRequestData<HttpClientParam, loadDataParam, Result ext
 //                            if (id == ApiData.HTTP_ID_login)
 //                            postJsonRequest(params.getRequestUrl(id), (Map<String, Object>) param, params.isRetry());
 //                            else
-                                postJson(params.getRequestUrl(id), (Map<String, Object>) param, params.isRetry());
+//                            postJson(params.getRequestUrl(id), (Map<String, Object>) param, params.isRetry());
+                            if (id == ApiData.HTTP_ID_searchzt) {
+                                //指定的ID用json
+                                postJsonRequest(params.getRequestUrl(id), (Map<String, Object>) param, params.isRetry());
+                            } else {
+                                //其他按照string
+                                Map<String, Object> m = (Map<String, Object>) param;
+                                String getParam = null;
+                                if (m.size() == 0) {
+                                    getParam = "";
+                                } else {
+                                    getParam = "?";
+                                    for (String key : m.keySet()) {
+                                        Object o = m.get(key);
+                                        getParam += key + "=" + String.valueOf(o == null ? "" : o);
+                                        getParam += "&";
+                                    }
+                                    getParam = getParam.substring(0, getParam.length() - 1);
+                                }
+                                getUrl = params.getRequestUrl(id) + getParam;
+                                getJson(getUrl, Request.Method.POST, params.isRetry());
+                            }
                         } else {
                             postJson(params.getRequestUrl(id), param.toString(), params.isRetry());
                         }
@@ -535,9 +557,9 @@ public abstract class BaseRequestData<HttpClientParam, loadDataParam, Result ext
      * @throws IOException
      * @throws TimeoutException
      */
-    public void getJson(String url, boolean isRetry) throws URISyntaxException, IOException,
+    public void getJson(String url, int method, boolean isRetry) throws URISyntaxException, IOException,
             TimeoutException {
-        PostStringRequest getRequest = new PostStringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+        PostStringRequest getRequest = new PostStringRequest(method, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.e("result", response);

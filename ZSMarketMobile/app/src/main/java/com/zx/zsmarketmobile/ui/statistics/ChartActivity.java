@@ -415,6 +415,8 @@ public class ChartActivity extends BaseActivity implements IChartListener {
             case ApiData.HTTP_ID_statistics_super_countEnterprise:
             case ApiData.HTTP_ID_statistics_super_countDoTask:
             case ApiData.HTTP_ID_statistics_entity_enterpriseWarning:
+            case ApiData.HTTP_ID_device_security_risk_parameter://特种设备隐患
+            case ApiData.HTTP_ID_industrial_product_parameter:
                 List<KeyValueInfo> tempList = (List<KeyValueInfo>) b.getEntry();
                 initChart(tempList);
                 keyList.clear();
@@ -426,20 +428,20 @@ public class ChartActivity extends BaseActivity implements IChartListener {
                     tvBack.setVisibility(View.GONE);
                 }
                 break;
-            case ApiData.HTTP_ID_device_security_risk_parameter://特种设备隐患
-                List<DeviceSecurityRiskEntity> deviceSecurityRiskEntityList = (List<DeviceSecurityRiskEntity>) b.getEntry();
-                List<KeyValueInfo> deviceList = new ArrayList<>();
-                for (int i = 0; i < deviceSecurityRiskEntityList.size(); i++) {
-                    DeviceSecurityRiskEntity mDevice = deviceSecurityRiskEntityList.get(i);
-                    deviceList.add(new KeyValueInfo(mDevice.getType(), mDevice.getSecurityFile(), mDevice.getSecurityContract(), mDevice.getNextOverhaul()));
-                }
-                initChart(deviceList);
-                keyList.clear();
-                keyList.addAll(deviceList);
-                mAdapter.notifyDataSetChanged();
-                break;
+//            case ApiData.HTTP_ID_device_security_risk_parameter://特种设备隐患
+//                List<DeviceSecurityRiskEntity> deviceSecurityRiskEntityList = (List<DeviceSecurityRiskEntity>) b.getEntry();
+//                List<KeyValueInfo> deviceList = new ArrayList<>();
+//                for (int i = 0; i < deviceSecurityRiskEntityList.size(); i++) {
+//                    DeviceSecurityRiskEntity mDevice = deviceSecurityRiskEntityList.get(i);
+//                    deviceList.add(new KeyValueInfo(mDevice.getType(), mDevice.getSecurityFile(), mDevice.getSecurityContract(), mDevice.getNextOverhaul()));
+//                }
+//                initChart(deviceList);
+//                keyList.clear();
+//                keyList.addAll(deviceList);
+//                mAdapter.notifyDataSetChanged();
+//                break;
             case ApiData.HTTP_ID_drug_sample_parameter://药品检验
-            case ApiData.HTTP_ID_industrial_product_parameter://工业产品检验
+//            case ApiData.HTTP_ID_industrial_product_parameter://工业产品检验
                 List<QualitySampleEntity> qualitySampleEntityList = (List<QualitySampleEntity>) b.getEntry();
                 List<KeyValueInfo> sampleList = new ArrayList<>();
                 for (int i = 0; i < qualitySampleEntityList.size(); i++) {

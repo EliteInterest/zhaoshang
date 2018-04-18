@@ -90,6 +90,8 @@ public class Util {
     public static final String Myvideopath = Basepath + "VIDEO/";
     public static final int VIDEO_MAX_TIME = 30;
     public static final String SAVE_PATH = Basepath + "VIDEO/save.mp4";
+    public static String[] area = {"直属街道", "鱼复园区", "龙兴园区", "水土园区", "保税港区", "江北嘴", "悦来", "港务物流", "江北片区", "渝北片区", "北碚片区", "待定"};
+
 
     private static HashMap<String, SoftReference<Bitmap>> imageCache = new HashMap<>();
 
