@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GAMarketMobile.iml" filepath="$PROJECT_DIR$/GAMarketMobile.iml" />
+      <module fileurl="file://F:\AndroidStudio\AndroidStudio_WorkSpace\zhaoshang\ZSMarketMobile\GAMarketMobile.iml" filepath="F:\AndroidStudio\AndroidStudio_WorkSpace\zhaoshang\ZSMarketMobile\GAMarketMobile.iml" />
       <module fileurl="file://$PROJECT_DIR$/PhotoPicker/PhotoPicker.iml" filepath="$PROJECT_DIR$/PhotoPicker/PhotoPicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ZSMarketMobile.iml" filepath="$PROJECT_DIR$/ZSMarketMobile.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

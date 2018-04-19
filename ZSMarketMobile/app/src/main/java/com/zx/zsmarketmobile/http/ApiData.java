@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -23,7 +22,6 @@ import com.zx.zsmarketmobile.entity.CompFlowEntity;
 import com.zx.zsmarketmobile.entity.ComplainInfoDetailsBean;
 import com.zx.zsmarketmobile.entity.ComplainInfoEntity;
 import com.zx.zsmarketmobile.entity.DeviceEmergencyDetialEntity;
-import com.zx.zsmarketmobile.entity.DeviceSecurityRiskEntity;
 import com.zx.zsmarketmobile.entity.EmergencyInfo;
 import com.zx.zsmarketmobile.entity.EmergencyListInfo;
 import com.zx.zsmarketmobile.entity.EntityDetail;
@@ -96,7 +94,6 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URISyntaxException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -436,11 +433,22 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                     params.putParams("password", objects[1]);
                     break;
                 case HTTP_ID_searchzt:
-                    params.setApiUrl(baseUrl + "/TJsupervise/enterprise/getEnterprisePage.do");
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/proj/getProjTempPage.do");
                     params.setRequestMothod(HTTP_MOTHOD.GET);
-                    params.putParams("pageNo", objects[0]);
-                    params.putParams("pageSize", objects[1]);
-                    params.putParams("enterpriseName", objects[2]);
+                    params.putParams("json", objects[0]);
+//                    params.putParams("pageNo", objects[0]);
+//                    params.putParams("pageSize", objects[1]);
+//                    params.putParams("projName", objects[2]);
+//                    params.putParams("projCode", objects[3]);
+//                    params.putParams("projStage", objects[4]);
+//                    params.putParams("isForeign", objects[5]);
+//                    params.putParams("projType", objects[6]);
+//                    params.putParams("projIndustry", objects[7]);
+//                    params.putParams("projNewIns", objects[8]);
+//                    params.putParams("investAgreementNum", objects[9]);
+//                    params.putParams("supplementAgreementNum", objects[10]);
+//                    params.putParams("zshRecordNum", objects[11]);
+//                    params.putParams("BghRecordNum", objects[12]);
                     break;
                 case HTTP_ID_searchall:
                     params.setApiUrl(baseUrl + "GaClientService.do");
@@ -622,9 +630,10 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                     params.putParams("userid", objects[2]);
                     break;
                 case HTTP_ID_entity_detail:
-                    params.setApiUrl(baseUrl + "/TJsupervise/enterprise/getEnterpriseInfo.do");
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/proj/getProjDetailInfo.do");
                     params.setRequestMothod(HTTP_MOTHOD.GET);
-                    params.putParams("id", objects[0]);
+                    params.putParams("projGuid", objects[0]);
+                    params.putParams("type", "temp");
                     break;
                 case HTTP_ID_entity_modifycontactinfo:
                     params.setApiUrl(baseUrl + "GaClientService.do");
@@ -1939,10 +1948,10 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                             list = getJSONObject(jsonObject, "data");
                             HttpSearchZtEntity searchZtEntity = new HttpSearchZtEntity();
                             searchZtEntity.setCurrPageNo(getIntValue(list, "pageNo"));
-                            searchZtEntity.setPageSize(getIntValue(list, "pageSize"));
+                            searchZtEntity.setPageSize(getIntValue(list, "totalPages"));
                             searchZtEntity.setPageTotal(getIntValue(list, "pages"));
-                            searchZtEntity.setTotal(getIntValue(list, "total"));
-                            JSONArray dataArray = getJSONArray(list, "list");
+                            searchZtEntity.setTotal(getIntValue(list, "totalRecords"));
+                            JSONArray dataArray = getJSONArray(list, "result");
                             List<HttpZtEntity> ztlist = gson.fromJson(dataArray.toString(), new TypeToken<List<HttpZtEntity>>() {
                             }.getType());
                             searchZtEntity.setZtList(ztlist);

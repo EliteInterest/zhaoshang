@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zx.zsmarketmobile.R;
-import com.zx.zsmarketmobile.adapter.BusinessAdapter;
 import com.zx.zsmarketmobile.entity.EntityDetail;
 import com.zx.zsmarketmobile.ui.base.BaseFragment;
 
@@ -20,10 +19,10 @@ import com.zx.zsmarketmobile.ui.base.BaseFragment;
  */
 public class BusinessFragment extends BaseFragment {
 
-	private EntityDetail.BusinessBean businessBean;// 业务信息
+	private EntityDetail businessBean;// 业务信息
 	private RecyclerView mRvBusiness;
 
-	public static BusinessFragment newInstance(int index, EntityDetail.BusinessBean bizInfo) {
+	public static BusinessFragment newInstance(int index, EntityDetail bizInfo) {
 		BusinessFragment details = new BusinessFragment();
 		Bundle args = new Bundle();
 		args.putInt("index", index);
@@ -37,8 +36,8 @@ public class BusinessFragment extends BaseFragment {
 		mRvBusiness = (RecyclerView) view.findViewById(R.id.rv_normal_view);
 		mRvBusiness.setLayoutManager(mLinearLayoutManager);
 		((SwipeRefreshLayout)view.findViewById(R.id.srl_normal_layout)).setEnabled(false);
-		BusinessAdapter businessAdapter = new BusinessAdapter(getActivity(), businessBean.getLic());
-		mRvBusiness.setAdapter(businessAdapter);
+//		BusinessAdapter businessAdapter = new BusinessAdapter(getActivity(), businessBean.getLic());
+//		mRvBusiness.setAdapter(businessAdapter);
 		return view;
 	}
 }

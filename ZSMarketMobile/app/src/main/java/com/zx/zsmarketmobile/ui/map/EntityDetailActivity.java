@@ -76,11 +76,12 @@ public class EntityDetailActivity extends BaseActivity implements OnClickListene
         mEntityDetail = (EntityDetail) getIntent().getSerializableExtra("entity");
         fEntityType = getIntent().getStringExtra("fEntityType");
         fEntityGuid = getIntent().getStringExtra("fEntityGuid");
-        myPagerAdapter.addFragment(EntityFragment.newInstance(0, mEntityDetail.getBaseInfo()), "基本信息");
-        myPagerAdapter.addFragment(BusinessFragment.newInstance(0, mEntityDetail.getBusiness()), "业务信息");
-        myPagerAdapter.addFragment(GradeFragment.newInstance(1, mEntityDetail.getGrade()), "等级信息");
+        myPagerAdapter.addFragment(EntityFragment.newInstance(0, mEntityDetail), "基本信息");
+//        myPagerAdapter.addFragment(BusinessFragment.newInstance(0, mEntityDetail.getBusiness()), "业务信息");
+//        myPagerAdapter.addFragment(GradeFragment.newInstance(1, mEntityDetail.getGrade()), "等级信息");
         mVpContent.setAdapter(myPagerAdapter);
         mVpContent.setOffscreenPageLimit(4);
+        tb_entity.setVisibility(View.GONE);
         tb_entity.setupWithViewPager(mVpContent);
     }
 

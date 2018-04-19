@@ -9,6 +9,7 @@ package com.zx.zsmarketmobile.http;
 public abstract class BaseHttpParams<Param> {
     private String apiUrl;
     private int port = -1;
+    private boolean isjson = false;
     private HTTP_MOTHOD mothod = HTTP_MOTHOD.POST;
     private boolean isRetry = true;//是否请求第二次 默认为true
 
@@ -59,6 +60,14 @@ public abstract class BaseHttpParams<Param> {
      */
     public final void setRequestMothod(HTTP_MOTHOD mothod) {
         this.mothod = mothod;
+    }
+
+    public final void setIsJson() {
+        this.isjson = true;
+    }
+
+    public boolean isIsjson() {
+        return isjson;
     }
 
     /**

@@ -41,14 +41,12 @@
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:background="@drawable/home_ll_bg"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingRight="5dip"
             android:visibility="visible">
 
-            <EditText
+            <TextView
                 android:id="@+id/et_search"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
@@ -59,8 +57,6 @@
                 android:layout_weight="1"
                 android:background="@color/transparent"
                 android:hint="@string/ztsearch"
-                android:imeOptions="actionSearch"
-                android:inputType="text"
                 android:singleLine="true"
                 android:textSize="@dimen/text_size_small"/>
 
@@ -306,7 +302,7 @@
             <android.support.v4.view.ViewPager
                 android:id="@+id/vp_poidetails"
                 android:layout_width="fill_parent"
-                android:layout_height="75dip"
+                android:layout_height="90dip"
                 android:clickable="true"
                 android:focusable="true"></android.support.v4.view.ViewPager>
 

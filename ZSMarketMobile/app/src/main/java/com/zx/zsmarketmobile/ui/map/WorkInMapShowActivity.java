@@ -14,15 +14,11 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 import com.esri.android.map.GraphicsLayer;
@@ -82,7 +78,7 @@ public class WorkInMapShowActivity extends BaseActivity implements OnClickListen
     private ApiData mTaskPageData = new ApiData(ApiData.HTTP_ID_search_task_bypage);
     private LinearLayout mLLGoBack;// 返回
     private ImageButton mImgBtnGoBack, mImgBtnSearch;
-    private EditText mEditTextSearch;
+    private TextView mEditTextSearch;
 
     public LinearLayout mLlSearch;
     public TextView mTVList;
@@ -512,10 +508,11 @@ public class WorkInMapShowActivity extends BaseActivity implements OnClickListen
     private void initView() {
         mapMarkerTool = new MapMarkerTool(this, mMapView);
 
-        mLlSearch = (LinearLayout) findViewById(id.workinmapshow_activity_searchview);
+        mLlSearch = (LinearLayout) findViewById(R.id.workinmapshow_activity_searchview);
         mTVTitle = (TextView) findViewById(id.tv_workinmapshow_activity_title);
         mTVList = (TextView) findViewById(id.btn_list);
         mTVList.setOnClickListener(this);
+        mLlSearch.setOnClickListener(this);
 
         mapMarkerTool.initPoiViewPager();
 
@@ -529,19 +526,19 @@ public class WorkInMapShowActivity extends BaseActivity implements OnClickListen
         mImgBtnSearch = (ImageButton) findViewById(id.ibtn_search);
         mImgBtnSearch.setOnClickListener(this);
 
-        mEditTextSearch = (EditText) findViewById(R.id.et_search);
-        mEditTextSearch.setOnEditorActionListener(new OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView arg0, int arg1, KeyEvent arg2) {
-                if (arg1 == EditorInfo.IME_ACTION_SEARCH) {
-                    Util.closeKeybord(mEditTextSearch, WorkInMapShowActivity.this);
-                    mKeyword = mEditTextSearch.getText().toString().trim();
-                    ztsearchData.loadData("1", "10", mKeyword, "", "", "", "", "");
-                }
-                return false;
-            }
-        });
+        mEditTextSearch =  findViewById(R.id.et_search);
+//        mEditTextSearch.setOnEditorActionListener(new OnEditorActionListener() {
+//
+//            @Override
+//            public boolean onEditorAction(TextView arg0, int arg1, KeyEvent arg2) {
+//                if (arg1 == EditorInfo.IME_ACTION_SEARCH) {
+//                    Util.closeKeybord(mEditTextSearch, WorkInMapShowActivity.this);
+//                    mKeyword = mEditTextSearch.getText().toString().trim();
+//                    ztsearchData.loadData("1", "10", mKeyword, "", "", "", "", "");
+//                }
+//                return false;
+//            }
+//        });
 
         ztsearchData.setLoadingListener(this);
         ztSearchJyfwData.setLoadingListener(this);
@@ -584,18 +581,21 @@ public class WorkInMapShowActivity extends BaseActivity implements OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case id.activity_workshowinmap_ll_header_back:
+            case R.id.activity_workshowinmap_ll_header_back:
             case id.activity_workshowinmap_header_back:// 返回
                 this.finish();
                 break;
-            case id.ibtn_search:// 主体查询
-                // mProgressDialog.showMap();
-                Util.closeKeybord(mEditTextSearch, this);
-                mKeyword = mEditTextSearch.getText().toString().trim();
-                ztsearchData.loadData("1", "10", mKeyword, "", "", "", "", "");
-                break;
+//            case id.ibtn_search:// 主体查询
+//                // mProgressDialog.showMap();
+//                Util.closeKeybord(mEditTextSearch, this);
+//                mKeyword = mEditTextSearch.getText().toString().trim();
+//                ztsearchData.loadData("1", "10", mKeyword, "", "", "", "", "");
+//                break;
             case id.btn_list:
                 this.finish();
+                break;
+            case R.id.workinmapshow_activity_searchview:
+                startActivity(new Intent(this, SearchZtListShowActivity.class));
                 break;
             default:
                 break;

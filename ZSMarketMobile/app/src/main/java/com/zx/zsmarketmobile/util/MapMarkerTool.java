@@ -492,8 +492,8 @@ public class MapMarkerTool implements BaseRequestData.OnHttpLoadingListener<Base
     public int getMarkId(HttpZtEntity zt) {
         int id = R.mipmap.xfd;
         try {
-            String creditLevel = zt.getCreditCode().toLowerCase();
-            if ("b".equals(creditLevel)) {
+//            String creditLevel = zt.getCreditCode().toLowerCase();
+//            if ("b".equals(creditLevel)) {
 //                if ("先照后证".equals(zt.fTags)) {
 //                    id = R.mipmap.mark_ab;
 //                } else if ("无照无证".equals(zt.fTags)) {
@@ -501,9 +501,9 @@ public class MapMarkerTool implements BaseRequestData.OnHttpLoadingListener<Base
 //                } else {
 //                    id = R.mipmap.mark_b;
 //                }
-            } else {
-                id = activity.getResources().getIdentifier("mark_" + creditLevel, "drawable", activity.getPackageName());
-            }
+//            } else {
+//                id = activity.getResources().getIdentifier("mark_" + creditLevel, "drawable", activity.getPackageName());
+//            }
         } catch (Exception e) {
         }
         if (id == 0) {
@@ -525,9 +525,9 @@ public class MapMarkerTool implements BaseRequestData.OnHttpLoadingListener<Base
                                 int index = mPoiViewPager.getCurrentItem();
                                 zt = mSearchZtEntity.getZtList().get(index);
                                 if (zt != null) {
-                                    setfEntityType(zt.getEnterpriseType());
+                                    setfEntityType(zt.getProjType());
                                 }
-                                taskData.loadData(userInfo.getUserId(), zt.getId(), zt.getCreditCode(), zt.getEnterpriseName());
+                                taskData.loadData(userInfo.getUserId(), zt.getProjGuid(), "", zt.getEnterpriseName());
                                 break;
                             case ConstStrings.MapType_ZtDetail:// 主体详情查看地图
                                 activity.finish();
@@ -1094,11 +1094,11 @@ public class MapMarkerTool implements BaseRequestData.OnHttpLoadingListener<Base
                 break;
             case ConstStrings.MapType_SearchZt:
                 HttpZtEntity zt = mSearchZtEntity.getZtList().get(index);
-                mChangeposData.loadData(zt.getId(), userInfo.getUserId(), mLongitude, mLatitude, null);
+                mChangeposData.loadData(zt.getProjGuid(), userInfo.getUserId(), mLongitude, mLatitude, null);
                 break;
             case ConstStrings.MapType_ZtDetail:
                 HttpZtEntity zt2 = mSearchZtEntity.getZtList().get(index);
-                mChangeposData.loadData(zt2.getId(), userInfo.getUserId(), mLongitude, mLatitude, null);
+                mChangeposData.loadData(zt2.getProjGuid(), userInfo.getUserId(), mLongitude, mLatitude, null);
                 break;
             default:
                 break;

@@ -22,7 +22,7 @@ import com.zx.zsmarketmobile.ui.base.BaseFragment;
  */
 public class EntityFragment extends BaseFragment {
 
-    private EntityDetail.BaseInfoBean mEntity;
+    private EntityDetail mEntity;
     private boolean mIsSubmit = false;
     private Button mBtnSubmit;
     private Button mBtnCancel;
@@ -31,7 +31,7 @@ public class EntityFragment extends BaseFragment {
     private EditText mEdtLinkAddress;
     private ApiData taskData = new ApiData(ApiData.HTTP_ID_entity_modifycontactinfo);
 
-    public static EntityFragment newInstance(int index, EntityDetail.BaseInfoBean entity) {
+    public static EntityFragment newInstance(int index, EntityDetail entity) {
         EntityFragment details = new EntityFragment();
         Bundle args = new Bundle();
         args.putInt("index", index);
@@ -42,7 +42,7 @@ public class EntityFragment extends BaseFragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = null;
-        mEntity = (EntityDetail.BaseInfoBean) getArguments().getSerializable("entity");
+        mEntity = (EntityDetail) getArguments().getSerializable("entity");
         view = inflater.inflate(R.layout.fragment_entity, container, false);
         taskData.setLoadingListener(this);
         TextView tvEntityName = (TextView) view.findViewById(R.id.tvFmEntity_entityname);
@@ -56,13 +56,13 @@ public class EntityFragment extends BaseFragment {
         mBtnSubmit = (Button) view.findViewById(R.id.btnFmEntity_confirm);
         mBtnCancel = (Button) view.findViewById(R.id.btnFmEntity_cancel);
         if (null != mEntity) {
-            tvEntityName.setText(mEntity.getEnterpriseName());
-            tvEntityType.setText(mEntity.getEnterpriseRegType());
+            tvEntityName.setText(mEntity.getProjName());
+            tvEntityType.setText(mEntity.getProjType());
 //            tvregcode.setText(mEntity.getBizlicNum());
-            tvLicNum.setText(mEntity.getBizlicNum());
-            tvPersion.setText(mEntity.getLegalPerson());
-            tvEntityAddress.setText(mEntity.getAddress());
-            tvRegPhone.setText(mEntity.getContactInfo());
+            tvLicNum.setText(mEntity.getProjNewIns());
+            tvPersion.setText(mEntity.getProjIndustry());
+            tvEntityAddress.setText(mEntity.getProjAddr());
+            tvRegPhone.setText(mEntity.getContractNum());
 //            if ("D".equals(mEntityInfo.fCreditLevel) || "Z".equals(mEntityInfo.fCreditLevel)) {
 //                mEdtLinkName.setVisibility(View.GONE);
 //                mEdtLinkPhone.setVisibility(View.GONE);

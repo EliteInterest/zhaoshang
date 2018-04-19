@@ -20,11 +20,11 @@ import java.util.List;
  */
 public class GradeFragment extends BaseFragment {
 
-    private List<EntityDetail.GradeBean> gradeBeans = new ArrayList<>();// 等级信息
+    private List<EntityDetail> gradeBeans = new ArrayList<>();// 等级信息
     private LinearLayout mElvSkill;
     private String mCreditLevel;
 
-    public static GradeFragment newInstance(int index, List<EntityDetail.GradeBean> creditInfo) {
+    public static GradeFragment newInstance(int index, List<EntityDetail> creditInfo) {
         GradeFragment details = new GradeFragment();
         Bundle args = new Bundle();
         args.putInt("index", index);
@@ -80,9 +80,9 @@ public class GradeFragment extends BaseFragment {
                 View item = View.inflate(getActivity(), R.layout.item_eventinfo, null);
                 TextView type = (TextView) item.findViewById(R.id.eventKey);
                 TextView number = (TextView) item.findViewById(R.id.eventValue);
-                EntityDetail.GradeBean cInfo = gradeBeans.get(i);
-                type.setText(cInfo.getType());
-                number.setText(cInfo.getLevel() + "");
+//                EntityDetail.GradeBean cInfo = gradeBeans.get(i);
+//                type.setText(cInfo.getType());
+//                number.setText(cInfo.getLevel() + "");
                 mElvSkill.addView(item);
             }
         }

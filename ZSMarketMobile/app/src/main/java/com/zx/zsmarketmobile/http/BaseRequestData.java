@@ -20,7 +20,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.SocketTimeoutException;
 import java.net.URISyntaxException;
 import java.util.Collections;
@@ -202,29 +201,33 @@ public abstract class BaseRequestData<HttpClientParam, loadDataParam, Result ext
 //                            postJsonRequest(params.getRequestUrl(id), (Map<String, Object>) param, params.isRetry());
 //                            else
 //                            postJson(params.getRequestUrl(id), (Map<String, Object>) param, params.isRetry());
-                            if (id == ApiData.HTTP_ID_searchzt) {
-                                //指定的ID用json
+//                            if (id == ApiData.HTTP_ID_searchzt) {
+//                                //指定的ID用json
+//                                postJsonRequest(params.getRequestUrl(id), (Map<String, Object>) param, params.isRetry());
+//                            } else {
+                            //其他按照string
+                            Map<String, Object> m = (Map<String, Object>) param;
+                            String getParam = null;
+                            if (m.size() == 0) {
+                                getParam = "";
+                            } else {
+                                getParam = "?";
+                                for (String key : m.keySet()) {
+                                    Object o = m.get(key);
+                                    getParam += key + "=" + String.valueOf(o == null ? "" : o);
+                                    getParam += "&";
+                                }
+                                getParam = getParam.substring(0, getParam.length() - 1);
+                            }
+                            getUrl = params.getRequestUrl(id) + getParam;
+                            getJson(getUrl, Request.Method.POST, params.isRetry());
+//                            }
+                        } else {
+                            if (params.isIsjson()) {
                                 postJsonRequest(params.getRequestUrl(id), (Map<String, Object>) param, params.isRetry());
                             } else {
-                                //其他按照string
-                                Map<String, Object> m = (Map<String, Object>) param;
-                                String getParam = null;
-                                if (m.size() == 0) {
-                                    getParam = "";
-                                } else {
-                                    getParam = "?";
-                                    for (String key : m.keySet()) {
-                                        Object o = m.get(key);
-                                        getParam += key + "=" + String.valueOf(o == null ? "" : o);
-                                        getParam += "&";
-                                    }
-                                    getParam = getParam.substring(0, getParam.length() - 1);
-                                }
-                                getUrl = params.getRequestUrl(id) + getParam;
-                                getJson(getUrl, Request.Method.POST, params.isRetry());
+                                postJson(params.getRequestUrl(id), param.toString(), params.isRetry());
                             }
-                        } else {
-                            postJson(params.getRequestUrl(id), param.toString(), params.isRetry());
                         }
 
 //                        if (param instanceof Map) {

@@ -115,7 +115,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="营业执照注册号: "
+                            android:text="新兴行业: "
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
@@ -150,7 +150,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="法定代表人（负责人）: "
+                            android:text="所属行业: "
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 

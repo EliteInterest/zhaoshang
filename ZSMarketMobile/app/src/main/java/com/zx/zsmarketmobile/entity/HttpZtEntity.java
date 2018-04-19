@@ -4,192 +4,171 @@ import java.io.Serializable;
 
 public class HttpZtEntity implements Serializable {
 
+
     /**
-     * stationCode :
-     * regMoney : null
-     * contactInfo :
-     * latitude : 39.026658
-     * shopName : null
-     * industry : 批发和零售业
-     * addressMatch : 0
-     * industryCode : F
-     * creditCode : 911201163410689437
-     * industryType : 批发业
-     * legalPerson : 吴虎
-     * station : 开发区工商所（内资、个体）
-     * stree : null
-     * id : d9513e28979d11e781d1000c2934879e
-     * industryTypeCode : F51
-     * enterpriseName : 天津奥光华利贸易有限公司
-     * regType : 私营公司
-     * enterpriseTypeName : null
-     * longitude : 117.702828
-     * address : null
-     * foundDate : 1505981639000
-     * businessScope : null
-     * enterpriseRegType : 1151
-     * enterpriseType : 10
-     * tags : null
-     * bizlicNum : 120116000375822
-     * grid : null
-     * regOrg : null
-     * businessType : 其它类
-     * enterpriseRegTypeName : null
-     * gridCode : null
-     * status : 开业
+     * projArea : null
+     * projZsStatus : -1
+     * lastmodifyDate : 1501034161000
+     * attractInvestmentInfo : null
+     * enterpriseName : null
+     * isForeign : 1
+     * realAmountForeign : 0.0
+     * inputZsUserid : null
+     * uniscid : null
+     * projNewIns : 国际物流
+     * expectedOutputDate : null
+     * contractAmountForeign : 21212.0
+     * expectedOutput : 121221.0
+     * taxYear : null
+     * attractInvestmentPerson : null
+     * isSign : 0
+     * projName : 龙兴验证退回后提交能否到经济运行局列表中
+     * expectedStartDate : null
+     * projGuid : 712B46E2E4F94C2693D81013570A9527
+     * zshRecordNum : 1212
+     * realStartDate : null
+     * projZsDept : null
+     * isRead : 1
+     * businessContactPerson : null
+     * projDescrible : null
+     * contractNum : 2121
+     * supplementAgreementNum : null
+     * remindTime : 5
+     * isOutput : 0
+     * bghRecordNum : null
+     * isDiscuss : 0
+     * infoStatus : 3
+     * projAddr : null
+     * latitude : 29.674788
+     * isClassified : 0
+     * realAmountYearNational : null
+     * projCode : LX-2017-00695
+     * isLandProj : 0
+     * foreignCountry : 俄罗斯
+     * projStage : 6
+     * nextRemindDate : null
+     * signDate : null
+     * projIndustry : 现代物流
+     * longitude : 106.770161
+     * inputUserid : A19C826D302E44C292615B308A474C70
+     * outputYear : null
+     * regMoneyNational : 2121.0
+     * regMoneyForeign : 21211.0
+     * taxTotal : 212.0
+     * projDept : 龙兴园区
+     * remark : null
+     * isStart : 0
+     * projServiceType : 辅助服务
+     * realOutputDate : null
+     * businessContactInfo : null
+     * projType : 服务业
+     * realAmountNational : 2121.0
+     * buildingArea : null
+     * contractAmountNational : 2121.0
+     * investAgreementNum : 12
+     * realAmountYearForeign : null
+     * investorEntityChina : 121
+     * investorEntityForeign : 2121
+     * isRemind : 1
+     * isCancelRemind : 0
      */
 
-    private String stationCode;
-    private Object regMoney;
-    private String contactInfo;
-    private double latitude;
-    private Object shopName;
-    private String industry;
-    private int addressMatch;
-    private String industryCode;
-    private String creditCode;
-    private String industryType;
-    private String legalPerson;
-    private String station;
-    private Object stree;
-    private String id;
-    private String industryTypeCode;
+    private String projArea;
+    private int projZsStatus;
+    private long lastmodifyDate;
+    private String attractInvestmentInfo;
     private String enterpriseName;
-    private String regType;
-    private Object enterpriseTypeName;
+    private int isForeign;
+    private double realAmountForeign;
+    private String inputZsUserid;
+    private String uniscid;
+    private String projNewIns;
+    private String expectedOutputDate;
+    private double contractAmountForeign;
+    private double expectedOutput;
+    private String taxYear;
+    private String attractInvestmentPerson;
+    private int isSign;
+    private String projName;
+    private String expectedStartDate;
+    private String projGuid;
+    private String zshRecordNum;
+    private String realStartDate;
+    private String projZsDept;
+    private int isRead;
+    private String businessContactPerson;
+    private String projDescrible;
+    private String contractNum;
+    private String supplementAgreementNum;
+    private String remindTime;
+    private int isOutput;
+    private String bghRecordNum;
+    private int isDiscuss;
+    private int infoStatus;
+    private String projAddr;
+    private double latitude;
+    private int isClassified;
+    private String realAmountYearNational;
+    private String projCode;
+    private int isLandProj;
+    private String foreignCountry;
+    private int projStage;
+    private String nextRemindDate;
+    private String signDate;
+    private String projIndustry;
     private double longitude;
-    private String address;
-    private long foundDate;
-    private Object businessScope;
-    private String enterpriseRegType;
-    private String enterpriseType;
-    private Object tags;
-    private String bizlicNum;
-    private Object grid;
-    private Object regOrg;
-    private String businessType;
-    private Object enterpriseRegTypeName;
-    private Object gridCode;
-    private String status;
+    private String inputUserid;
+    private String outputYear;
+    private double regMoneyNational;
+    private double regMoneyForeign;
+    private double taxTotal;
+    private String projDept;
+    private String remark;
+    private int isStart;
+    private String projServiceType;
+    private String realOutputDate;
+    private String businessContactInfo;
+    private String projType;
+    private double realAmountNational;
+    private String buildingArea;
+    private double contractAmountNational;
+    private String investAgreementNum;
+    private String realAmountYearForeign;
+    private String investorEntityChina;
+    private String investorEntityForeign;
+    private int isRemind;
+    private int isCancelRemind;
 
-    public String getStationCode() {
-        return stationCode;
+    public String getProjArea() {
+        return projArea;
     }
 
-    public void setStationCode(String stationCode) {
-        this.stationCode = stationCode;
+    public void setProjArea(String projArea) {
+        this.projArea = projArea;
     }
 
-    public Object getRegMoney() {
-        return regMoney;
+    public int getProjZsStatus() {
+        return projZsStatus;
     }
 
-    public void setRegMoney(Object regMoney) {
-        this.regMoney = regMoney;
+    public void setProjZsStatus(int projZsStatus) {
+        this.projZsStatus = projZsStatus;
     }
 
-    public String getContactInfo() {
-        return contactInfo;
+    public long getLastmodifyDate() {
+        return lastmodifyDate;
     }
 
-    public void setContactInfo(String contactInfo) {
-        this.contactInfo = contactInfo;
+    public void setLastmodifyDate(long lastmodifyDate) {
+        this.lastmodifyDate = lastmodifyDate;
     }
 
-    public double getLatitude() {
-        return latitude;
+    public String getAttractInvestmentInfo() {
+        return attractInvestmentInfo;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public Object getShopName() {
-        return shopName;
-    }
-
-    public void setShopName(Object shopName) {
-        this.shopName = shopName;
-    }
-
-    public String getIndustry() {
-        return industry;
-    }
-
-    public void setIndustry(String industry) {
-        this.industry = industry;
-    }
-
-    public int getAddressMatch() {
-        return addressMatch;
-    }
-
-    public void setAddressMatch(int addressMatch) {
-        this.addressMatch = addressMatch;
-    }
-
-    public String getIndustryCode() {
-        return industryCode;
-    }
-
-    public void setIndustryCode(String industryCode) {
-        this.industryCode = industryCode;
-    }
-
-    public String getCreditCode() {
-        return creditCode;
-    }
-
-    public void setCreditCode(String creditCode) {
-        this.creditCode = creditCode;
-    }
-
-    public String getIndustryType() {
-        return industryType;
-    }
-
-    public void setIndustryType(String industryType) {
-        this.industryType = industryType;
-    }
-
-    public String getLegalPerson() {
-        return legalPerson;
-    }
-
-    public void setLegalPerson(String legalPerson) {
-        this.legalPerson = legalPerson;
-    }
-
-    public String getStation() {
-        return station;
-    }
-
-    public void setStation(String station) {
-        this.station = station;
-    }
-
-    public Object getStree() {
-        return stree;
-    }
-
-    public void setStree(Object stree) {
-        this.stree = stree;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getIndustryTypeCode() {
-        return industryTypeCode;
-    }
-
-    public void setIndustryTypeCode(String industryTypeCode) {
-        this.industryTypeCode = industryTypeCode;
+    public void setAttractInvestmentInfo(String attractInvestmentInfo) {
+        this.attractInvestmentInfo = attractInvestmentInfo;
     }
 
     public String getEnterpriseName() {
@@ -200,20 +179,308 @@ public class HttpZtEntity implements Serializable {
         this.enterpriseName = enterpriseName;
     }
 
-    public String getRegType() {
-        return regType;
+    public int getIsForeign() {
+        return isForeign;
     }
 
-    public void setRegType(String regType) {
-        this.regType = regType;
+    public void setIsForeign(int isForeign) {
+        this.isForeign = isForeign;
     }
 
-    public Object getEnterpriseTypeName() {
-        return enterpriseTypeName;
+    public double getRealAmountForeign() {
+        return realAmountForeign;
     }
 
-    public void setEnterpriseTypeName(Object enterpriseTypeName) {
-        this.enterpriseTypeName = enterpriseTypeName;
+    public void setRealAmountForeign(double realAmountForeign) {
+        this.realAmountForeign = realAmountForeign;
+    }
+
+    public String getInputZsUserid() {
+        return inputZsUserid;
+    }
+
+    public void setInputZsUserid(String inputZsUserid) {
+        this.inputZsUserid = inputZsUserid;
+    }
+
+    public String getUniscid() {
+        return uniscid;
+    }
+
+    public void setUniscid(String uniscid) {
+        this.uniscid = uniscid;
+    }
+
+    public String getProjNewIns() {
+        return projNewIns;
+    }
+
+    public void setProjNewIns(String projNewIns) {
+        this.projNewIns = projNewIns;
+    }
+
+    public String getExpectedOutputDate() {
+        return expectedOutputDate;
+    }
+
+    public void setExpectedOutputDate(String expectedOutputDate) {
+        this.expectedOutputDate = expectedOutputDate;
+    }
+
+    public double getContractAmountForeign() {
+        return contractAmountForeign;
+    }
+
+    public void setContractAmountForeign(double contractAmountForeign) {
+        this.contractAmountForeign = contractAmountForeign;
+    }
+
+    public double getExpectedOutput() {
+        return expectedOutput;
+    }
+
+    public void setExpectedOutput(double expectedOutput) {
+        this.expectedOutput = expectedOutput;
+    }
+
+    public String getTaxYear() {
+        return taxYear;
+    }
+
+    public void setTaxYear(String taxYear) {
+        this.taxYear = taxYear;
+    }
+
+    public String getAttractInvestmentPerson() {
+        return attractInvestmentPerson;
+    }
+
+    public void setAttractInvestmentPerson(String attractInvestmentPerson) {
+        this.attractInvestmentPerson = attractInvestmentPerson;
+    }
+
+    public int getIsSign() {
+        return isSign;
+    }
+
+    public void setIsSign(int isSign) {
+        this.isSign = isSign;
+    }
+
+    public String getProjName() {
+        return projName;
+    }
+
+    public void setProjName(String projName) {
+        this.projName = projName;
+    }
+
+    public String getExpectedStartDate() {
+        return expectedStartDate;
+    }
+
+    public void setExpectedStartDate(String expectedStartDate) {
+        this.expectedStartDate = expectedStartDate;
+    }
+
+    public String getProjGuid() {
+        return projGuid;
+    }
+
+    public void setProjGuid(String projGuid) {
+        this.projGuid = projGuid;
+    }
+
+    public String getZshRecordNum() {
+        return zshRecordNum;
+    }
+
+    public void setZshRecordNum(String zshRecordNum) {
+        this.zshRecordNum = zshRecordNum;
+    }
+
+    public String getRealStartDate() {
+        return realStartDate;
+    }
+
+    public void setRealStartDate(String realStartDate) {
+        this.realStartDate = realStartDate;
+    }
+
+    public String getProjZsDept() {
+        return projZsDept;
+    }
+
+    public void setProjZsDept(String projZsDept) {
+        this.projZsDept = projZsDept;
+    }
+
+    public int getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(int isRead) {
+        this.isRead = isRead;
+    }
+
+    public String getBusinessContactPerson() {
+        return businessContactPerson;
+    }
+
+    public void setBusinessContactPerson(String businessContactPerson) {
+        this.businessContactPerson = businessContactPerson;
+    }
+
+    public String getProjDescrible() {
+        return projDescrible;
+    }
+
+    public void setProjDescrible(String projDescrible) {
+        this.projDescrible = projDescrible;
+    }
+
+    public String getContractNum() {
+        return contractNum;
+    }
+
+    public void setContractNum(String contractNum) {
+        this.contractNum = contractNum;
+    }
+
+    public String getSupplementAgreementNum() {
+        return supplementAgreementNum;
+    }
+
+    public void setSupplementAgreementNum(String supplementAgreementNum) {
+        this.supplementAgreementNum = supplementAgreementNum;
+    }
+
+    public String getRemindTime() {
+        return remindTime;
+    }
+
+    public void setRemindTime(String remindTime) {
+        this.remindTime = remindTime;
+    }
+
+    public int getIsOutput() {
+        return isOutput;
+    }
+
+    public void setIsOutput(int isOutput) {
+        this.isOutput = isOutput;
+    }
+
+    public String getBghRecordNum() {
+        return bghRecordNum;
+    }
+
+    public void setBghRecordNum(String bghRecordNum) {
+        this.bghRecordNum = bghRecordNum;
+    }
+
+    public int getIsDiscuss() {
+        return isDiscuss;
+    }
+
+    public void setIsDiscuss(int isDiscuss) {
+        this.isDiscuss = isDiscuss;
+    }
+
+    public int getInfoStatus() {
+        return infoStatus;
+    }
+
+    public void setInfoStatus(int infoStatus) {
+        this.infoStatus = infoStatus;
+    }
+
+    public String getProjAddr() {
+        return projAddr;
+    }
+
+    public void setProjAddr(String projAddr) {
+        this.projAddr = projAddr;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public int getIsClassified() {
+        return isClassified;
+    }
+
+    public void setIsClassified(int isClassified) {
+        this.isClassified = isClassified;
+    }
+
+    public String getRealAmountYearNational() {
+        return realAmountYearNational;
+    }
+
+    public void setRealAmountYearNational(String realAmountYearNational) {
+        this.realAmountYearNational = realAmountYearNational;
+    }
+
+    public String getProjCode() {
+        return projCode;
+    }
+
+    public void setProjCode(String projCode) {
+        this.projCode = projCode;
+    }
+
+    public int getIsLandProj() {
+        return isLandProj;
+    }
+
+    public void setIsLandProj(int isLandProj) {
+        this.isLandProj = isLandProj;
+    }
+
+    public String getForeignCountry() {
+        return foreignCountry;
+    }
+
+    public void setForeignCountry(String foreignCountry) {
+        this.foreignCountry = foreignCountry;
+    }
+
+    public int getProjStage() {
+        return projStage;
+    }
+
+    public void setProjStage(int projStage) {
+        this.projStage = projStage;
+    }
+
+    public String getNextRemindDate() {
+        return nextRemindDate;
+    }
+
+    public void setNextRemindDate(String nextRemindDate) {
+        this.nextRemindDate = nextRemindDate;
+    }
+
+    public String getSignDate() {
+        return signDate;
+    }
+
+    public void setSignDate(String signDate) {
+        this.signDate = signDate;
+    }
+
+    public String getProjIndustry() {
+        return projIndustry;
+    }
+
+    public void setProjIndustry(String projIndustry) {
+        this.projIndustry = projIndustry;
     }
 
     public double getLongitude() {
@@ -224,107 +491,171 @@ public class HttpZtEntity implements Serializable {
         this.longitude = longitude;
     }
 
-    public String getAddress() {
-        return address;
+    public String getInputUserid() {
+        return inputUserid;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setInputUserid(String inputUserid) {
+        this.inputUserid = inputUserid;
     }
 
-    public long getFoundDate() {
-        return foundDate;
+    public String getOutputYear() {
+        return outputYear;
     }
 
-    public void setFoundDate(long foundDate) {
-        this.foundDate = foundDate;
+    public void setOutputYear(String outputYear) {
+        this.outputYear = outputYear;
     }
 
-    public Object getBusinessScope() {
-        return businessScope;
+    public double getRegMoneyNational() {
+        return regMoneyNational;
     }
 
-    public void setBusinessScope(Object businessScope) {
-        this.businessScope = businessScope;
+    public void setRegMoneyNational(double regMoneyNational) {
+        this.regMoneyNational = regMoneyNational;
     }
 
-    public String getEnterpriseRegType() {
-        return enterpriseRegType;
+    public double getRegMoneyForeign() {
+        return regMoneyForeign;
     }
 
-    public void setEnterpriseRegType(String enterpriseRegType) {
-        this.enterpriseRegType = enterpriseRegType;
+    public void setRegMoneyForeign(double regMoneyForeign) {
+        this.regMoneyForeign = regMoneyForeign;
     }
 
-    public String getEnterpriseType() {
-        return enterpriseType;
+    public double getTaxTotal() {
+        return taxTotal;
     }
 
-    public void setEnterpriseType(String enterpriseType) {
-        this.enterpriseType = enterpriseType;
+    public void setTaxTotal(double taxTotal) {
+        this.taxTotal = taxTotal;
     }
 
-    public Object getTags() {
-        return tags;
+    public String getProjDept() {
+        return projDept;
     }
 
-    public void setTags(Object tags) {
-        this.tags = tags;
+    public void setProjDept(String projDept) {
+        this.projDept = projDept;
     }
 
-    public String getBizlicNum() {
-        return bizlicNum;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setBizlicNum(String bizlicNum) {
-        this.bizlicNum = bizlicNum;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
-    public Object getGrid() {
-        return grid;
+    public int getIsStart() {
+        return isStart;
     }
 
-    public void setGrid(Object grid) {
-        this.grid = grid;
+    public void setIsStart(int isStart) {
+        this.isStart = isStart;
     }
 
-    public Object getRegOrg() {
-        return regOrg;
+    public String getProjServiceType() {
+        return projServiceType;
     }
 
-    public void setRegOrg(Object regOrg) {
-        this.regOrg = regOrg;
+    public void setProjServiceType(String projServiceType) {
+        this.projServiceType = projServiceType;
     }
 
-    public String getBusinessType() {
-        return businessType;
+    public String getRealOutputDate() {
+        return realOutputDate;
     }
 
-    public void setBusinessType(String businessType) {
-        this.businessType = businessType;
+    public void setRealOutputDate(String realOutputDate) {
+        this.realOutputDate = realOutputDate;
     }
 
-    public Object getEnterpriseRegTypeName() {
-        return enterpriseRegTypeName;
+    public String getBusinessContactInfo() {
+        return businessContactInfo;
     }
 
-    public void setEnterpriseRegTypeName(Object enterpriseRegTypeName) {
-        this.enterpriseRegTypeName = enterpriseRegTypeName;
+    public void setBusinessContactInfo(String businessContactInfo) {
+        this.businessContactInfo = businessContactInfo;
     }
 
-    public Object getGridCode() {
-        return gridCode;
+    public String getProjType() {
+        return projType;
     }
 
-    public void setGridCode(Object gridCode) {
-        this.gridCode = gridCode;
+    public void setProjType(String projType) {
+        this.projType = projType;
     }
 
-    public String getStatus() {
-        return status;
+    public double getRealAmountNational() {
+        return realAmountNational;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setRealAmountNational(double realAmountNational) {
+        this.realAmountNational = realAmountNational;
+    }
+
+    public String getBuildingArea() {
+        return buildingArea;
+    }
+
+    public void setBuildingArea(String buildingArea) {
+        this.buildingArea = buildingArea;
+    }
+
+    public double getContractAmountNational() {
+        return contractAmountNational;
+    }
+
+    public void setContractAmountNational(double contractAmountNational) {
+        this.contractAmountNational = contractAmountNational;
+    }
+
+    public String getInvestAgreementNum() {
+        return investAgreementNum;
+    }
+
+    public void setInvestAgreementNum(String investAgreementNum) {
+        this.investAgreementNum = investAgreementNum;
+    }
+
+    public String getRealAmountYearForeign() {
+        return realAmountYearForeign;
+    }
+
+    public void setRealAmountYearForeign(String realAmountYearForeign) {
+        this.realAmountYearForeign = realAmountYearForeign;
+    }
+
+    public String getInvestorEntityChina() {
+        return investorEntityChina;
+    }
+
+    public void setInvestorEntityChina(String investorEntityChina) {
+        this.investorEntityChina = investorEntityChina;
+    }
+
+    public String getInvestorEntityForeign() {
+        return investorEntityForeign;
+    }
+
+    public void setInvestorEntityForeign(String investorEntityForeign) {
+        this.investorEntityForeign = investorEntityForeign;
+    }
+
+    public int getIsRemind() {
+        return isRemind;
+    }
+
+    public void setIsRemind(int isRemind) {
+        this.isRemind = isRemind;
+    }
+
+    public int getIsCancelRemind() {
+        return isCancelRemind;
+    }
+
+    public void setIsCancelRemind(int isCancelRemind) {
+        this.isCancelRemind = isCancelRemind;
     }
 }

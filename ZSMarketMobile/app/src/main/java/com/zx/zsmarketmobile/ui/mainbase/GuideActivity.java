@@ -19,6 +19,7 @@ import com.zx.zsmarketmobile.entity.GuideFunctionEntity;
 import com.zx.zsmarketmobile.ui.base.BaseActivity;
 import com.zx.zsmarketmobile.ui.infomanager.InfoManagerActivity;
 import com.zx.zsmarketmobile.ui.map.WorkInMapShowActivity;
+import com.zx.zsmarketmobile.ui.system.HelpActivity;
 import com.zx.zsmarketmobile.ui.system.SettingsActivity;
 import com.zx.zsmarketmobile.util.ConstStrings;
 import com.zx.zsmarketmobile.util.MyApplication;
@@ -100,26 +101,26 @@ public class GuideActivity extends BaseActivity {
                         case 3://案件执法
                             toHome(2);
                             break;
-                        case 4://信息管理
-//                            toHome(3);
-                            startActivity(new Intent(GuideActivity.this, InfoManagerActivity.class));
-                            break;
-                        case 5://统计分析
-                            toHome(4);
-                            break;
-                        case 6://帮助
-                            startActivity(new Intent(GuideActivity.this, SettingsActivity.class));
-//                            startActivity(new Intent(GuideActivity.this, SynergyActivity.class));
-                            break;
-                        case 7: //设置
-//                            startActivity(new Intent(GuideActivity.this, EquipSearchActivity.class));
-                            break;
-//                        case 7:
-//                            startActivity(new Intent(GuideActivity.this, MessageCenterActivity.class));
+//                        case 4://信息管理
+////                            toHome(3);
+//                            startActivity(new Intent(GuideActivity.this, InfoManagerActivity.class));
 //                            break;
-//                        case 8:
+//                        case 5://统计分析
+//                            toHome(4);
+//                            break;
+//                        case 4://帮助
 //                            startActivity(new Intent(GuideActivity.this, SettingsActivity.class));
+//                            startActivity(new Intent(GuideActivity.this, SynergyActivity.class));
 //                            break;
+//                        case 5: //设置
+//                            startActivity(new Intent(GuideActivity.this, EquipSearchActivity.class));
+//                            break;
+                        case 4:
+                            startActivity(new Intent(GuideActivity.this, HelpActivity.class));
+                            break;
+                        case 5:
+                            startActivity(new Intent(GuideActivity.this, SettingsActivity.class));
+                            break;
                         default:
                             break;
                     }

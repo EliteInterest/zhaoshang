@@ -18,10 +18,10 @@ import java.util.List;
  * 功能：业务信息适配器
  */
 public class BusinessAdapter extends MyRecycleAdapter {
-    private List<EntityDetail.BusinessBean.LicBean> mDataList;
+    private List<EntityDetail> mDataList;
     private Context mContext;
 
-    public BusinessAdapter(Context c, List<EntityDetail.BusinessBean.LicBean> complainList) {
+    public BusinessAdapter(Context c, List<EntityDetail> complainList) {
         this.mDataList = complainList;
         this.mContext = c;
     }
@@ -37,9 +37,9 @@ public class BusinessAdapter extends MyRecycleAdapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         Holder myHolder = (Holder) holder;
-        EntityDetail.BusinessBean.LicBean task = mDataList.get(position);
-        myHolder.tvName.setText(task.getName() + "：");
-        myHolder.tvRemark.setText("共" + task.getNum() + "个");
+//        EntityDetail.BusinessBean.LicBean task = mDataList.get(position);
+//        myHolder.tvName.setText(task.getName() + "：");
+//        myHolder.tvRemark.setText("共" + task.getNum() + "个");
     }
 
     @Override

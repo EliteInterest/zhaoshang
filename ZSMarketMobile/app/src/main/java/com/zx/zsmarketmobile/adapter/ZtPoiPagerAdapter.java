@@ -42,21 +42,21 @@ public class ZtPoiPagerAdapter extends PagerAdapter {
             final HttpZtEntity zt = mPoiZts.get(i);
             //信用等级
             ImageView imgCreditLevel = (ImageView) view.findViewById(R.id.iv_creditlevel);
-            String creditLevel = zt.getCreditCode();
-            //默认为A级
-            if (creditLevel == null) {
-                imgCreditLevel.setBackgroundResource(R.mipmap.a);
-            } else if (creditLevel.equalsIgnoreCase("B")) {
-                imgCreditLevel.setBackgroundResource(R.mipmap.b);
-            } else if (creditLevel.equalsIgnoreCase("C")) {
-                imgCreditLevel.setBackgroundResource(R.mipmap.c);
-            } else if (creditLevel.equalsIgnoreCase("D")) {
-                imgCreditLevel.setBackgroundResource(R.mipmap.d);
-            } else if (creditLevel.equalsIgnoreCase("Z")) {
-                imgCreditLevel.setBackgroundResource(R.mipmap.z);
-            } else {
-                imgCreditLevel.setBackgroundResource(R.mipmap.a);
-            }
+//            String creditLevel = zt.getCreditCode();
+//            //默认为A级
+//            if (creditLevel == null) {
+//                imgCreditLevel.setBackgroundResource(R.mipmap.a);
+//            } else if (creditLevel.equalsIgnoreCase("B")) {
+//                imgCreditLevel.setBackgroundResource(R.mipmap.b);
+//            } else if (creditLevel.equalsIgnoreCase("C")) {
+//                imgCreditLevel.setBackgroundResource(R.mipmap.c);
+//            } else if (creditLevel.equalsIgnoreCase("D")) {
+//                imgCreditLevel.setBackgroundResource(R.mipmap.d);
+//            } else if (creditLevel.equalsIgnoreCase("Z")) {
+//                imgCreditLevel.setBackgroundResource(R.mipmap.z);
+//            } else {
+//                imgCreditLevel.setBackgroundResource(R.mipmap.a);
+//            }
             //主体名称
             TextView tvZtName = (TextView) view.findViewById(R.id.tv_zt_name);
             tvZtName.setLines(1);
@@ -64,7 +64,7 @@ public class ZtPoiPagerAdapter extends PagerAdapter {
             tvZtName.setText(zt.getEnterpriseName());
             //地址
             TextView tvZtAddress = (TextView) view.findViewById(R.id.tv_zt_address);
-            tvZtAddress.setText(zt.getAddress());
+            tvZtAddress.setText(zt.getProjAddr());
 //            tvZtAddress.setTextColor(ContextCompat.getColor(mContext,R.color.colorAccent));
 //            tvZtAddress.setOnClickListener(new OnClickListener() {//导航
 //                @Override
@@ -76,7 +76,7 @@ public class ZtPoiPagerAdapter extends PagerAdapter {
 //            });
             //电话
             TextView tvZtTel = (TextView) view.findViewById(R.id.tv_zt_tel);
-            final String phonenum = zt.getContactInfo();
+            final String phonenum = zt.getContractNum();
             tvZtTel.setText(phonenum);
             tvZtTel.setOnClickListener(new OnClickListener() {
 
