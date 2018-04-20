@@ -121,11 +121,14 @@ public class HomeActivity extends BaseActivity implements OnClickListener {
 
                 break;
             case 2://案件执法
-                setMidText("案件执法");
-                myPagerAdapter.addFragment(CaseMyListFragment.newInstance(), "我的任务");
-                myPagerAdapter.addFragment(CaseMonitorFragment.newInstance(), "案件监控");
-                myPagerAdapter.addFragment(CaseSearchFragment.newInstance(), "案件查询");
-                homeTabLayout.setVisibility(View.VISIBLE);
+                setMidText("统计月报");
+                getRightImg().setVisibility(View.GONE);
+                superviseInfo = createyuebaoData1();
+                myPagerAdapter.addFragment(StatisticsFragment.newInstance(superviseInfo), "总体概括");
+                staticInfo = createyuebaoData2();
+                myPagerAdapter.addFragment(StatisticsFragment.newInstance(staticInfo), "今年累计");
+                compInfo = createyuebaoData3();
+                myPagerAdapter.addFragment(StatisticsFragment.newInstance(compInfo), "历史累计");
                 break;
             case 3://信息管理
 //                toActivity(InfoManagerActivity.class);
@@ -165,6 +168,46 @@ public class HomeActivity extends BaseActivity implements OnClickListener {
         homeTabLayout.setupWithViewPager(mVpContent);
         Util.dynamicSetTabLayoutMode(homeTabLayout);
         mVpContent.setCurrentItem(0);
+    }
+
+    private StatisticsInfo createyuebaoData1() {
+        StatisticsInfo dataInfo = new StatisticsInfo();
+        dataInfo.labelName = "总体概括";
+        dataInfo.itemList.add(new StatisticsItemInfo("推进情况", 0, "月报", R.mipmap.statis_bmtj));
+        dataInfo.itemList.add(new StatisticsItemInfo("项目状态", 1, "月报", R.mipmap.statis_lytj));
+        dataInfo.itemList.add(new StatisticsItemInfo("签约项目情况", 1, "月报", R.mipmap.statis_latj));
+        dataInfo.itemList.add(new StatisticsItemInfo("开工项目情况", 1, "月报", R.mipmap.statis_tsjl));
+        dataInfo.itemList.add(new StatisticsItemInfo("投资项目情况", 1, "月报", R.mipmap.statis_rwlx));
+        dataInfo.itemList.add(new StatisticsItemInfo("在谈项目情况", 1, "月报", R.mipmap.statis_rwzt));
+        dataInfo.itemList.add(new StatisticsItemInfo("新区成立至X月末项目状况", 1, "月报", R.mipmap.statis_tzsb));
+        return dataInfo;
+    }
+
+    private StatisticsInfo createyuebaoData2() {
+        StatisticsInfo dataInfo = new StatisticsInfo();
+        dataInfo.labelName = "今年累计";
+        dataInfo.itemList.add(new StatisticsItemInfo("1-X月签约项目情况表", 1, "月报", R.mipmap.statis_bmtj));
+        dataInfo.itemList.add(new StatisticsItemInfo("1-X月签约工业项目", 1, "月报", R.mipmap.statis_lytj));
+        dataInfo.itemList.add(new StatisticsItemInfo("1-X月签服务业项目", 1, "月报", R.mipmap.statis_latj));
+        dataInfo.itemList.add(new StatisticsItemInfo("1-X月开工项目情况表", 1, "月报", R.mipmap.statis_tsjl));
+        dataInfo.itemList.add(new StatisticsItemInfo("1-X月开工工业项目", 1, "月报", R.mipmap.statis_rwlx));
+        dataInfo.itemList.add(new StatisticsItemInfo("1-X月开工服务业项目", 1, "月报", R.mipmap.statis_rwzt));
+        dataInfo.itemList.add(new StatisticsItemInfo("1-X月投产项目情况表", 1, "月报", R.mipmap.statis_tzsb));
+        dataInfo.itemList.add(new StatisticsItemInfo("1-X月投产工業項目", 1, "月报", R.mipmap.statis_tzsb));
+        dataInfo.itemList.add(new StatisticsItemInfo("1-X月投产服務業項目", 1, "月报", R.mipmap.statis_tzsb));
+
+
+        return dataInfo;
+    }
+
+    private StatisticsInfo createyuebaoData3() {
+        StatisticsInfo dataInfo = new StatisticsInfo();
+        dataInfo.labelName = "历史累计";
+        dataInfo.itemList.add(new StatisticsItemInfo("已签约未开工工业项目前10位", 1, "月报", R.mipmap.statis_bmtj));
+        dataInfo.itemList.add(new StatisticsItemInfo("已签约未开工服务业项目前10位", 1, "月报", R.mipmap.statis_lytj));
+        dataInfo.itemList.add(new StatisticsItemInfo("已开工未投产工业项目前10位", 1, "月报", R.mipmap.statis_latj));
+        dataInfo.itemList.add(new StatisticsItemInfo("已开工未投产服务业项目前10位", 1, "月报", R.mipmap.statis_tsjl));
+        return dataInfo;
     }
 
     /**

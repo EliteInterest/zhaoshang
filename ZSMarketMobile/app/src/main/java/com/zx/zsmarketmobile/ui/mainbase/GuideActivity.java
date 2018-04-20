@@ -98,7 +98,7 @@ public class GuideActivity extends BaseActivity {
                         case 2://数据分析
                             toHome(1);
                             break;
-                        case 3://案件执法
+                        case 3://统计月报
                             toHome(2);
                             break;
 //                        case 4://信息管理

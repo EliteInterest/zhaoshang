@@ -152,6 +152,7 @@
             android:windowSoftInputMode="adjustPan|stateHidden"></activity>
         <activity android:name="com.zx.zsmarketmobile.ui.infomanager.InfoManagerActivity"></activity>
         <activity android:name="com.zx.zsmarketmobile.ui.camera.CameraActivity" />
+        <activity android:name="com.zx.zsmarketmobile.ui.statistics.MonthlyMagazineActivity" />
 
         <receiver android:name="com.zx.zsmarketmobile.broadcast.TJMarketReceiver">
             <intent-filter>
