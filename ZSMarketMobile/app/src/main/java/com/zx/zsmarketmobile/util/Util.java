@@ -93,6 +93,7 @@ public class Util {
     public static String[] area = {"直属街道", "鱼复园区", "龙兴园区", "水土园区", "保税港区", "江北嘴", "悦来", "港务物流", "江北片区", "渝北片区", "北碚片区", "待定"};
     public static String[] status = {"洽谈", "签约", "开工", "续建", "投产", "达产"};
     public static String[] type = {"内资", "外资", "合资"};
+    public static String[] status1 = {"洽谈", "签约", "开工", "续建", "投产", "终止"};
 
 
     private static HashMap<String, SoftReference<Bitmap>> imageCache = new HashMap<>();

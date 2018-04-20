@@ -175,10 +175,10 @@ public class HomeActivity extends BaseActivity implements OnClickListener {
     private StatisticsInfo createCaseData() {
         StatisticsInfo dataInfo = new StatisticsInfo();
         dataInfo.labelName = "趋势分析";
-        dataInfo.itemList.add(new StatisticsItemInfo("数量变化", 0, "部门", R.mipmap.statis_bmtj));
-        dataInfo.itemList.add(new StatisticsItemInfo("状态变化", 0, "来源", R.mipmap.statis_lytj));
-        dataInfo.itemList.add(new StatisticsItemInfo("投资总额", 0, "类别", R.mipmap.statis_latj));
-        dataInfo.itemList.add(new StatisticsItemInfo("纳税金额", 0, "类别", R.mipmap.statis_tsjl));
+        dataInfo.itemList.add(new StatisticsItemInfo("数量变化", 1, "时间", R.mipmap.statis_bmtj));
+        dataInfo.itemList.add(new StatisticsItemInfo("状态变化", 1, "时间", R.mipmap.statis_lytj));
+        dataInfo.itemList.add(new StatisticsItemInfo("投资金额", 1, "时间", R.mipmap.statis_latj));
+        dataInfo.itemList.add(new StatisticsItemInfo("纳税金额", 1, "时间", R.mipmap.statis_tsjl));
         return dataInfo;
     }
 
@@ -188,9 +188,9 @@ public class HomeActivity extends BaseActivity implements OnClickListener {
     private StatisticsInfo createCompData() {
         StatisticsInfo dataInfo = new StatisticsInfo();
         dataInfo.labelName = "榜单分析";
-        dataInfo.itemList.add(new StatisticsItemInfo("状态排行", 0, "部门", R.mipmap.statis_slbm));
-        dataInfo.itemList.add(new StatisticsItemInfo("投资总额", 0, "类别", R.mipmap.statis_tslx));
-        dataInfo.itemList.add(new StatisticsItemInfo("纳税总额", 0, "类别", R.mipmap.statis_xxly));
+        dataInfo.itemList.add(new StatisticsItemInfo("状态排行", 0, "板块", R.mipmap.statis_slbm));
+        dataInfo.itemList.add(new StatisticsItemInfo("投资总额", 0, "板块", R.mipmap.statis_tslx));
+        dataInfo.itemList.add(new StatisticsItemInfo("纳税总额", 0, "板块", R.mipmap.statis_xxly));
         dataInfo.itemList.add(new StatisticsItemInfo("增长率排行", 0, "类别", R.mipmap.statis_ywly));
         return dataInfo;
     }
@@ -202,10 +202,10 @@ public class HomeActivity extends BaseActivity implements OnClickListener {
         StatisticsInfo dataInfo = new StatisticsInfo();
         dataInfo.labelName = "结构分析";
 //        dataInfo.itemList.add(new StatisticsItemInfo("任务主体", 0, "类别", R.mipmap.statistic_qyfb));
-        dataInfo.itemList.add(new StatisticsItemInfo("资金来源", 2, "类别", R.mipmap.statis_rwlx));
-        dataInfo.itemList.add(new StatisticsItemInfo("所属板块", 0, "类别", R.mipmap.statis_jczt));
-        dataInfo.itemList.add(new StatisticsItemInfo("产业分布", 2, "类别", R.mipmap.statis_zxrws));
-        dataInfo.itemList.add(new StatisticsItemInfo("项目状态", 2, "类别", R.mipmap.statis_xbwq));
+        dataInfo.itemList.add(new StatisticsItemInfo("资金来源", 2, "资金来源", R.mipmap.statis_rwlx));
+        dataInfo.itemList.add(new StatisticsItemInfo("所属板块", 0, "板块名称", R.mipmap.statis_jczt));
+        dataInfo.itemList.add(new StatisticsItemInfo("产业分布", 2, "所属行业", R.mipmap.statis_zxrws));
+        dataInfo.itemList.add(new StatisticsItemInfo("项目状态", 2, "项目状态", R.mipmap.statis_xbwq));
         return dataInfo;
     }
 

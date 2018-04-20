@@ -50,21 +50,60 @@ public class ChartTableAdapter extends MyRecycleAdapter {
         KeyValueInfo mEntity = mDataList.get(position);
 
         sum = 0;
-        for (KeyValueInfo keyValueInfo : mDataList) {
-            if (!"合计".equals(keyValueInfo.key) && !"总数".equals(keyValueInfo.key) && !"总计".equals(keyValueInfo.key)) {
-                double value = DigitUtil.StringToDouble(keyValueInfo.value);
-                sum += value;
+        if (!statisticsItemInfo.name.equals("状态变化")||!statisticsItemInfo.name.equals("状态排行"))
+            for (KeyValueInfo keyValueInfo : mDataList) {
+                if (!"合计".equals(keyValueInfo.key) && !"总数".equals(keyValueInfo.key) && !"总计".equals(keyValueInfo.key)) {
+                    double value = DigitUtil.StringToDouble(keyValueInfo.value);
+                    sum += value;
+                }
             }
-        }
         if (sum == 0) {
             sum = 1;
         }
 
-        if (statisticsItemInfo.chartType == 1) {//折线图
-            myHolder.tvKey.setText(mEntity.key);
-            myHolder.tvValue.setText(mEntity.value);
+        if (statisticsItemInfo.name.equals("投资总额") || statisticsItemInfo.name.equals("纳税总额") ||
+                statisticsItemInfo.name.equals("增长率排行") || statisticsItemInfo.name.equals("数量变化")
+                || statisticsItemInfo.name.equals("投资金额") || statisticsItemInfo.name.equals("纳税金额")) {
+            myHolder.tvPercent.setVisibility(View.GONE);
             myHolder.tvPercent.setVisibility(View.GONE);
             myHolder.tvOther.setVisibility(View.GONE);
+        }
+
+        if (statisticsItemInfo.name.equals("状态变化")) {
+            myHolder.tvOther.setVisibility(View.VISIBLE);
+            myHolder.tvOther1.setVisibility(View.VISIBLE);
+            myHolder.tvOther2.setVisibility(View.VISIBLE);
+            myHolder.tvOther3.setVisibility(View.VISIBLE);
+
+        }
+
+        if(statisticsItemInfo.name.equals("状态排行"))
+        {
+            myHolder.tvKey.setText(mEntity.key);
+            myHolder.tvValue.setText(mEntity.value.split(";")[0]);
+            myHolder.tvPercent.setText(mEntity.value.split(";")[1]);
+            myHolder.tvOther.setText(mEntity.value.split(";")[2]);
+            myHolder.tvOther1.setText(mEntity.value1.split(";")[0]);
+            myHolder.tvOther2.setText(mEntity.value1.split(";")[1]);
+            myHolder.tvOther3.setText(mEntity.value1.split(";")[2]);
+            myHolder.tvOther.setVisibility(View.VISIBLE);
+            myHolder.tvOther1.setVisibility(View.VISIBLE);
+            myHolder.tvOther2.setVisibility(View.VISIBLE);
+            myHolder.tvOther3.setVisibility(View.VISIBLE);
+            return;
+        }
+
+        if (statisticsItemInfo.chartType == 1) {//折线图
+            myHolder.tvKey.setText(mEntity.key);
+            if (statisticsItemInfo.name.equals("状态变化")) {
+                myHolder.tvValue.setText(mEntity.value.split(";")[0]);
+                myHolder.tvPercent.setText(mEntity.value.split(";")[1]);
+                myHolder.tvOther.setText(mEntity.value.split(";")[2]);
+                myHolder.tvOther1.setText(mEntity.value1.split(";")[0]);
+                myHolder.tvOther2.setText(mEntity.value1.split(";")[1]);
+                myHolder.tvOther3.setText(mEntity.value1.split(";")[2]);
+            } else
+                myHolder.tvValue.setText(mEntity.value);
         } else if (mEntity.value1 != null || mEntity.value2 != null) {//此时不是简单的名称-数量-比重的类型
             myHolder.tvKey.setText(mEntity.key);
             myHolder.tvValue.setText(mEntity.value);
@@ -96,7 +135,7 @@ public class ChartTableAdapter extends MyRecycleAdapter {
 
     class Holder extends RecyclerView.ViewHolder {
 
-        private TextView tvKey, tvValue, tvPercent, tvOther;
+        private TextView tvKey, tvValue, tvPercent, tvOther, tvOther1, tvOther2, tvOther3;
 
         public Holder(View parent) {
             super(parent);
@@ -104,6 +143,10 @@ public class ChartTableAdapter extends MyRecycleAdapter {
             tvValue = (TextView) parent.findViewById(R.id.tvItemTable_first);
             tvPercent = (TextView) parent.findViewById(R.id.tvItemTable_second);
             tvOther = (TextView) parent.findViewById(R.id.tvItemTable_three);
+            tvOther1 = (TextView) parent.findViewById(R.id.tvItemTable_four);
+            tvOther2 = (TextView) parent.findViewById(R.id.tvItemTable_five);
+            tvOther3 = (TextView) parent.findViewById(R.id.tvItemTable_six);
+
 
             tvKey.setOnClickListener(new View.OnClickListener() {
                 @Override

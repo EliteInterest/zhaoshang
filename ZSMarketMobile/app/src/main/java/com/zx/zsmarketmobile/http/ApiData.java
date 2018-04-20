@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -22,6 +23,7 @@ import com.zx.zsmarketmobile.entity.CompFlowEntity;
 import com.zx.zsmarketmobile.entity.ComplainInfoDetailsBean;
 import com.zx.zsmarketmobile.entity.ComplainInfoEntity;
 import com.zx.zsmarketmobile.entity.DeviceEmergencyDetialEntity;
+import com.zx.zsmarketmobile.entity.DeviceSecurityRiskEntity;
 import com.zx.zsmarketmobile.entity.EmergencyInfo;
 import com.zx.zsmarketmobile.entity.EmergencyListInfo;
 import com.zx.zsmarketmobile.entity.EntityDetail;
@@ -94,6 +96,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URISyntaxException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -784,16 +787,12 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                     params.setRequestMothod(HTTP_MOTHOD.GET);
                     break;
                 case HTTP_ID_statistics_single_parameter:
-                    params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countProjByStage.do");
-                    params.setRequestMothod(HTTP_MOTHOD.POST);
-                    params.putParams("method", "countStatisticsWithSingleResult");
-                    params.putParams("key", objects[0]);
-                    if (objects.length > 1) {
-                        params.putParams("param0", objects[1]);
-                    }
-                    if (objects.length > 2) {
-                        params.putParams("param1", objects[2]);
-                    }
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countByAmountTrend.do");
+                    params.setRequestMothod(HTTP_MOTHOD.GET);
+                    params.putParams("dept", objects[0]);
+                    params.putParams("queryType", objects[1]);
+                    params.putParams("startDate", objects[2]);
+                    params.putParams("endDate", objects[3]);
                     break;
                 case HTTP_ID_device_security_risk_parameter:
                     params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countProjByDept.do");
@@ -1557,20 +1556,19 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                     params.putParams("year", objects[0]);
                     break;
                 case HTTP_ID_statistics_case_queryRecordCount:
-                    params.setApiUrl(baseUrl + "/TJCase/statistics/getRecordCount.do");
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countByProjRank.do");
                     params.setRequestMothod(HTTP_MOTHOD.GET);
-                    params.putParams("year", objects[0]);
                     break;
                 case HTTP_ID_statistics_case_queryPunishCount:
-                    params.setApiUrl(baseUrl + "/TJCase/statistics/getPunishCount.do");
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countByAmountRank.do");
                     params.setRequestMothod(HTTP_MOTHOD.GET);
-                    params.putParams("year", objects[0]);
+//                    params.putParams("year", objects[0]);
                     break;
                 case HTTP_ID_statistics_comp_countDepartment:
-                    params.setApiUrl(baseUrl + "/TJComplaint/complaintStat/countByDepartment.do");
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countByTaxRank.do");
                     params.setRequestMothod(HTTP_MOTHOD.GET);
-                    params.putParams("fRegTimeStart", objects[0]);
-                    params.putParams("fRegTimeEnd", objects[1]);
+//                    params.putParams("fRegTimeStart", objects[0]);
+//                    params.putParams("fRegTimeEnd", objects[1]);
                     break;
                 case HTTP_ID_statistics_comp_countType:
                     params.setApiUrl(baseUrl + "/TJComplaint/complaintStat/countByType.do");
@@ -1579,16 +1577,21 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                     params.putParams("fRegTimeEnd", objects[1]);
                     break;
                 case HTTP_ID_statistics_comp_countInfo:
-                    params.setApiUrl(baseUrl + "/TJComplaint/complaintStat/countBySource.do");
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countByNumTrend.do");
                     params.setRequestMothod(HTTP_MOTHOD.GET);
-                    params.putParams("fRegTimeStart", objects[0]);
-                    params.putParams("fRegTimeEnd", objects[1]);
+                    params.putParams("dept", objects[0]);
+                    params.putParams("queryType", objects[1]);
+                    params.putParams("startDate", objects[2]);
+                    params.putParams("endDate", objects[3]);
+
                     break;
                 case HTTP_ID_statistics_comp_countBussiniss:
-                    params.setApiUrl(baseUrl + "/TJComplaint/complaintStat/countByBusinessSource.do");
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countByStageTrend.do");
                     params.setRequestMothod(HTTP_MOTHOD.GET);
-                    params.putParams("fRegTimeStart", objects[0]);
-                    params.putParams("fRegTimeEnd", objects[1]);
+                    params.putParams("dept", objects[0]);
+                    params.putParams("queryType", objects[1]);
+                    params.putParams("startDate", objects[2]);
+                    params.putParams("endDate", objects[3]);
                     break;
                 case HTTP_ID_statistics_entity_enterpriseType:
                     params.setApiUrl(baseUrl + "/TJsupervise/homePage/countEnterpriseByType.do");
@@ -3380,8 +3383,15 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                                 JSONObject recordObject = jsonArray.getJSONObject(i);
                                 KeyValueInfo recordInfo = new KeyValueInfo();
                                 recordInfo.key = getStringValue(recordObject, "name");
-                                recordInfo.value = getStringValue(recordObject, "num");
-                                recordInfo.value1 = getStringValue(recordObject, "code");
+                                int value1 = getIntValue(recordObject, "value1");
+                                int value2 = getIntValue(recordObject, "value2");
+                                int value3 = getIntValue(recordObject, "value3");
+                                int value4 = getIntValue(recordObject, "value4");
+                                int value5 = getIntValue(recordObject, "value5");
+                                int value6 = getIntValue(recordObject, "value6");
+
+                                recordInfo.value = String.valueOf(value1) + ";" + String.valueOf(value2) + ";" + String.valueOf(value3);
+                                recordInfo.value1 = String.valueOf(value4) + ";" + String.valueOf(value5) + ";" + String.valueOf(value6);
                                 recordCount.add(recordInfo);
                             }
                             result.setEntry(recordCount);
@@ -3393,9 +3403,7 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                                 JSONObject punishObject = jsonArray.getJSONObject(i);
                                 KeyValueInfo punishInfo = new KeyValueInfo();
                                 punishInfo.key = getStringValue(punishObject, "name");
-                                punishInfo.value = getStringValue(punishObject, "punish");
-                                punishInfo.value1 = getStringValue(punishObject, "noPunish");
-                                punishInfo.value2 = getStringValue(punishObject, "nowPush");
+                                punishInfo.value = getStringValue(punishObject, "value");
                                 punishCount.add(punishInfo);
                             }
                             result.setEntry(punishCount);
@@ -3414,9 +3422,35 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                             }
                             result.setEntry(typeInfo);
                             break;
+                        case HTTP_ID_statistics_comp_countBussiniss:
+                            jsonArray = getJSONArray(jsonObject, "data");
+                            List<int[]> values = new ArrayList<>();
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                                JSONArray jsonArray1 = getJSONArray(jsonObject1, "data");
+                                data1 = new int[6];
+                                for (int j = 0; j < Util.status1.length; j++) {
+                                    int d = jsonArray1.getInt(j);
+                                    data1[j] = d;
+                                }
+                                values.add(data1);
+                            }
+
+                            melds = new ArrayList<>();
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                info = new KeyValueInfo();
+                                JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                                info.key = getStringValue(jsonObject1, "name");
+                                int[] data = values.get(i);
+                                info.value = String.valueOf(data[0] + ";" + data[1] + ";" + data[2]);
+                                info.value1 = String.valueOf(data[3] + ";" + data[4] + ";" + data[5]);
+                                melds.add(info);
+                            }
+
+                            result.setEntry(melds);
+                            break;
                         case HTTP_ID_statistics_comp_countDepartment:
                         case HTTP_ID_statistics_comp_countInfo:
-                        case HTTP_ID_statistics_comp_countBussiniss:
                         case HTTP_ID_statistics_entity_enterpriseType:
                         case HTTP_ID_statistics_entity_enterpriseDev:
                         case HTTP_ID_statistics_entity_enterpriseIndustry:
@@ -3505,7 +3539,6 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                             List<KeyValueInfo> myMeasureCustom = new ArrayList<>();
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject compObject = jsonArray.getJSONObject(i);
-                                Log.i("wangwansheng", "jsonObject is " + compObject.toString());
                                 KeyValueInfo compKV = new KeyValueInfo();
                                 compKV.key = getStringValue(compObject, "name");
                                 compKV.value = String.valueOf(getIntValue(compObject, "type"));
@@ -3549,7 +3582,6 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                             legalSearch.setPageSize(getIntValue(jsonObject, "pageSize"));
                             jsonArray = getJSONArray(jsonObject, "list");
                             List<KeyValueInfo> myLegalSelectLaw = new ArrayList<>();
-//                            Log.i("wangwansheng", "jsonArray.length is " + jsonArray.length());
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                                 KeyValueInfo compKV = new KeyValueInfo();

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <!--<ScrollView-->
     <!--android:layout_width="fill_parent"-->
@@ -26,17 +26,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:visibility="gone"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/chart_area_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="所属板块" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/sp_chart_area"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"></android.support.v7.widget.AppCompatSpinner>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="选择年份"/>
+                android:text="对比年份：" />
 
             <android.support.v7.widget.AppCompatSpinner
                 android:id="@+id/sp_chart_year"
-                android:layout_width="200dp"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.AppCompatSpinner>
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/sp_chart_year1"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content">
 
             </android.support.v7.widget.AppCompatSpinner>
@@ -58,28 +76,51 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/tv_statistics_content_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/px10"
+                    android:background="@drawable/home_ll_bg"
+                    android:gravity="center"
+                    android:tag="year"
+                    android:text="所属板块"
+                    android:textColor="@color/darkgrey"
+                    android:textSize="@dimen/text_size_normal" />
+
                 <LinearLayout
-                    android:layout_width="@dimen/px120"
+                    android:layout_width="@dimen/px100"
                     android:layout_height="match_parent"
                     android:background="@drawable/home_ll_bg">
 
                     <Spinner
                         android:id="@+id/query_spinner"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent" />
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/tv_statistics_content_time"
-                    android:layout_width="@dimen/px80"
+                    android:id="@+id/tv_statistics_content_time1"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/px10"
                     android:background="@drawable/home_ll_bg"
                     android:gravity="center"
                     android:tag="year"
-                    android:text="2017"
+                    android:text="统计方式"
                     android:textColor="@color/darkgrey"
-                    android:textSize="@dimen/text_size_normal"/>
+                    android:textSize="@dimen/text_size_normal" />
+
+                <LinearLayout
+                    android:layout_width="@dimen/px100"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_ll_bg">
+
+                    <Spinner
+                        android:id="@+id/query_spinner1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
 
 
                 <TextView
@@ -92,7 +133,8 @@
                     android:tag="query"
                     android:text="查询"
                     android:textColor="@color/darkgrey"
-                    android:textSize="@dimen/text_size_normal"/>
+                    android:textSize="@dimen/text_size_normal"
+                    android:visibility="gone" />
             </LinearLayout>
 
         </LinearLayout>
@@ -122,7 +164,7 @@
                     android:padding="5dp"
                     android:text="选择年份"
                     android:textColor="@color/darkgrey"
-                    android:textSize="@dimen/text_size_normal"/>
+                    android:textSize="@dimen/text_size_normal" />
 
                 <TextView
                     android:id="@+id/tvActStatistics_year"
@@ -137,7 +179,7 @@
                     android:tag="year"
                     android:text="2015"
                     android:textColor="@color/darkgrey"
-                    android:textSize="@dimen/text_size_normal"/>
+                    android:textSize="@dimen/text_size_normal" />
             </LinearLayout>
 
             <LinearLayout
@@ -168,9 +210,9 @@
                     android:paddingRight="5dp"
                     android:paddingTop="2dp"
                     android:tag="year"
-                    android:text="开始时间"
+                    android:text="2017-01-01"
                     android:textColor="@color/darkgrey"
-                    android:textSize="@dimen/text_size_normal"/>
+                    android:textSize="@dimen/text_size_normal" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -179,7 +221,7 @@
                     android:padding="5dp"
                     android:text="-"
                     android:textColor="@color/darkgrey"
-                    android:textSize="@dimen/text_size_normal"/>
+                    android:textSize="@dimen/text_size_normal" />
 
                 <TextView
                     android:id="@+id/tvActStatistics_endtime"
@@ -192,9 +234,9 @@
                     android:paddingRight="5dp"
                     android:paddingTop="5dp"
                     android:tag="year"
-                    android:text="结束时间"
+                    android:text="2018-04-01"
                     android:textColor="@color/darkgrey"
-                    android:textSize="@dimen/text_size_normal"/>
+                    android:textSize="@dimen/text_size_normal" />
 
                 <TextView
                     android:id="@+id/tvActStatistics_query"
@@ -210,7 +252,7 @@
                     android:tag="query"
                     android:text="查询"
                     android:textColor="@color/darkgrey"
-                    android:textSize="@dimen/text_size_normal"/>
+                    android:textSize="@dimen/text_size_normal" />
             </LinearLayout>
 
         </LinearLayout>
@@ -221,7 +263,7 @@
             android:layout_width="fill_parent"
             android:layout_height="240dp"
             android:orientation="vertical"
-            android:padding="5dp"/>
+            android:padding="5dp" />
 
         <!--表格界面-->
         <LinearLayout
@@ -246,12 +288,12 @@
                     android:padding="5dp"
                     android:text="类别"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_normal"/>
+                    android:textSize="@dimen/text_size_normal" />
 
                 <View
                     android:layout_width="0.5dp"
                     android:layout_height="fill_parent"
-                    android:background="@color/darkgrey"/>
+                    android:background="@color/darkgrey" />
 
                 <TextView
                     android:id="@+id/tvChart_value"
@@ -263,12 +305,12 @@
                     android:padding="5dp"
                     android:text="数量"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_normal"/>
+                    android:textSize="@dimen/text_size_normal" />
 
                 <View
                     android:layout_width="0.5dp"
                     android:layout_height="fill_parent"
-                    android:background="@color/darkgrey"/>
+                    android:background="@color/darkgrey" />
 
                 <TextView
                     android:id="@+id/tvChart_other"
@@ -281,12 +323,12 @@
                     android:text="其他"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_normal"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <View
                     android:layout_width="0.5dp"
                     android:layout_height="fill_parent"
-                    android:background="@color/darkgrey"/>
+                    android:background="@color/darkgrey" />
 
                 <TextView
                     android:id="@+id/tvChart_percent"
@@ -298,7 +340,80 @@
                     android:padding="5dp"
                     android:text="所占比重"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_normal"/>
+                    android:textSize="@dimen/text_size_normal" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/darkgrey" />
+
+                <TextView
+                    android:id="@+id/tvChart_percent1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimaryDark"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="开工"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_normal"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/darkgrey" />
+
+                <TextView
+                    android:id="@+id/tvChart_percent2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimaryDark"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="续建"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_normal"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/darkgrey" />
+
+                <TextView
+                    android:id="@+id/tvChart_percent3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimaryDark"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="投产"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_normal"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/darkgrey" />
+
+                <TextView
+                    android:id="@+id/tvChart_percent4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimaryDark"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="终止"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_normal"
+                    android:visibility="gone" />
+
             </LinearLayout>
 
             <TextView
@@ -308,12 +423,12 @@
                 android:gravity="center"
                 android:text="返回上一级"
                 android:textColor="@color/colorPrimaryDark"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/white"/>
+                android:background="@color/white" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvChart_table"
