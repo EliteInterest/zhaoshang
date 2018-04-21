@@ -42,7 +42,7 @@ import java.util.Map;
 
 /**
  * Create By Xiangb On 2017/5/17
- * 功能：统计分析界面
+ * 功能：数据分析界面
  */
 public class ChartActivity extends BaseActivity implements IChartListener {
 

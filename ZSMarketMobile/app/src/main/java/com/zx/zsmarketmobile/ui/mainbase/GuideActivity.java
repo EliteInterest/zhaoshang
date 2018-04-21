@@ -87,12 +87,12 @@ public class GuideActivity extends BaseActivity {
                     int pos = holder.getLayoutPosition();
                     int id = guideFunctionEntityList.get(pos).getId();
                     switch (id) {
-                        case 0://主体查询
+                        case 0://项目查询
                             Intent mapIntent = new Intent(GuideActivity.this, WorkInMapShowActivity.class);
                             mapIntent.putExtra("type", ConstStrings.MapType_Main);
                             startActivity(mapIntent);
                             break;
-                        case 1://监管任务
+                        case 1://项目审核
                             toHome(0);
                             break;
                         case 2://数据分析

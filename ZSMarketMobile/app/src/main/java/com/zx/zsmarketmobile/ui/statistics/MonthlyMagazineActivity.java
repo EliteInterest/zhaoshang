@@ -38,7 +38,7 @@ import java.util.Map;
 
 /**
  * Create By Xiangb On 2017/5/17
- * 功能：统计分析界面
+ * 功能：统计月报界面
  */
 public class MonthlyMagazineActivity extends BaseActivity implements IChartListener {
 
@@ -139,250 +139,13 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
         monthView1 = findViewById(R.id.month_message);
         monthView2 = findViewById(R.id.month_message_content);
 
-//        mTvQueryByTime.setOnClickListener(this);
-//        mTvStartTime.setOnClickListener(this);
-//        mTvEndTime.setOnClickListener(this);
-//        getChartInfo.setLoadingListener(this);
-//        deviceSecurityRiskData.setLoadingListener(this);
-//        countEntityType.setLoadingListener(this);
-//        countHzpList.setLoadingListener(this);
-//        tvBack.setOnClickListener(this);
-//        mTvTimeContent.setOnClickListener(this);
-//        mTvQueryRiskByTime.setOnClickListener(this);
-//        drugSamplingData.setLoadingListener(this);
-//        industrialProductData.setLoadingListener(this);
-//        caseDep.setLoadingListener(this);
-//        caseType.setLoadingListener(this);
-//        caseIsCase.setLoadingListener(this);
-//        caseCloseCount.setLoadingListener(this);
-//        caseRecordCount.setLoadingListener(this);
-//        casePunishCount.setLoadingListener(this);
-//        compBussiniss.setLoadingListener(this);
-//        compInfo.setLoadingListener(this);
-//        compType.setLoadingListener(this);
-//        compDepart.setLoadingListener(this);
-//        enterType.setLoadingListener(this);
-//        enterIndustry.setLoadingListener(this);
-//        enterEquipType.setLoadingListener(this);
-//        enterComplain.setLoadingListener(this);
-//        enterDev.setLoadingListener(this);
-//        enterAnn.setLoadingListener(this);
-//        enterWarning.setLoadingListener(this);
-//        superCountTask.setLoadingListener(this);
-//        superCountType.setLoadingListener(this);
-//        superEnterprise.setLoadingListener(this);
-//        superDoTask.setLoadingListener(this);
-
         mItemInfo = (StatisticsItemInfo) getIntent().getSerializableExtra("task");
         setMidText(mItemInfo.name);
 
         if (mItemInfo.name.equals("推进情况")) {
             llChart.setVisibility(View.VISIBLE);
         }
-
-
-//        if (mItemInfo.name.equals("数量变化") || mItemInfo.name.equals("投资金额") || mItemInfo.name.equals("纳税金额")) {
-//            mQueryByTypeSpinnerLayout.setVisibility(View.VISIBLE);
-//            mTimeSelectedLayout.setVisibility(View.VISIBLE);
-//            tvPercent.setVisibility(View.GONE);
-//        }
-//
-//        if (mItemInfo.name.equals("资金来源")) {
-//            tvValue.setText("金额(亿元)");
-//        }
-//        if (mItemInfo.name.equals("数量对比") || mItemInfo.name.equals("状态对比") || mItemInfo.name.equals("资金对比") || mItemInfo.name.equals("增长对比")) {
-//            tvValue.setText(meld1);
-//            tvPercent.setText(meld2);
-//        } else if (mItemInfo.name.equals("投资总额")) {
-//            tvValue.setText("投资总额");
-//        } else if (mItemInfo.name.equals("纳税总额")) {
-//            tvValue.setText("纳税金额");
-//        } else if (mItemInfo.name.equals("增长率排行")) {
-//            tvValue.setText("增长率");
-//        }
-//
-//        if (mItemInfo.name.equals("状态变化")) {
-//            findViewById(R.id.tvChart_percent1).setVisibility(View.VISIBLE);
-//            findViewById(R.id.tvChart_percent2).setVisibility(View.VISIBLE);
-//            findViewById(R.id.tvChart_percent3).setVisibility(View.VISIBLE);
-//            findViewById(R.id.tvChart_percent4).setVisibility(View.VISIBLE);
-//            tvPercent.setText("签约");
-//            tvValue.setText("洽谈");
-//            mQueryByTypeSpinnerLayout.setVisibility(View.VISIBLE);
-//            mTimeSelectedLayout.setVisibility(View.VISIBLE);
-//            tvPercent.setVisibility(View.GONE);
-//        }
-//
-//        if (mItemInfo.name.equals("状态排行")) {
-//            findViewById(R.id.tvChart_percent1).setVisibility(View.VISIBLE);
-//            findViewById(R.id.tvChart_percent2).setVisibility(View.VISIBLE);
-//            findViewById(R.id.tvChart_percent3).setVisibility(View.VISIBLE);
-//            findViewById(R.id.tvChart_percent4).setVisibility(View.VISIBLE);
-//            tvPercent.setText("签约");
-//            tvValue.setText("洽谈");
-//            tvPercent.setVisibility(View.GONE);
-//        }
-//
-//
         mChartUtil = new ChartUtil(mContext);
-//
-//        tvKey.setText(mItemInfo.tableTitle);
-//
-//        mQueryTypeSpinner = (Spinner) findViewById(R.id.query_spinner);
-//        List<String> typeList = new ArrayList<>();
-//        typeList.add("全部");
-//        for (int i = 0; i < Util.area.length; i++) {
-//            typeList.add(Util.area[i]);
-//        }
-//        ArrayAdapter<String> queryTypeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item_layout, typeList);
-//        mQueryTypeSpinner.setAdapter(queryTypeAdapter);
-//        mQueryTypeSpinner.setSelection(0);
-//        mQueryTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-////                TextView tv = (TextView) view;
-////                tv.setTextColor(ContextCompat.getColor(mContext, R.color.darkgrey));    //设置颜色
-////                tv.setTextSize(12.0f);    //设置大小
-////                tv.setGravity(Gravity.CENTER);//设置居中
-//                if (position == 0) {
-////                    mType = mQueryType.year.toString();
-////                    mTvTimeContent.setText(DrawChartUtil.getDate(true, false).subSequence(0, 4));
-////                    mStartTime = mTvTimeContent.getText().toString() + "-01-31";
-////                    mEndTime = mTvTimeContent.getText().toString() + "-12-31";
-//                } else {
-////                    mType = mQueryType.month.toString();
-////                    mTvTimeContent.setText(DrawChartUtil.getDate(true, false).subSequence(0, 7));
-////                    mStartTime = DrawChartUtil.getDate(true, false);
-////                    mEndTime = DrawChartUtil.getDate(false, true);
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
-//
-//        mQueryTypeSpinner1 = (Spinner) findViewById(R.id.query_spinner1);
-//        typeList = new ArrayList<>();
-//        typeList.add("按年统计");
-//        typeList.add("按季度统计");
-//        typeList.add("按月统计");
-//
-//        queryTypeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item_layout, typeList);
-//        mQueryTypeSpinner1.setAdapter(queryTypeAdapter);
-//        mQueryTypeSpinner1.setSelection(0);
-//        mQueryTypeSpinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-////                TextView tv = (TextView) view;
-////                tv.setTextColor(ContextCompat.getColor(mContext, R.color.darkgrey));    //设置颜色
-////                tv.setTextSize(12.0f);    //设置大小
-////                tv.setGravity(Gravity.CENTER);//设置居中
-//                if (position == 0) {
-////                    mType = mQueryType.year.toString();
-////                    mTvTimeContent.setText(DrawChartUtil.getDate(true, false).subSequence(0, 4));
-////                    mStartTime = mTvTimeContent.getText().toString() + "-01-31";
-////                    mEndTime = mTvTimeContent.getText().toString() + "-12-31";
-//                } else {
-////                    mType = mQueryType.month.toString();
-////                    mTvTimeContent.setText(DrawChartUtil.getDate(true, false).subSequence(0, 7));
-////                    mStartTime = DrawChartUtil.getDate(true, false);
-////                    mEndTime = DrawChartUtil.getDate(false, true);
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
-//
-//        mAdapter = new ChartTableAdapter(this, mItemInfo, keyList);
-//        rvChart.setLayoutManager(new LinearLayoutManager(this));
-//        rvChart.setAdapter(mAdapter);
-//        mAdapter.setChartListener(this);
-//
-//        switch (mItemInfo.name) {
-////            case "任务类型":
-////            case "检查主体":
-////            case "执行任务数":
-////            case "结案统计":
-////            case "案件记录趋势":
-////            case "案件处罚趋势":
-////            case "年报信息":
-////            case "主体发展":
-//            case "状态对比":
-//            case "资金对比":
-//                llChartYear.setVisibility(View.VISIBLE);
-//                Calendar c = Calendar.getInstance();
-//                int year = c.get(Calendar.YEAR);
-//                List<String> yearList = new ArrayList<>();
-//                for (int i = 0; i < 10; i++) {
-//                    yearList.add((year - i) + "");
-//                }
-//                spChartyear.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, yearList));
-//                spChartyear1.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, yearList));
-//                List<String> areas = new ArrayList<>();
-//                for (int j = 0; j < Util.area.length; j++) {
-//                    areas.add(Util.area[j]);
-//                }
-//                areas.add("全部");
-//                spChartArea.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, areas));
-//                spChartArea.setSelection(Util.area.length);
-//                spChartyear.setSelection(1);
-//                spChartyear1.setSelection(0);
-//                break;
-//
-//            case "数量对比":
-//            case "增长对比":
-//                findViewById(R.id.chart_area_textview).setVisibility(View.GONE);
-//                findViewById(R.id.sp_chart_area).setVisibility(View.GONE);
-//                llChartYear.setVisibility(View.VISIBLE);
-//                c = Calendar.getInstance();
-//                year = c.get(Calendar.YEAR);
-//                yearList = new ArrayList<>();
-//                for (int i = 0; i < 10; i++) {
-//                    yearList.add((year - i) + "");
-//                }
-//                spChartyear.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, yearList));
-//                spChartyear1.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, yearList));
-//                spChartyear.setSelection(1);
-//                spChartyear1.setSelection(0);
-//                break;
-//            default:
-//                break;
-//        }
-//        spChartyear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                meld1 = spChartyear.getSelectedItem().toString();
-//                tvValue.setText(meld1);
-//                tvPercent.setText(meld2);
-//                loadData();
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
-//
-//        spChartyear1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                meld2 = spChartyear1.getSelectedItem().toString();
-//                tvValue.setText(meld1);
-//                tvPercent.setText(meld2);
-//                loadData();
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
-
         loadData();
     }
 
@@ -421,24 +184,51 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
 
                 initChart(tempList);
                 break;
-            case "所属板块":
-                deviceSecurityRiskData.loadData("");
-                break;
-            case "产业分布":
-                industrialProductData.loadData("");
-                break;
             case "项目状态":
-                countHzpList.loadData("");
+                monthView1.setText("项目状态");
+                monthView2.setText("新区成立至今，有632个项目处于已签约尚未开工状态，投资2284.1亿元，其中外资24.9亿美元，该项目状态中直管区有485个项目，投资1443.0亿元，占比63.2%。有300个项目处于已开工尚未投产状态，签约项目开工率为79.5%，投资3888.8亿元，其中外资59.5亿美元，该项目状态中直管区有173个项目，投资2738.4亿元，占比70.4%。已投产2154个项目，开工项目投产率为87.8%，投资5392.7亿元，每个项目平均投资2.5亿元，其中外资160.9亿美元，该项目状态中直管区有1665个项目，投资3941.4亿元，占比73.1%。");
+                //deviceSecurityRiskData.loadData("");
                 break;
-            case "数量对比":
-//                caseDep.loadData("2017,2018");
-                caseDep.loadData(meld1 + "," + meld2);
+            case "签约项目情况":
+                monthView1.setText("签约项目情况");
+                monthView2.setText("资金来源：内资项目301个，投资1071.5亿元，下降11.9%；外资项目28个，投资82.0亿元，下降88.4%。\n"
+                + "\n" +
+                "产业分布：工业项目67个，主要集中在汽车及新能源汽车、电子核心部件和3D打印等领域，投资270.9亿元，下降15.9%。服务业项目260个，主要集中在房地产、金融、文创旅游等领域，投资882.4亿元，下降44.9%。\n"
+                + "\n" +
+                "地域分布：主要分布于直属区、两江工业开发区、渝北片区、江北嘴等地，其中直属区66个项目，投资383.8亿元，占比33.3%；两江工业开发区67个项目，投资372.5亿元，占比32.3%；渝北片区9个项目，投资152.7亿元，占比13.2%；江北嘴49个项目，投资114.4亿元，占比9.9%。");
+                //industrialProductData.loadData("");
                 break;
-            case "状态对比":
-                caseType.loadData(meld1 + "," + meld2);
+            case "开工项目情况":
+                monthView1.setText("开工项目情况");
+                monthView2.setText("资金来源：内资项目166个，投资550.5亿元，下降31.3%；外资项目21个，投资124.39亿元，下降78.8%。\n" +
+                        "\n" +
+                "产业分布：工业项目30个，行业主要集中在航空航天、电子核心部件、汽车及新能源汽车和生物医药制造业，合同投资338.5亿元，增长56.5%；服务业项目156个，行业主要集中在房地产、金融、大数据和贸易等行业，投资336.2亿元，下降71.3%。\n" +
+                        "\n" +
+                "地域分布：主要集中在直属区、两江工业开发区、江北嘴、保税港区等地。其中，两江工业开发区新开工42个项目，投资472.4亿元，占70.0%；直属区35个项目，投资136.8亿元，占20.3%；江北嘴48个项目，投资14.42亿元，占2.1%；保税港区52个项目，投资14.07亿元，占2.1%。");
+                //countHzpList.loadData("");
                 break;
-            case "资金对比":
-                caseIsCase.loadData(meld1 + "," + meld2);
+            case "投产项目情况":
+                monthView1.setText("投产项目情况");
+                monthView2.setText("资金来源：内资项目146个，投资254.3亿元，下降62.9%；外资项目22个，投资109.2亿元，下降73.8%。\n" +
+                        "\n" +
+                "产业分布：工业项目25个，主要集中在电子核心部件、通用航空、汽车及新能源汽车制造业，投资142.5亿元，增长24.3%；服务业142个，主要集中在金融、贸易和租赁业，投资220.8亿元，下降77.7%。\n" +
+                        "\n" +
+                "地域分布：主要集中在直属区、两江工业开发区、江北嘴、保税港区等地。其中，两江工业开发区新投产37个项目，投资170.5亿元，占46.9%；直属区19个项目，投资127.2亿元，占35.0%；江北嘴48个项目，投资14.42亿元，占4.0%；保税港区52个项目，投资14.07亿元，占3.9%。");
+                //caseDep.loadData(meld1 + "," + meld2);
+                break;
+            case "在谈项目情况":
+                monthView1.setText("在谈项目情况");
+                monthView2.setText("截至8月末，共有在谈项目151个，预计投资961.1亿元。其中：内资项目144个，预计投资860.3亿元，占比89.5%，外资项目7个，预计投资100.78亿元，占比10.5%；工业项目110个，预计投资594.2亿元，占比61.8%，服务业项目40个，预计投资358.90亿元，占比37.3%，农林牧渔业项目1个，预计投资8亿元。\n" +
+                        "\n" +
+                "地域分布方面，直属区和两江工业开发区共有在谈项目121个，预计投资560.8亿元，占比58.3%；北碚片区8个，预计投资199.04亿元，占比20.7%，；渝北片区20个，预计投资114.3亿元，占比11.9%；悦来1个，预计投资80亿元，占比8.3%。");
+                //caseType.loadData(meld1 + "," + meld2);
+                break;
+            case "新区成立至X月末项目状态":
+                monthView1.setText("新区成立至X月末项目状态");
+                monthView2.setText("1-X月，两江新区全域招商引资签约项目329个，投资1153.5亿元，同比下降40.0%，其中外资6.94亿美元，下降92.7%，内资1071.5亿元，下降20.0%；开工项目187个，投资674.9亿元，下降51.4%，其中外资14.71亿美元，下降82.7%，内资550.5亿元，下降36.4%；投产项目168个，投资363.5亿元，下降67.0%，其中外资12.55亿美元，下降81.0%，内资254.3亿元，下降63.5%。\n" +
+                        "\n" +
+                "两江直管区方面：1-X月签约项目共303个，投资994.8亿元，占两江全域的86.2%，同比下降33.8%；开工项目177个，投资637.7亿元，占两江全域的94.5%，同比下降41.7%；投产项目157个，投资328.7亿元，占两江全域的90.4%，同比下降62.7%。");
+                //caseIsCase.loadData(meld1 + "," + meld2);
                 break;
             case "增长对比":
                 caseIsCase.loadData(spChartyear.getSelectedItem());
