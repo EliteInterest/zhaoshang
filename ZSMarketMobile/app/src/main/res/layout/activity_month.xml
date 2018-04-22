@@ -24,7 +24,7 @@
                 android:id="@+id/chart_area_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="所属板块" />
+                android:text="年份" />
 
             <android.support.v7.widget.AppCompatSpinner
                 android:id="@+id/sp_chart_area"
@@ -34,7 +34,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="对比年份：" />
+                android:text="月份：" />
 
             <android.support.v7.widget.AppCompatSpinner
                 android:id="@+id/sp_chart_year"
@@ -43,12 +43,32 @@
 
             </android.support.v7.widget.AppCompatSpinner>
 
+            <TextView
+                android:id="@+id/__"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="-" />
+
             <android.support.v7.widget.AppCompatSpinner
                 android:id="@+id/sp_chart_year1"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content">
 
             </android.support.v7.widget.AppCompatSpinner>
+
+            <TextView
+                android:id="@+id/shengcheng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/colorPrimaryDark"
+                android:padding="5dp"
+                android:text="生成"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_normal"
+                android:visibility="visible" />
         </LinearLayout>
 
         <TextView
@@ -59,7 +79,8 @@
             android:gravity="center"
             android:padding="5dp"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_normal" />
+            android:textSize="@dimen/text_size_normal"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/month_message_content"
@@ -69,7 +90,7 @@
             android:gravity="left"
             android:padding="5dp"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_size_normal" />
+            android:textSize="@dimen/text_size_normal"/>
 
         <!--图表layout-->
         <LinearLayout
@@ -82,6 +103,7 @@
 
         <!--表格界面-->
         <LinearLayout
+            android:id="@+id/rvChart_table_layout"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
@@ -91,18 +113,18 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="35dp"
+                android:layout_height="50dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tvChart_key"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:background="@color/colorPrimaryDark"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="类别"
+                    android:text="分类"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_normal" />
 
@@ -119,7 +141,7 @@
                     android:background="@color/colorPrimaryDark"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="数量"
+                    android:text="序号"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_normal" />
 
@@ -139,7 +161,7 @@
                     android:text="其他"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_normal"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
                 <View
                     android:layout_width="0.5dp"
@@ -174,7 +196,7 @@
                     android:text="开工"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_normal"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
                 <View
                     android:layout_width="0.5dp"

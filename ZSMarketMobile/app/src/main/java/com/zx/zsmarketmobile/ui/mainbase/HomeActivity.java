@@ -190,7 +190,7 @@ public class HomeActivity extends BaseActivity implements OnClickListener {
         dataInfo.labelName = "今年累计";
         dataInfo.itemList.add(new StatisticsItemInfo("1-X月签约项目情况表", 1, "月报", R.mipmap.statis_bmtj));
         dataInfo.itemList.add(new StatisticsItemInfo("1-X月签约工业项目", 1, "月报", R.mipmap.statis_lytj));
-        dataInfo.itemList.add(new StatisticsItemInfo("1-X月签约工业项目", 1, "月报", R.mipmap.statis_latj));
+        dataInfo.itemList.add(new StatisticsItemInfo("1-X月签约服务项目", 1, "月报", R.mipmap.statis_latj));
         dataInfo.itemList.add(new StatisticsItemInfo("1-X月开工项目情况表", 1, "月报", R.mipmap.statis_tsjl));
         dataInfo.itemList.add(new StatisticsItemInfo("1-X月开工工业项目", 1, "月报", R.mipmap.statis_slbm));
         dataInfo.itemList.add(new StatisticsItemInfo("1-X月开工服务业项目", 1, "月报", R.mipmap.statis_tslx));
