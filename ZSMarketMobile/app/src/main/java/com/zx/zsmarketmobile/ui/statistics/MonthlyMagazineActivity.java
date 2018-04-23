@@ -239,6 +239,9 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
                         spChartyear1.setAdapter(queryTypeAdapter);
                         spChartyear1.setSelection(month - 1);
                     }
+
+                    TextView view1 = (TextView) view;
+                    MonthlyMagazineActivity.this.year = view1.getText().toString();
                 }
 
                 @Override
@@ -358,6 +361,11 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
                 //caseIsCase.loadData(meld1 + "," + meld2);
                 break;
             case "1-X月签约项目情况表":
+                keyList.clear();
+                KeyValueInfo info1 = new KeyValueInfo();
+                info1.key="1-X月签约项目情况表";
+                info1.value = "data";
+                keyList.add(info1);
                 mAdapter.notifyDataSetChanged();
                 break;
             case "1-X月签约工业项目":

@@ -2,6 +2,7 @@ package com.zx.zsmarketmobile.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,56 @@ public class ChartTableAdapter extends MyRecycleAdapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         Holder myHolder = (Holder) holder;
+
+        Log.i("wangwansheng", "statisticsItemInfo.name is " + statisticsItemInfo.name);
+        if (statisticsItemInfo.name.equals("1-X月签约项目情况表")) {
+            Log.i("wangwansheng", "X月签约项目情况表...");
+            myHolder.parent.findViewById(R.id.layout1).setVisibility(View.GONE);
+            myHolder.parent.findViewById(R.id.layout2).setVisibility(View.VISIBLE);
+            myHolder.parent.findViewById(R.id.layout3).setVisibility(View.VISIBLE);
+            myHolder.parent.findViewById(R.id.layout4).setVisibility(View.VISIBLE);
+            myHolder.parent.findViewById(R.id.layout5).setVisibility(View.VISIBLE);
+
+            myHolder.parent.findViewById(R.id.view2).setVisibility(View.VISIBLE);
+            myHolder.parent.findViewById(R.id.view3).setVisibility(View.VISIBLE);
+            myHolder.parent.findViewById(R.id.view4).setVisibility(View.VISIBLE);
+            myHolder.parent.findViewById(R.id.view5).setVisibility(View.VISIBLE);
+
+
+            TextView textView = myHolder.parent.findViewById(R.id.include1).findViewById(R.id.layout2_name1);
+            textView.setText("内资");
+            textView = myHolder.parent.findViewById(R.id.include2).findViewById(R.id.layout2_name1);
+            textView.setText("内资");
+            textView = myHolder.parent.findViewById(R.id.include11).findViewById(R.id.layout2_name1);
+            textView.setText("工业");
+            textView = myHolder.parent.findViewById(R.id.include22).findViewById(R.id.layout2_name1);
+            textView.setText("服务业");
+            textView = myHolder.parent.findViewById(R.id.include3).findViewById(R.id.layout2_name1);
+            textView.setText("江北片区");
+            textView = myHolder.parent.findViewById(R.id.include4).findViewById(R.id.layout2_name1);
+            textView.setText("北碚片区");
+            textView = myHolder.parent.findViewById(R.id.include5).findViewById(R.id.layout2_name1);
+            textView.setText("渝北片区");
+            textView = myHolder.parent.findViewById(R.id.include6).findViewById(R.id.layout2_name1);
+            textView.setText("直管区");
+            textView = myHolder.parent.findViewById(R.id.include7).findViewById(R.id.layout2_name1);
+            textView.setText("直属区");
+            textView = myHolder.parent.findViewById(R.id.include8).findViewById(R.id.layout2_name1);
+            textView.setText("两江工业开发区");
+            textView = myHolder.parent.findViewById(R.id.include9).findViewById(R.id.layout2_name1);
+            textView.setText("保税港区");
+            textView = myHolder.parent.findViewById(R.id.include10).findViewById(R.id.layout2_name1);
+            textView.setText("江北嘴");
+            textView = myHolder.parent.findViewById(R.id.include12).findViewById(R.id.layout2_name1);
+            textView.setText("悦来");
+
+            myHolder.layoutName.setText("按内外资分");
+            myHolder.layoutName1.setText("按产业分");
+            myHolder.layoutName2.setText("按地域分");
+
+            return;
+        }
+
 
         KeyValueInfo mEntity = mDataList.get(position);
 
@@ -135,10 +186,13 @@ public class ChartTableAdapter extends MyRecycleAdapter {
 
     class Holder extends RecyclerView.ViewHolder {
 
-        private TextView tvKey, tvValue, tvPercent, tvOther, tvOther1, tvOther2, tvOther3;
+        private TextView tvKey, tvValue, tvPercent, tvOther, tvOther1, tvOther2, tvOther3,
+                layoutName, layoutName1, layoutName2, layoutName3;
+        private View parent;
 
         public Holder(View parent) {
             super(parent);
+            this.parent = parent;
             tvKey = (TextView) parent.findViewById(R.id.tvItemTable_name);
             tvValue = (TextView) parent.findViewById(R.id.tvItemTable_first);
             tvPercent = (TextView) parent.findViewById(R.id.tvItemTable_second);
@@ -147,36 +201,13 @@ public class ChartTableAdapter extends MyRecycleAdapter {
             tvOther2 = (TextView) parent.findViewById(R.id.tvItemTable_five);
             tvOther3 = (TextView) parent.findViewById(R.id.tvItemTable_six);
 
+            layoutName = (TextView) parent.findViewById(R.id.layout_name1);
+            layoutName1 = (TextView) parent.findViewById(R.id.layout_name11);
+            layoutName2 = (TextView) parent.findViewById(R.id.layout_name2);
+            layoutName3 = (TextView) parent.findViewById(R.id.layout_name3);
 
             if (statisticsItemInfo.name.equals("1-X月签约项目情况表")) {
-                parent.findViewById(R.id.layout1).setVisibility(View.GONE);
-                parent.findViewById(R.id.layout2).setVisibility(View.VISIBLE);
-                parent.findViewById(R.id.layout3).setVisibility(View.VISIBLE);
-                parent.findViewById(R.id.layout4).setVisibility(View.VISIBLE);
-                parent.findViewById(R.id.layout5).setVisibility(View.VISIBLE);
-
-                TextView textView = parent.findViewById(R.id.include1).findViewById(R.id.layout2_name1);
-                textView.setText("内资");
-                parent.findViewById(R.id.include2).findViewById(R.id.layout2_name1);
-                textView.setText("内资");
-                parent.findViewById(R.id.include3).findViewById(R.id.layout2_name1);
-                textView.setText("工业");
-                parent.findViewById(R.id.include4).findViewById(R.id.layout2_name1);
-                textView.setText("服务业");
-                parent.findViewById(R.id.include5).findViewById(R.id.layout2_name1);
-                textView.setText("江北片区");
-                parent.findViewById(R.id.include6).findViewById(R.id.layout2_name1);
-                textView.setText("北碚片区");
-                parent.findViewById(R.id.include7).findViewById(R.id.layout2_name1);
-                textView.setText("北碚片区");
-                parent.findViewById(R.id.include8).findViewById(R.id.layout2_name1);
-                textView.setText("直管区");
-                parent.findViewById(R.id.include9).findViewById(R.id.layout2_name1);
-                textView.setText("直属区");
-                parent.findViewById(R.id.include10).findViewById(R.id.layout2_name1);
-                textView.setText("两江工业开发区");
-
-                return;
+                Log.i("wangwansheng", "X月签约项目情况表");
             }
 
             tvKey.setOnClickListener(new View.OnClickListener() {

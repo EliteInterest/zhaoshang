@@ -13,6 +13,11 @@
         android:orientation="horizontal"
         android:visibility="visible">
 
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="fill_parent"
+            android:background="@color/darkgrey" />
+
         <TextView
             android:id="@+id/tvItemTable_name"
             android:layout_width="0dp"
@@ -127,6 +132,7 @@
     </LinearLayout>
 
     <View
+        android:id="@+id/view1"
         android:layout_width="fill_parent"
         android:layout_height="0.5dp"
         android:background="@color/darkgrey" />
@@ -138,6 +144,11 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:visibility="gone">
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="fill_parent"
+            android:background="@color/darkgrey" />
 
         <TextView
             android:id="@+id/layout_name1"
@@ -173,6 +184,13 @@
         </LinearLayout>
     </LinearLayout>
 
+    <View
+        android:id="@+id/view2"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/darkgrey"
+        android:visibility="gone" />
+
     <LinearLayout
         android:id="@+id/layout3"
         android:layout_width="fill_parent"
@@ -180,6 +198,11 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:visibility="gone">
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="fill_parent"
+            android:background="@color/darkgrey" />
 
         <TextView
             android:id="@+id/layout_name11"
@@ -205,20 +228,22 @@
             android:visibility="visible">
 
             <include
-                android:id="@+id/include1"
+                android:id="@+id/include11"
                 layout="@layout/activity_month_include" />
 
             <include
-                android:id="@+id/include2"
+                android:id="@+id/include22"
                 layout="@layout/activity_month_include" />
 
         </LinearLayout>
     </LinearLayout>
 
     <View
+        android:id="@+id/view3"
         android:layout_width="fill_parent"
         android:layout_height="0.5dp"
-        android:background="@color/darkgrey" />
+        android:background="@color/darkgrey"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/layout4"
@@ -227,6 +252,11 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:visibility="gone">
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="fill_parent"
+            android:background="@color/darkgrey" />
 
         <TextView
             android:id="@+id/layout_name2"
@@ -284,9 +314,20 @@
                 android:id="@+id/include10"
                 layout="@layout/activity_month_include" />
 
+            <include
+                android:id="@+id/include12"
+                layout="@layout/activity_month_include" />
+
 
         </LinearLayout>
     </LinearLayout>
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/darkgrey"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/layout5"
@@ -296,7 +337,13 @@
         android:orientation="horizontal"
         android:visibility="gone">
 
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="fill_parent"
+            android:background="@color/darkgrey" />
+
         <TextView
+            android:id="@+id/layout_name3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -375,4 +422,11 @@
             android:layout_height="fill_parent"
             android:background="@color/darkgrey" />
     </LinearLayout>
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/darkgrey"
+        android:visibility="gone" />
 </LinearLayout>
