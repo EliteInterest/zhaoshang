@@ -168,8 +168,10 @@ public class ChartTableAdapter extends MyRecycleAdapter {
             if (statisticsItemInfo.tableTitle.equals("历史累计")) {
                 myHolder.tvOther.setVisibility(View.VISIBLE);
                 myHolder.tvOther1.setVisibility(View.VISIBLE);
-                myHolder.tvOther.setText("2016");
-                myHolder.tvOther1.setText("5");
+                myHolder.tvOther2.setVisibility(View.VISIBLE);
+                myHolder.tvOther.setText("80");
+                myHolder.tvOther1.setText("2016");
+                myHolder.tvOther2.setText("5");
             }
         } else {
             double value = DigitUtil.StringToDouble(mEntity.value);

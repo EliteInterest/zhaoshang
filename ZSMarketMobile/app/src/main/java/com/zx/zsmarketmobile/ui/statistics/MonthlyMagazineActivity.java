@@ -53,7 +53,6 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
     private LinearLayout llChartYear;
     private Spinner spChartArea;
     private Spinner spChartyear;
-    private Spinner spChartyear1;
     private TextView mTvStartTime, mTvEndTime, mTvQueryByTime;
     private StatisticsItemInfo mItemInfo;
     private ChartUtil mChartUtil;
@@ -139,7 +138,6 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
         mTvQueryByTime = (TextView) findViewById(R.id.tvActStatistics_query);
         llChartYear = findViewById(R.id.ll_chart_year);
         spChartyear = findViewById(R.id.sp_chart_year);
-        spChartyear1 = findViewById(R.id.sp_chart_year1);
         spChartArea = findViewById(R.id.sp_chart_area);
         monthView1 = findViewById(R.id.month_message);
         monthView2 = findViewById(R.id.month_message_content);
@@ -189,20 +187,6 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
                 }
             });
 
-            spChartyear1.setAdapter(queryTypeAdapter);
-            spChartyear1.setSelection(month - 1);
-            spChartyear1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    month2 = String.valueOf(position + 1);
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
-
             typeList = new ArrayList<>();
             for (int i = 0; i < 5; i++) {
                 typeList.add(String.valueOf(year - i));
@@ -222,9 +206,6 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
                                 R.layout.spinner_item_layout, typeList);
                         spChartyear.setAdapter(queryTypeAdapter);
                         spChartyear.setSelection(0);
-
-                        spChartyear1.setAdapter(queryTypeAdapter);
-                        spChartyear1.setSelection(11);
                     } else {
                         List<String> typeList = new ArrayList<>();
                         for (int i = 1; i <= month; i++) {
@@ -235,9 +216,6 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
 
                         spChartyear.setAdapter(queryTypeAdapter);
                         spChartyear.setSelection(0);
-
-                        spChartyear1.setAdapter(queryTypeAdapter);
-                        spChartyear1.setSelection(month - 1);
                     }
 
                     TextView view1 = (TextView) view;
@@ -274,122 +252,95 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
                 tvPercent.setText("签约");
                 tvValue.setText("序号");
                 tvPercent.setVisibility(View.VISIBLE);
-//                findViewById(R.id.layout6).setVisibility(View.VISIBLE);
             }
         } else {
-//            llChartYear.setVisibility(View.VISIBLE);
-//            monthView1.setVisibility(View.VISIBLE);
-//            findViewById(R.id.__).setVisibility(View.GONE);
-//            findViewById(R.id.sp_chart_year1).setVisibility(View.GONE);
+            llChartYear.setVisibility(View.VISIBLE);
+            monthView1.setVisibility(View.VISIBLE);
+            monthView2.setVisibility(View.GONE);
 
-            {
-                llChartYear.setVisibility(View.VISIBLE);
-                monthView1.setVisibility(View.VISIBLE);
-                monthView2.setVisibility(View.GONE);
+            List<String> typeList = new ArrayList<>();
+            Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH) + 1;
 
-                List<String> typeList = new ArrayList<>();
-                Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH) + 1;
-
-                for (int i = 1; i <= month; i++) {
-                    typeList.add(String.valueOf(i));
-                }
-                ArrayAdapter<String> queryTypeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item_layout, typeList);
-                spChartyear.setAdapter(queryTypeAdapter);
-                spChartyear.setSelection(0);
-                spChartyear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        month1 = String.valueOf(position + 1);
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
-
-                    }
-                });
-
-                spChartyear1.setAdapter(queryTypeAdapter);
-                spChartyear1.setSelection(month - 1);
-                spChartyear1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        month2 = String.valueOf(position + 1);
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
-
-                    }
-                });
-
-                typeList = new ArrayList<>();
-                for (int i = 0; i < 5; i++) {
-                    typeList.add(String.valueOf(year - i));
-                }
-                queryTypeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item_layout, typeList);
-                spChartArea.setAdapter(queryTypeAdapter);
-                spChartArea.setSelection(0);
-                spChartArea.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        if (position != 0) {
-                            List<String> typeList = new ArrayList<>();
-                            for (int i = 1; i <= 12; i++) {
-                                typeList.add(String.valueOf(i));
-                            }
-                            ArrayAdapter<String> queryTypeAdapter = new ArrayAdapter<String>(MonthlyMagazineActivity.this,
-                                    R.layout.spinner_item_layout, typeList);
-                            spChartyear.setAdapter(queryTypeAdapter);
-                            spChartyear.setSelection(0);
-
-                            spChartyear1.setAdapter(queryTypeAdapter);
-                            spChartyear1.setSelection(11);
-                        } else {
-                            List<String> typeList = new ArrayList<>();
-                            for (int i = 1; i <= month; i++) {
-                                typeList.add(String.valueOf(i));
-                            }
-                            ArrayAdapter<String> queryTypeAdapter = new ArrayAdapter<String>(MonthlyMagazineActivity.this,
-                                    R.layout.spinner_item_layout, typeList);
-
-                            spChartyear.setAdapter(queryTypeAdapter);
-                            spChartyear.setSelection(0);
-
-                            spChartyear1.setAdapter(queryTypeAdapter);
-                            spChartyear1.setSelection(month - 1);
-                        }
-
-                        TextView view1 = (TextView) view;
-                        MonthlyMagazineActivity.this.year = view1.getText().toString();
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
-
-                    }
-                });
-
-                shengcheng.setVisibility(View.VISIBLE);
-                monthView1.setText(year + "年" +
-                        month1 + "月" + "-" +
-                        month2 + "月" + mItemInfo.name.substring(3));
-
-                findViewById(R.id.rvChart_table_layout).setVisibility(View.VISIBLE);
-
-                tvKey.setVisibility(View.GONE);
-                tvOther.setText("项目名称");
-                tvPercent.setText("所属地域");
-                ((TextView) findViewById(R.id.tvChart_percent1)).setText("投资总额(亿元)");
-                tvPercent.setText("签约时间(年)");
-                tvValue.setText("序号");
-                tvPercent.setVisibility(View.VISIBLE);
-
-                TextView textView1 = (TextView) findViewById(R.id.tvChart_percent1);
-                textView1.setText("签约时间(年)");
-                textView1.setVisibility(View.VISIBLE);
+            for (int i = 1; i <= month; i++) {
+                typeList.add(String.valueOf(i));
             }
+            ArrayAdapter<String> queryTypeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item_layout, typeList);
+            spChartyear.setAdapter(queryTypeAdapter);
+            spChartyear.setSelection(0);
+            spChartyear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    month1 = String.valueOf(position + 1);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
+            typeList = new ArrayList<>();
+            for (int i = 0; i < 5; i++) {
+                typeList.add(String.valueOf(year - i));
+            }
+            queryTypeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item_layout, typeList);
+            spChartArea.setAdapter(queryTypeAdapter);
+            spChartArea.setSelection(0);
+            spChartArea.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    if (position != 0) {
+                        List<String> typeList = new ArrayList<>();
+                        for (int i = 1; i <= 12; i++) {
+                            typeList.add(String.valueOf(i));
+                        }
+                        ArrayAdapter<String> queryTypeAdapter = new ArrayAdapter<String>(MonthlyMagazineActivity.this,
+                                R.layout.spinner_item_layout, typeList);
+                        spChartyear.setAdapter(queryTypeAdapter);
+                        spChartyear.setSelection(0);
+                    } else {
+                        List<String> typeList = new ArrayList<>();
+                        for (int i = 1; i <= month; i++) {
+                            typeList.add(String.valueOf(i));
+                        }
+                        ArrayAdapter<String> queryTypeAdapter = new ArrayAdapter<String>(MonthlyMagazineActivity.this,
+                                R.layout.spinner_item_layout, typeList);
+
+                        spChartyear.setAdapter(queryTypeAdapter);
+                        spChartyear.setSelection(0);
+                    }
+
+                    TextView view1 = (TextView) view;
+                    MonthlyMagazineActivity.this.year = view1.getText().toString();
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
+            shengcheng.setVisibility(View.VISIBLE);
+            monthView1.setText(year + "年" +
+                    month1 + "月" + "-" +
+                    month2 + "月" + mItemInfo.name.substring(3));
+
+            findViewById(R.id.rvChart_table_layout).setVisibility(View.VISIBLE);
+
+            tvKey.setVisibility(View.GONE);
+            tvValue.setText("序号");
+            tvOther.setText("项目名称");
+            tvPercent.setText("所属地域");
+            ((TextView) findViewById(R.id.tvChart_percent1)).setText("投资总额(亿)");
+            ((TextView) findViewById(R.id.tvChart_percent1)).setVisibility(View.VISIBLE);
+            ((TextView) findViewById(R.id.tvChart_percent2)).setText("签约时间(年)");
+            ((TextView) findViewById(R.id.tvChart_percent2)).setVisibility(View.VISIBLE);
+            tvPercent.setVisibility(View.VISIBLE);
+
+            ((TextView) findViewById(R.id.tvChart_percent3)).setText("签约时间(月)");
+            ((TextView) findViewById(R.id.tvChart_percent3)).setVisibility(View.VISIBLE);
         }
         mChartUtil = new ChartUtil(mContext);
         mAdapter = new ChartTableAdapter(this, mItemInfo, keyList);
@@ -406,7 +357,6 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
         switch (mItemInfo.name) {
             case "推进情况":
                 monthView1.setText("推进情况");
-                Log.i("wangwansheng", "set text!!");
                 monthView2.setText("    1-X月，两江新区全域招商引资签约项目329个，投资1153.5亿元，同比下降40.0%，其中外资6.94亿美元，下降92.7%，内资1071.5亿元，下降20.0%；开工项目187个，投资674.9亿元，下降51.4%，其中外资14.71亿美元，下降82.7%，内资550.5亿元，下降36.4%；投产项目168个，投资363.5亿元，下降67.0%，其中外资12.55亿美元，下降81.0%，内资254.3亿元，下降63.5%。\n" +
                         "\n" +
                         "    两江直管区方面：1-X月签约项目共303个，投资994.8亿元，占两江全域的86.2%，同比下降33.8%；开工项目177个，投资637.7亿元，占两江全域的94.5%，同比下降41.7%；投产项目157个，投资328.7亿元，占两江全域的90.4%，同比下降62.7%。");
@@ -416,69 +366,78 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
                 info.value = "100";
                 info.value1 = "100";
                 tempList.add(info);
-                Log.i("wangwansheng", "add 111");
 
                 info = new KeyValueInfo();
                 info.key = "开工";
                 info.value = "100";
                 info.value1 = "100";
                 tempList.add(info);
-                Log.i("wangwansheng", "add 222");
 
                 info = new KeyValueInfo();
                 info.key = "投产";
                 info.value = "100";
                 info.value1 = "200";
                 tempList.add(info);
-                Log.i("wangwansheng", "add 333");
 
                 initChart(tempList);
                 break;
             case "项目状态":
+                llChartYear.setVisibility(View.GONE);
+                findViewById(R.id.rvChart_table_layout).setVisibility(View.GONE);
+                monthView2.setVisibility(View.VISIBLE);
                 monthView1.setText("项目状态");
                 monthView2.setText("新区成立至今，有632个项目处于已签约尚未开工状态，投资2284.1亿元，其中外资24.9亿美元，该项目状态中直管区有485个项目，投资1443.0亿元，占比63.2%。有300个项目处于已开工尚未投产状态，签约项目开工率为79.5%，投资3888.8亿元，其中外资59.5亿美元，该项目状态中直管区有173个项目，投资2738.4亿元，占比70.4%。已投产2154个项目，开工项目投产率为87.8%，投资5392.7亿元，每个项目平均投资2.5亿元，其中外资160.9亿美元，该项目状态中直管区有1665个项目，投资3941.4亿元，占比73.1%。");
-                //deviceSecurityRiskData.loadData("");
                 break;
             case "签约项目情况":
+                llChartYear.setVisibility(View.GONE);
+                findViewById(R.id.rvChart_table_layout).setVisibility(View.GONE);
+                monthView2.setVisibility(View.VISIBLE);
                 monthView1.setText("签约项目情况");
                 monthView2.setText("资金来源：内资项目301个，投资1071.5亿元，下降11.9%；外资项目28个，投资82.0亿元，下降88.4%。\n"
                         + "\n" +
                         "产业分布：工业项目67个，主要集中在汽车及新能源汽车、电子核心部件和3D打印等领域，投资270.9亿元，下降15.9%。服务业项目260个，主要集中在房地产、金融、文创旅游等领域，投资882.4亿元，下降44.9%。\n"
                         + "\n" +
                         "地域分布：主要分布于直属区、两江工业开发区、渝北片区、江北嘴等地，其中直属区66个项目，投资383.8亿元，占比33.3%；两江工业开发区67个项目，投资372.5亿元，占比32.3%；渝北片区9个项目，投资152.7亿元，占比13.2%；江北嘴49个项目，投资114.4亿元，占比9.9%。");
-                //industrialProductData.loadData("");
                 break;
             case "开工项目情况":
+                llChartYear.setVisibility(View.GONE);
+                findViewById(R.id.rvChart_table_layout).setVisibility(View.GONE);
+                monthView2.setVisibility(View.VISIBLE);
                 monthView1.setText("开工项目情况");
                 monthView2.setText("资金来源：内资项目166个，投资550.5亿元，下降31.3%；外资项目21个，投资124.39亿元，下降78.8%。\n" +
                         "\n" +
                         "产业分布：工业项目30个，行业主要集中在航空航天、电子核心部件、汽车及新能源汽车和生物医药制造业，合同投资338.5亿元，增长56.5%；服务业项目156个，行业主要集中在房地产、金融、大数据和贸易等行业，投资336.2亿元，下降71.3%。\n" +
                         "\n" +
                         "地域分布：主要集中在直属区、两江工业开发区、江北嘴、保税港区等地。其中，两江工业开发区新开工42个项目，投资472.4亿元，占70.0%；直属区35个项目，投资136.8亿元，占20.3%；江北嘴48个项目，投资14.42亿元，占2.1%；保税港区52个项目，投资14.07亿元，占2.1%。");
-                //countHzpList.loadData("");
                 break;
             case "投产项目情况":
+                llChartYear.setVisibility(View.GONE);
+                findViewById(R.id.rvChart_table_layout).setVisibility(View.GONE);
+                monthView2.setVisibility(View.VISIBLE);
                 monthView1.setText("投产项目情况");
                 monthView2.setText("资金来源：内资项目146个，投资254.3亿元，下降62.9%；外资项目22个，投资109.2亿元，下降73.8%。\n" +
                         "\n" +
                         "产业分布：工业项目25个，主要集中在电子核心部件、通用航空、汽车及新能源汽车制造业，投资142.5亿元，增长24.3%；服务业142个，主要集中在金融、贸易和租赁业，投资220.8亿元，下降77.7%。\n" +
                         "\n" +
                         "地域分布：主要集中在直属区、两江工业开发区、江北嘴、保税港区等地。其中，两江工业开发区新投产37个项目，投资170.5亿元，占46.9%；直属区19个项目，投资127.2亿元，占35.0%；江北嘴48个项目，投资14.42亿元，占4.0%；保税港区52个项目，投资14.07亿元，占3.9%。");
-                //caseDep.loadData(meld1 + "," + meld2);
                 break;
             case "在谈项目情况":
+                llChartYear.setVisibility(View.GONE);
+                findViewById(R.id.rvChart_table_layout).setVisibility(View.GONE);
+                monthView2.setVisibility(View.VISIBLE);
                 monthView1.setText("在谈项目情况");
                 monthView2.setText("截至8月末，共有在谈项目151个，预计投资961.1亿元。其中：内资项目144个，预计投资860.3亿元，占比89.5%，外资项目7个，预计投资100.78亿元，占比10.5%；工业项目110个，预计投资594.2亿元，占比61.8%，服务业项目40个，预计投资358.90亿元，占比37.3%，农林牧渔业项目1个，预计投资8亿元。\n" +
                         "\n" +
                         "地域分布方面，直属区和两江工业开发区共有在谈项目121个，预计投资560.8亿元，占比58.3%；北碚片区8个，预计投资199.04亿元，占比20.7%，；渝北片区20个，预计投资114.3亿元，占比11.9%；悦来1个，预计投资80亿元，占比8.3%。");
-                //caseType.loadData(meld1 + "," + meld2);
                 break;
             case "新区成立至X月末项目状态":
+                llChartYear.setVisibility(View.GONE);
+                findViewById(R.id.rvChart_table_layout).setVisibility(View.GONE);
+                monthView2.setVisibility(View.VISIBLE);
                 monthView1.setText("新区成立至X月末项目状态");
                 monthView2.setText("1-X月，两江新区全域招商引资签约项目329个，投资1153.5亿元，同比下降40.0%，其中外资6.94亿美元，下降92.7%，内资1071.5亿元，下降20.0%；开工项目187个，投资674.9亿元，下降51.4%，其中外资14.71亿美元，下降82.7%，内资550.5亿元，下降36.4%；投产项目168个，投资363.5亿元，下降67.0%，其中外资12.55亿美元，下降81.0%，内资254.3亿元，下降63.5%。\n" +
                         "\n" +
                         "两江直管区方面：1-X月签约项目共303个，投资994.8亿元，占两江全域的86.2%，同比下降33.8%；开工项目177个，投资637.7亿元，占两江全域的94.5%，同比下降41.7%；投产项目157个，投资328.7亿元，占两江全域的90.4%，同比下降62.7%。");
-                //caseIsCase.loadData(meld1 + "," + meld2);
                 break;
             case "1-X月签约项目情况表":
             case "1-X月开工项目情况表":
