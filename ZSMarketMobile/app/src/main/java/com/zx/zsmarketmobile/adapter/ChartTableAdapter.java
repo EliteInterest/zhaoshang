@@ -48,6 +48,7 @@ public class ChartTableAdapter extends MyRecycleAdapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         Holder myHolder = (Holder) holder;
+        KeyValueInfo mEntity = mDataList.get(position);
 
         Log.i("wangwansheng", "statisticsItemInfo.name is " + statisticsItemInfo.name);
         if (statisticsItemInfo.name.equals("1-X月签约项目情况表")) {
@@ -97,9 +98,15 @@ public class ChartTableAdapter extends MyRecycleAdapter {
 
             return;
         }
+//        else if (statisticsItemInfo.name.equals("1-X月签约工业项目")) {
+//            myHolder.tvOther.setVisibility(View.VISIBLE);
+//            myHolder.tvKey.setText(mEntity.key);
+//            myHolder.tvValue.setText(mEntity.value);
+//            myHolder.tvPercent.setText(mEntity.value1);
+//            myHolder.tvOther.setText(mEntity.value2);
+//            return;
+//        }
 
-
-        KeyValueInfo mEntity = mDataList.get(position);
 
         sum = 0;
         if (!statisticsItemInfo.name.equals("状态变化") || !statisticsItemInfo.name.equals("状态排行"))

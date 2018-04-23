@@ -264,6 +264,14 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
                 ((TextView) findViewById(R.id.tvChart_percent1)).setText("投资总额占比");
                 ((TextView) findViewById(R.id.tvChart_percent2)).setText("投资总额同比");
                 findViewById(R.id.tvChart_percent2).setVisibility(View.VISIBLE);
+            } else if (mItemInfo.name.contains("签约工业")) {
+                tvKey.setVisibility(View.GONE);
+                tvOther.setText("项目名称");
+                tvPercent.setText("所属地域");
+                ((TextView) findViewById(R.id.tvChart_percent1)).setText("投资总额(亿元)");
+                tvPercent.setText("签约");
+                tvValue.setText("序号");
+                tvPercent.setVisibility(View.VISIBLE);
             }
         } else if (mItemInfo.name.equals("历史累计")) {
             llChartYear.setVisibility(View.VISIBLE);
@@ -363,13 +371,23 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
             case "1-X月签约项目情况表":
                 keyList.clear();
                 KeyValueInfo info1 = new KeyValueInfo();
-                info1.key="1-X月签约项目情况表";
+                info1.key = "1-X月签约项目情况表";
                 info1.value = "data";
                 keyList.add(info1);
                 mAdapter.notifyDataSetChanged();
                 break;
             case "1-X月签约工业项目":
-                caseRecordCount.loadData("");
+                keyList.clear();
+                String name = "德豪润达LED全产业链制造基地项目";
+                for (int i = 0; i < 10; i++) {
+                    info1 = new KeyValueInfo();
+                    info1.key = "" + (i + 1);
+                    info1.value = name.substring(0, name.length() - i);
+                    info1.value1 = "直属区";
+                    info1.value2 = "10";
+                    keyList.add(info1);
+                }
+                mAdapter.notifyDataSetChanged();
                 break;
             case "1-X月签约服务项目":
                 tvPercent.setVisibility(View.GONE);

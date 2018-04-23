@@ -216,7 +216,7 @@ public class ChartActivity extends BaseActivity implements IChartListener {
             findViewById(R.id.tvChart_percent4).setVisibility(View.VISIBLE);
             tvPercent.setText("签约");
             tvValue.setText("洽谈");
-            tvPercent.setVisibility(View.GONE);
+            tvPercent.setVisibility(View.VISIBLE);
         }
 
 
