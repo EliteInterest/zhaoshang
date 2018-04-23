@@ -196,10 +196,10 @@ public class HomeActivity extends BaseActivity implements OnClickListener {
     private StatisticsInfo createHistoryData() {
         StatisticsInfo dataInfo = new StatisticsInfo();
         dataInfo.labelName = "历史累计";
-        dataInfo.itemList.add(new StatisticsItemInfo("已签约未开工工业项目", 1, "月报", R.mipmap.statis_bmtj));
-        dataInfo.itemList.add(new StatisticsItemInfo("已签约未开工服务业项目", 1, "月报", R.mipmap.statis_lytj));
-        dataInfo.itemList.add(new StatisticsItemInfo("已开工未投产工业项目", 1, "月报", R.mipmap.statis_latj));
-        dataInfo.itemList.add(new StatisticsItemInfo("已开工未投产服务业项目", 1, "月报", R.mipmap.statis_tsjl));
+        dataInfo.itemList.add(new StatisticsItemInfo("已签约未开工工业项目", 0, "历史累计", R.mipmap.statis_bmtj));
+        dataInfo.itemList.add(new StatisticsItemInfo("已签约未开工服务业项目", 0, "历史累计", R.mipmap.statis_lytj));
+        dataInfo.itemList.add(new StatisticsItemInfo("已开工未投产工业项目", 0, "历史累计", R.mipmap.statis_latj));
+        dataInfo.itemList.add(new StatisticsItemInfo("已开工未投产服务业项目", 0, "历史累计", R.mipmap.statis_tsjl));
         return dataInfo;
     }
 

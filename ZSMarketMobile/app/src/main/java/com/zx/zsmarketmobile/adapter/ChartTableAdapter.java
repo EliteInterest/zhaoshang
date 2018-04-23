@@ -51,62 +51,58 @@ public class ChartTableAdapter extends MyRecycleAdapter {
         KeyValueInfo mEntity = mDataList.get(position);
 
         Log.i("wangwansheng", "statisticsItemInfo.name is " + statisticsItemInfo.name);
-        if (statisticsItemInfo.name.equals("1-X月签约项目情况表")) {
-            Log.i("wangwansheng", "X月签约项目情况表...");
-            myHolder.parent.findViewById(R.id.layout1).setVisibility(View.GONE);
-            myHolder.parent.findViewById(R.id.layout2).setVisibility(View.VISIBLE);
-            myHolder.parent.findViewById(R.id.layout3).setVisibility(View.VISIBLE);
-            myHolder.parent.findViewById(R.id.layout4).setVisibility(View.VISIBLE);
-            myHolder.parent.findViewById(R.id.layout5).setVisibility(View.VISIBLE);
+        if (statisticsItemInfo.name.contains("1-X月"))
+            if (statisticsItemInfo.name.equals("1-X月签约项目情况表") ||
+                    statisticsItemInfo.name.equals("1-X月开工项目情况表") ||
+                    statisticsItemInfo.name.equals("1-X月投产项目情况表")) {
+                Log.i("wangwansheng", "X月签约项目情况表...");
+                myHolder.parent.findViewById(R.id.layout1).setVisibility(View.GONE);
+                myHolder.parent.findViewById(R.id.layout2).setVisibility(View.VISIBLE);
+                myHolder.parent.findViewById(R.id.layout3).setVisibility(View.VISIBLE);
+                myHolder.parent.findViewById(R.id.layout4).setVisibility(View.VISIBLE);
+                myHolder.parent.findViewById(R.id.layout5).setVisibility(View.VISIBLE);
 
-            myHolder.parent.findViewById(R.id.view2).setVisibility(View.VISIBLE);
-            myHolder.parent.findViewById(R.id.view3).setVisibility(View.VISIBLE);
-            myHolder.parent.findViewById(R.id.view4).setVisibility(View.VISIBLE);
-            myHolder.parent.findViewById(R.id.view5).setVisibility(View.VISIBLE);
+                myHolder.parent.findViewById(R.id.view2).setVisibility(View.VISIBLE);
+                myHolder.parent.findViewById(R.id.view3).setVisibility(View.VISIBLE);
+                myHolder.parent.findViewById(R.id.view4).setVisibility(View.VISIBLE);
+                myHolder.parent.findViewById(R.id.view5).setVisibility(View.VISIBLE);
 
 
-            TextView textView = myHolder.parent.findViewById(R.id.include1).findViewById(R.id.layout2_name1);
-            textView.setText("内资");
-            textView = myHolder.parent.findViewById(R.id.include2).findViewById(R.id.layout2_name1);
-            textView.setText("内资");
-            textView = myHolder.parent.findViewById(R.id.include11).findViewById(R.id.layout2_name1);
-            textView.setText("工业");
-            textView = myHolder.parent.findViewById(R.id.include22).findViewById(R.id.layout2_name1);
-            textView.setText("服务业");
-            textView = myHolder.parent.findViewById(R.id.include3).findViewById(R.id.layout2_name1);
-            textView.setText("江北片区");
-            textView = myHolder.parent.findViewById(R.id.include4).findViewById(R.id.layout2_name1);
-            textView.setText("北碚片区");
-            textView = myHolder.parent.findViewById(R.id.include5).findViewById(R.id.layout2_name1);
-            textView.setText("渝北片区");
-            textView = myHolder.parent.findViewById(R.id.include6).findViewById(R.id.layout2_name1);
-            textView.setText("直管区");
-            textView = myHolder.parent.findViewById(R.id.include7).findViewById(R.id.layout2_name1);
-            textView.setText("直属区");
-            textView = myHolder.parent.findViewById(R.id.include8).findViewById(R.id.layout2_name1);
-            textView.setText("两江工业开发区");
-            textView = myHolder.parent.findViewById(R.id.include9).findViewById(R.id.layout2_name1);
-            textView.setText("保税港区");
-            textView = myHolder.parent.findViewById(R.id.include10).findViewById(R.id.layout2_name1);
-            textView.setText("江北嘴");
-            textView = myHolder.parent.findViewById(R.id.include12).findViewById(R.id.layout2_name1);
-            textView.setText("悦来");
+                TextView textView = myHolder.parent.findViewById(R.id.include1).findViewById(R.id.layout2_name1);
+                textView.setText("内资");
+                textView = myHolder.parent.findViewById(R.id.include2).findViewById(R.id.layout2_name1);
+                textView.setText("内资");
+                textView = myHolder.parent.findViewById(R.id.include11).findViewById(R.id.layout2_name1);
+                textView.setText("工业");
+                textView = myHolder.parent.findViewById(R.id.include22).findViewById(R.id.layout2_name1);
+                textView.setText("服务业");
+                textView = myHolder.parent.findViewById(R.id.include3).findViewById(R.id.layout2_name1);
+                textView.setText("江北片区");
+                textView = myHolder.parent.findViewById(R.id.include4).findViewById(R.id.layout2_name1);
+                textView.setText("北碚片区");
+                textView = myHolder.parent.findViewById(R.id.include5).findViewById(R.id.layout2_name1);
+                textView.setText("渝北片区");
+                textView = myHolder.parent.findViewById(R.id.include6).findViewById(R.id.layout2_name1);
+                textView.setText("直管区");
+                textView = myHolder.parent.findViewById(R.id.include7).findViewById(R.id.layout2_name1);
+                textView.setText("直属区");
+                textView = myHolder.parent.findViewById(R.id.include8).findViewById(R.id.layout2_name1);
+                textView.setText("两江工业开发区");
+                textView = myHolder.parent.findViewById(R.id.include9).findViewById(R.id.layout2_name1);
+                textView.setText("保税港区");
+                textView = myHolder.parent.findViewById(R.id.include10).findViewById(R.id.layout2_name1);
+                textView.setText("江北嘴");
+                textView = myHolder.parent.findViewById(R.id.include12).findViewById(R.id.layout2_name1);
+                textView.setText("悦来");
 
-            myHolder.layoutName.setText("按内外资分");
-            myHolder.layoutName1.setText("按产业分");
-            myHolder.layoutName2.setText("按地域分");
+                myHolder.layoutName.setText("按内外资分");
+                myHolder.layoutName1.setText("按产业分");
+                myHolder.layoutName2.setText("按地域分");
 
-            return;
-        }
-//        else if (statisticsItemInfo.name.equals("1-X月签约工业项目")) {
-//            myHolder.tvOther.setVisibility(View.VISIBLE);
-//            myHolder.tvKey.setText(mEntity.key);
-//            myHolder.tvValue.setText(mEntity.value);
-//            myHolder.tvPercent.setText(mEntity.value1);
-//            myHolder.tvOther.setText(mEntity.value2);
-//            return;
-//        }
-
+                return;
+            } else {
+//                myHolder.parent.findViewById(R.id.layout6).setVisibility(View.VISIBLE);
+            }
 
         sum = 0;
         if (!statisticsItemInfo.name.equals("状态变化") || !statisticsItemInfo.name.equals("状态排行"))
@@ -168,6 +164,13 @@ public class ChartTableAdapter extends MyRecycleAdapter {
             myHolder.tvPercent.setText(mEntity.value1);
             myHolder.tvOther.setText(mEntity.value2);
             myHolder.tvOther.setVisibility(mEntity.value2 == null ? View.GONE : View.VISIBLE);
+
+            if (statisticsItemInfo.tableTitle.equals("历史累计")) {
+                myHolder.tvOther.setVisibility(View.VISIBLE);
+                myHolder.tvOther1.setVisibility(View.VISIBLE);
+                myHolder.tvOther.setText("2016");
+                myHolder.tvOther1.setText("5");
+            }
         } else {
             double value = DigitUtil.StringToDouble(mEntity.value);
             myHolder.tvKey.setText(mEntity.key);

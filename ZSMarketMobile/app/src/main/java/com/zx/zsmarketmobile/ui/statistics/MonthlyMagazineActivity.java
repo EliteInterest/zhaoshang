@@ -152,7 +152,7 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
                 //处理按键处理：
                 monthView1.setText(year + "年" +
                         month1 + "月" + "-" +
-                        month2 + "月" + "签约项目情况表");
+                        month2 + "月" + mItemInfo.name.substring(3));
             }
         });
 
@@ -253,18 +253,20 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
             shengcheng.setVisibility(View.VISIBLE);
             monthView1.setText(year + "年" +
                     month1 + "月" + "-" +
-                    month2 + "月" + "签约项目情况表");
+                    month2 + "月" + mItemInfo.name.substring(3));
 
             findViewById(R.id.rvChart_table_layout).setVisibility(View.VISIBLE);
 
-            if (mItemInfo.name.contains("签约项目")) {
+            if (mItemInfo.name.contains("签约项目") ||
+                    mItemInfo.name.contains("开工项目") ||
+                    mItemInfo.name.contains("投产项目")) {
                 tvValue.setVisibility(View.GONE);
                 tvOther.setText("项目数");
                 tvPercent.setText("投资总额");
                 ((TextView) findViewById(R.id.tvChart_percent1)).setText("投资总额占比");
                 ((TextView) findViewById(R.id.tvChart_percent2)).setText("投资总额同比");
                 findViewById(R.id.tvChart_percent2).setVisibility(View.VISIBLE);
-            } else if (mItemInfo.name.contains("签约工业")) {
+            } else {
                 tvKey.setVisibility(View.GONE);
                 tvOther.setText("项目名称");
                 tvPercent.setText("所属地域");
@@ -272,12 +274,122 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
                 tvPercent.setText("签约");
                 tvValue.setText("序号");
                 tvPercent.setVisibility(View.VISIBLE);
+//                findViewById(R.id.layout6).setVisibility(View.VISIBLE);
             }
-        } else if (mItemInfo.name.equals("历史累计")) {
-            llChartYear.setVisibility(View.VISIBLE);
-            monthView1.setVisibility(View.VISIBLE);
-            findViewById(R.id.__).setVisibility(View.GONE);
-            findViewById(R.id.sp_chart_year1).setVisibility(View.GONE);
+        } else {
+//            llChartYear.setVisibility(View.VISIBLE);
+//            monthView1.setVisibility(View.VISIBLE);
+//            findViewById(R.id.__).setVisibility(View.GONE);
+//            findViewById(R.id.sp_chart_year1).setVisibility(View.GONE);
+
+            {
+                llChartYear.setVisibility(View.VISIBLE);
+                monthView1.setVisibility(View.VISIBLE);
+                monthView2.setVisibility(View.GONE);
+
+                List<String> typeList = new ArrayList<>();
+                Calendar c = Calendar.getInstance();
+                int year = c.get(Calendar.YEAR);
+                int month = c.get(Calendar.MONTH) + 1;
+
+                for (int i = 1; i <= month; i++) {
+                    typeList.add(String.valueOf(i));
+                }
+                ArrayAdapter<String> queryTypeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item_layout, typeList);
+                spChartyear.setAdapter(queryTypeAdapter);
+                spChartyear.setSelection(0);
+                spChartyear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        month1 = String.valueOf(position + 1);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+
+                spChartyear1.setAdapter(queryTypeAdapter);
+                spChartyear1.setSelection(month - 1);
+                spChartyear1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        month2 = String.valueOf(position + 1);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+
+                typeList = new ArrayList<>();
+                for (int i = 0; i < 5; i++) {
+                    typeList.add(String.valueOf(year - i));
+                }
+                queryTypeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item_layout, typeList);
+                spChartArea.setAdapter(queryTypeAdapter);
+                spChartArea.setSelection(0);
+                spChartArea.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        if (position != 0) {
+                            List<String> typeList = new ArrayList<>();
+                            for (int i = 1; i <= 12; i++) {
+                                typeList.add(String.valueOf(i));
+                            }
+                            ArrayAdapter<String> queryTypeAdapter = new ArrayAdapter<String>(MonthlyMagazineActivity.this,
+                                    R.layout.spinner_item_layout, typeList);
+                            spChartyear.setAdapter(queryTypeAdapter);
+                            spChartyear.setSelection(0);
+
+                            spChartyear1.setAdapter(queryTypeAdapter);
+                            spChartyear1.setSelection(11);
+                        } else {
+                            List<String> typeList = new ArrayList<>();
+                            for (int i = 1; i <= month; i++) {
+                                typeList.add(String.valueOf(i));
+                            }
+                            ArrayAdapter<String> queryTypeAdapter = new ArrayAdapter<String>(MonthlyMagazineActivity.this,
+                                    R.layout.spinner_item_layout, typeList);
+
+                            spChartyear.setAdapter(queryTypeAdapter);
+                            spChartyear.setSelection(0);
+
+                            spChartyear1.setAdapter(queryTypeAdapter);
+                            spChartyear1.setSelection(month - 1);
+                        }
+
+                        TextView view1 = (TextView) view;
+                        MonthlyMagazineActivity.this.year = view1.getText().toString();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+
+                shengcheng.setVisibility(View.VISIBLE);
+                monthView1.setText(year + "年" +
+                        month1 + "月" + "-" +
+                        month2 + "月" + mItemInfo.name.substring(3));
+
+                findViewById(R.id.rvChart_table_layout).setVisibility(View.VISIBLE);
+
+                tvKey.setVisibility(View.GONE);
+                tvOther.setText("项目名称");
+                tvPercent.setText("所属地域");
+                ((TextView) findViewById(R.id.tvChart_percent1)).setText("投资总额(亿元)");
+                tvPercent.setText("签约时间(年)");
+                tvValue.setText("序号");
+                tvPercent.setVisibility(View.VISIBLE);
+
+                TextView textView1 = (TextView) findViewById(R.id.tvChart_percent1);
+                textView1.setText("签约时间(年)");
+                textView1.setVisibility(View.VISIBLE);
+            }
         }
         mChartUtil = new ChartUtil(mContext);
         mAdapter = new ChartTableAdapter(this, mItemInfo, keyList);
@@ -369,6 +481,8 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
                 //caseIsCase.loadData(meld1 + "," + meld2);
                 break;
             case "1-X月签约项目情况表":
+            case "1-X月开工项目情况表":
+            case "1-X月投产项目情况表":
                 keyList.clear();
                 KeyValueInfo info1 = new KeyValueInfo();
                 info1.key = "1-X月签约项目情况表";
@@ -377,6 +491,11 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
                 mAdapter.notifyDataSetChanged();
                 break;
             case "1-X月签约工业项目":
+            case "1-X月签约服务项目":
+            case "1-X月开工工业项目":
+            case "1-X月开工服务业项目":
+            case "1-X月投产工业项目":
+            case "1-X月投产服务业项目":
                 keyList.clear();
                 String name = "德豪润达LED全产业链制造基地项目";
                 for (int i = 0; i < 10; i++) {
@@ -389,56 +508,63 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
                 }
                 mAdapter.notifyDataSetChanged();
                 break;
-            case "1-X月签约服务项目":
-                tvPercent.setVisibility(View.GONE);
-                casePunishCount.loadData("");
-                break;
-            case "1-X月开工项目情况表":
-                tvPercent.setVisibility(View.GONE);
-                compDepart.loadData("");
-                break;
-            case "1-X月开工工业项目":
-                compType.loadData("", "");
-                break;
-            case "1-X月开工服务业项目":
-                break;
-            case "1-X月投产项目情况表":
-                break;
-            case "1-X月投产工业项目":
-                break;
-            case "1-X月投产服务业项目":
-                tvValue.setText(mItemInfo.name);
-                tempList = new ArrayList<>();
-                for (int i = 0; i < 4; i++) {
-                    info = new KeyValueInfo();
-                    info.key = String.valueOf(i + 2013);
-                    switch (i) {
-                        case 0:
-                            info.value = "100";
-                            break;
-                        case 1:
-                            info.value = "150";
-                            break;
-                        case 2:
-                            info.value = "120";
-                            break;
-                        case 3:
-                            info.value = "130";
-                            break;
-                    }
-                    tempList.add(info);
-                }
-                initChart(tempList);
+
+            case "已签约未开工工业项目":
                 keyList.clear();
-                keyList.addAll(tempList);
-                mAdapter.notifyDataSetChanged();
-                if (tableCodes.size() > 0) {
-                    tvBack.setVisibility(View.VISIBLE);
-                } else {
-                    tvBack.setVisibility(View.GONE);
+                name = "德豪润达LED全产业链制造基地项目";
+                for (int i = 0; i < 10; i++) {
+                    info1 = new KeyValueInfo();
+                    info1.key = "" + (i + 1);
+                    info1.value = name;
+                    info1.value1 = "水土园区";
+                    info1.value2 = "80";
+                    keyList.add(info1);
                 }
-//                enterIndustry.loadData();
+                mAdapter.notifyDataSetChanged();
                 break;
+
+            case "已签约未开工服务业项目":
+                keyList.clear();
+                name = "鲁能泰山7号项目";
+                for (int i = 0; i < 10; i++) {
+                    info1 = new KeyValueInfo();
+                    info1.key = "" + (i + 1);
+                    info1.value = name;
+                    info1.value1 = "水土园区";
+                    info1.value2 = "80";
+                    keyList.add(info1);
+                }
+                mAdapter.notifyDataSetChanged();
+                break;
+
+            case "已开工未投产工业项目":
+                keyList.clear();
+                name = "天骄航空动力产业基地项目";
+                for (int i = 0; i < 10; i++) {
+                    info1 = new KeyValueInfo();
+                    info1.key = "" + (i + 1);
+                    info1.value = name;
+                    info1.value1 = "水土园区";
+                    info1.value2 = "80";
+                    keyList.add(info1);
+                }
+                mAdapter.notifyDataSetChanged();
+                break;
+
+            case "已开工未投产服务业项目":
+                keyList.clear();
+                name = "珠江国际商业中心";
+                for (int i = 0; i < 10; i++) {
+                    info1 = new KeyValueInfo();
+                    info1.key = "" + (i + 1);
+                    info1.value = name;
+                    info1.value1 = "水土园区";
+                    info1.value2 = "80";
+                    keyList.add(info1);
+                }
+                mAdapter.notifyDataSetChanged();
+                break;
+
             default:
                 break;
         }

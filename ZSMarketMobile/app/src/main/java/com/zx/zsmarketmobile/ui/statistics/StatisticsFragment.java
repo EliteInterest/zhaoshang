@@ -85,7 +85,7 @@ public class StatisticsFragment extends BaseFragment {
     }
 
     private void toStatisticsActivity(StatisticsItemInfo itemInfo) {
-        if (itemInfo.tableTitle.equals(("月报"))) {
+        if (itemInfo.tableTitle.equals(("月报"))||itemInfo.tableTitle.equals(("历史累计"))) {
             Intent intent = new Intent(getActivity(), MonthlyMagazineActivity.class);
             intent.putExtra("task", itemInfo);
             startActivity(intent);
