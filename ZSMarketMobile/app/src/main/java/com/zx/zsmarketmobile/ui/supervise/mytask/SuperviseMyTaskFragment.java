@@ -41,8 +41,9 @@ public class SuperviseMyTaskFragment extends BaseFragment{
         vpCase.setViewPager(((HomeActivity) getActivity()).mVpContent);
         myPagerAdapter = new MyPagerAdapter(getChildFragmentManager());
         myPagerAdapter.addFragment(SuperviseMyTaskListFragment.newInstance(0), "我的待办");
-        myPagerAdapter.addFragment(SuperviseMyTaskListFragment.newInstance(1), "我的已办");
+//        myPagerAdapter.addFragment(SuperviseMyTaskListFragment.newInstance(1), "我的已办");
         vpCase.setOffscreenPageLimit(2);
+        tbCase.setVisibility(View.GONE);
         vpCase.setAdapter(myPagerAdapter);
         tbCase.setupWithViewPager(vpCase);
         vpCase.setCurrentItem(0);

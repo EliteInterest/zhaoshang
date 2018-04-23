@@ -33,7 +33,7 @@ public class SearchFilterAdapter extends RecyclerView.Adapter<SearchFilterAdapte
     public SearchFilterAdapter() {
         dataList.add(new SearchFilterEntity("项目名称"));
         dataList.add(new SearchFilterEntity("项目代码"));
-        dataList.add(new SearchFilterEntity("所属阶段", new String[]{"请选择", "洽谈", "签约", "开工", "投产", "终止"}));
+        dataList.add(new SearchFilterEntity("所属阶段", new String[]{"请选择", "洽谈", "签约", "开工", "投产", "达产"}));
         dataList.add(new SearchFilterEntity("是否外资", new String[]{"请选择", "是", "否"}));
         dataList.add(new SearchFilterEntity("所属大类", new String[]{"请选择", "工业", "服务业", "其他"}));
         dataList.add(new SearchFilterEntity("所属行业", new String[]{"请先选择所属大类"}));

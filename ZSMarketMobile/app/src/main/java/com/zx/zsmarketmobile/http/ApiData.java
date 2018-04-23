@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -23,7 +22,6 @@ import com.zx.zsmarketmobile.entity.CompFlowEntity;
 import com.zx.zsmarketmobile.entity.ComplainInfoDetailsBean;
 import com.zx.zsmarketmobile.entity.ComplainInfoEntity;
 import com.zx.zsmarketmobile.entity.DeviceEmergencyDetialEntity;
-import com.zx.zsmarketmobile.entity.DeviceSecurityRiskEntity;
 import com.zx.zsmarketmobile.entity.EmergencyInfo;
 import com.zx.zsmarketmobile.entity.EmergencyListInfo;
 import com.zx.zsmarketmobile.entity.EntityDetail;
@@ -62,6 +60,7 @@ import com.zx.zsmarketmobile.entity.SynergyDTInfoEntity;
 import com.zx.zsmarketmobile.entity.SynergyDetailEntity;
 import com.zx.zsmarketmobile.entity.SynergyInfoBean;
 import com.zx.zsmarketmobile.entity.TaskCountInfo;
+import com.zx.zsmarketmobile.entity.TaskLogInfoBean;
 import com.zx.zsmarketmobile.entity.infomanager.InfoManagerBiaozhun;
 import com.zx.zsmarketmobile.entity.infomanager.InfoManagerBiaozhunDetail;
 import com.zx.zsmarketmobile.entity.infomanager.InfoManagerDevice;
@@ -96,7 +95,6 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URISyntaxException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -297,6 +295,8 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
     public static final int HTTP_ID_case_Y13 = 238;//案件-送达当事人
     public static final int HTTP_ID_case_Y14 = 239;//案件-行政处罚的执行
     public static final int HTTP_ID_case_02 = 241;//案件-结案
+    public static final int HTTP_ID_taskLogInfo = 242;
+    public static final int HTTP_ID_taskOpt = 243;
 
     public static final int HTTP_ID_info_manager_biaozhun = 301;//标准信息查询
     public static final int HTTP_ID_info_manager_device_liebiao = 302;//特种设备-特种设备列表查询
@@ -1887,6 +1887,17 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                     params.putParams("id", objects[0]);
                     params.putParams("remark", objects[1]);
                     params.putParams("taskId", objects[2]);
+                    break;
+                case HTTP_ID_taskLogInfo:
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/proj/getProjLogInfo.do");
+                    params.setRequestMothod(HTTP_MOTHOD.POST);
+                    params.putParams("projGuid", objects[0]);
+                    break;
+                case HTTP_ID_taskOpt:
+                    params.setApiUrl(baseUrl + "/investpromotion_portal/proj/optProjTemp.do");
+                    params.setRequestMothod(HTTP_MOTHOD.POST);
+                    params.putParams("projGuid",objects[0]);
+                    params.putParams("optType",objects[1]);
                     break;
                 default:
                     if (LogUtil.DEBUG) {
@@ -3621,6 +3632,15 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                         case HTTP_ID_case_02:
                             break;
                         case HTTP_ID_psw_update:
+
+                            break;
+                        case HTTP_ID_taskLogInfo:
+                            jsonArray = getJSONArray(jsonObject, "data");
+                            List<TaskLogInfoBean> logInfoBeans = gson.fromJson(jsonArray.toString(), new TypeToken<List<TaskLogInfoBean>>() {
+                            }.getType());
+                            result.setEntry(logInfoBeans);
+                            break;
+                        case HTTP_ID_taskOpt:
 
                             break;
                         default:

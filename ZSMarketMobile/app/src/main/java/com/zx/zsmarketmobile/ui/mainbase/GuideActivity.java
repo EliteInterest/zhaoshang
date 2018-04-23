@@ -45,9 +45,9 @@ public class GuideActivity extends BaseActivity {
         String[] names = new String[]{"项目查询", "项目审核", "数据分析", "统计月报", "帮助", "设置"};
         int[] ids = new int[]{0, 1, 2, 3, 4, 5, 6, 7};
         int[] imgs = new int[]{R.mipmap.guide_search,
+                R.mipmap.guide_case,
                 R.mipmap.guide_analysis,
-                R.mipmap.guide_sudden,
-                R.mipmap.guide_supervise,
+                R.mipmap.guide_info,
                 R.mipmap.guide_help,
                 R.mipmap.guide_setting};
 

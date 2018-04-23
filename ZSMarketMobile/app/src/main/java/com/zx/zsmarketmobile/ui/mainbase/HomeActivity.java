@@ -18,22 +18,14 @@ import com.zx.zsmarketmobile.R.id;
 import com.zx.zsmarketmobile.entity.StatisticsInfo;
 import com.zx.zsmarketmobile.entity.StatisticsItemInfo;
 import com.zx.zsmarketmobile.ui.base.BaseActivity;
-import com.zx.zsmarketmobile.ui.caselegal.CaseMonitorFragment;
-import com.zx.zsmarketmobile.ui.caselegal.CaseMyListFragment;
-import com.zx.zsmarketmobile.ui.caselegal.CaseSearchFragment;
-import com.zx.zsmarketmobile.ui.complain.ComplainMonitorFragment;
-import com.zx.zsmarketmobile.ui.complain.ComplainMyListFragment;
-import com.zx.zsmarketmobile.ui.complain.ComplainSearchFragment;
 import com.zx.zsmarketmobile.ui.map.WorkInMapShowActivity;
 import com.zx.zsmarketmobile.ui.statistics.StatisticsFragment;
 import com.zx.zsmarketmobile.ui.supervise.mytask.SuperviseMyTaskFragment;
 import com.zx.zsmarketmobile.ui.system.HelpActivity;
 import com.zx.zsmarketmobile.ui.system.SettingsActivity;
+import com.zx.zsmarketmobile.ui.taskexcute.TaskExcuteFragment;
 import com.zx.zsmarketmobile.util.ConstStrings;
 import com.zx.zsmarketmobile.util.Util;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Create By Xiangb On 2016/9/19
@@ -91,7 +83,7 @@ public class HomeActivity extends BaseActivity implements OnClickListener {
     public void initialViewPager() {
         switch (index) {
             case 0://监管任务
-                setMidText("监管任务");
+                setMidText("项目审核");
                 String departName = "";
                 if (userInfo != null && !TextUtils.isEmpty(userInfo.getDepartment())) {
                     departName = userInfo.getDepartment();
@@ -101,7 +93,7 @@ public class HomeActivity extends BaseActivity implements OnClickListener {
 //                    myPagerAdapter.addFragment(SuperviseMyTaskFragment.newInstance(), "我的任务");
 //                }
 
-                myPagerAdapter.addFragment(SuperviseMyTaskFragment.newInstance(), "我的任务");
+                myPagerAdapter.addFragment(TaskExcuteFragment.newInstance(), "我的任务");
 //                myPagerAdapter.addFragment(TaskNumFragment.newInstance(1), "状态监控");
 
 //                myPagerAdapter.addFragment(SuperviseClaimedFragment.newInstance(0), "坐标纠正");

@@ -253,7 +253,7 @@ public class SearchZtListShowActivity extends BaseActivity implements MyItemClic
                 HttpZtEntity zt = mTaskList.get(currentIndex);
                 EntityDetail mEntityDetail = (EntityDetail) b.getEntry();
                 Intent intent = new Intent(SearchZtListShowActivity.this, EntityDetailActivity.class);
-                intent.putExtra("type", 2);
+                intent.putExtra("type", 0);
                 intent.putExtra("ztEntity", zt);
                 intent.putExtra("entity", mEntityDetail);
 //                if (zt != null) {
