@@ -205,7 +205,7 @@ public class ChartActivity extends BaseActivity implements IChartListener {
             tvValue.setText("洽谈");
             mQueryByTypeSpinnerLayout.setVisibility(View.VISIBLE);
             mTimeSelectedLayout.setVisibility(View.VISIBLE);
-            tvPercent.setVisibility(View.GONE);
+            tvPercent.setVisibility(View.VISIBLE);
         }
 
         if(mItemInfo.name.equals("状态排行"))
