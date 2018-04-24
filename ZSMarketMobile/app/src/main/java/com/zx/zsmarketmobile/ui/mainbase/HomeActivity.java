@@ -166,13 +166,13 @@ public class HomeActivity extends BaseActivity implements OnClickListener {
     private StatisticsInfo createZongtiData() {
         StatisticsInfo dataInfo = new StatisticsInfo();
         dataInfo.labelName = "总体概括";
+        dataInfo.itemList.add(new StatisticsItemInfo("新区成立至X月末项目状态", 1, "月报", R.mipmap.statis_xxly));
         dataInfo.itemList.add(new StatisticsItemInfo("推进情况", 0, "月报", R.mipmap.statis_bmtj));
         dataInfo.itemList.add(new StatisticsItemInfo("项目状态", 1, "月报", R.mipmap.statis_lytj));
         dataInfo.itemList.add(new StatisticsItemInfo("签约项目情况", 1, "月报", R.mipmap.statis_latj));
         dataInfo.itemList.add(new StatisticsItemInfo("开工项目情况", 1, "月报", R.mipmap.statis_tsjl));
         dataInfo.itemList.add(new StatisticsItemInfo("投产项目情况", 1, "月报", R.mipmap.statis_slbm));
         dataInfo.itemList.add(new StatisticsItemInfo("在谈项目情况", 1, "月报", R.mipmap.statis_tslx));
-        dataInfo.itemList.add(new StatisticsItemInfo("新区成立至X月末项目状态", 1, "月报", R.mipmap.statis_xxly));
         return dataInfo;
     }
 
