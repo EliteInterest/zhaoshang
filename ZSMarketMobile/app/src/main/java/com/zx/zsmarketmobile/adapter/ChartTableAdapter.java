@@ -222,72 +222,72 @@ public class ChartTableAdapter extends MyRecycleAdapter {
                 Log.i("wangwansheng", "X月签约项目情况表");
             }
 
-            tvKey.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mListener != null) {
-                        mListener.OnKeyClick(getAdapterPosition());
-                    }
-                }
-            });
-            tvValue.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mListener != null && !mDataList.get(getAdapterPosition()).key.equals("总计")
-                            && !mDataList.get(getAdapterPosition()).key.equals("总数") && !mDataList.get(getAdapterPosition()).key.equals("合计")) {
-                        if (mDataList.get(getAdapterPosition()).value == null) {
-                            return;
-                        }
-                        if (mDataList.get(getAdapterPosition()).value.equals("0")) {
-                            ((ChartActivity) mContext).showToast("该项暂无数据");
-                            return;
-                        }
-                        String line = ((ChartActivity) mContext).tvValue.getText().toString();
-                        if (line.equals("数量")) {
-                            line = "";
-                        }
-                        mListener.onValueClick(mDataList.get(getAdapterPosition()).key, line);
-                    }
-                }
-            });
-            tvPercent.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mListener != null && !mDataList.get(getAdapterPosition()).key.equals("总计")
-                            && !mDataList.get(getAdapterPosition()).key.equals("总数") && !mDataList.get(getAdapterPosition()).key.equals("合计")) {
-                        if (mDataList.get(getAdapterPosition()).value1 == null) {
-                            return;
-                        }
-                        if (mDataList.get(getAdapterPosition()).value1.equals("0")) {
-                            ((ChartActivity) mContext).showToast("该项暂无数据");
-                            return;
-                        }
-                        String line = ((ChartActivity) mContext).tvPercent.getText().toString();
-                        if (!line.equals("所占比重")) {
-                            mListener.onValueClick(mDataList.get(getAdapterPosition()).key, line);
-                        }
-                    }
-                }
-            });
-            tvOther.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mListener != null && !mDataList.get(getAdapterPosition()).key.equals("总计")
-                            && !mDataList.get(getAdapterPosition()).key.equals("总数") && !mDataList.get(getAdapterPosition()).key.equals("合计")) {
-                        if (mDataList.get(getAdapterPosition()).value2 == null) {
-                            return;
-                        }
-                        if (mDataList.get(getAdapterPosition()).value2.equals("0")) {
-                            ((ChartActivity) mContext).showToast("该项暂无数据");
-                            return;
-                        }
-                        String line = ((ChartActivity) mContext).tvOther.getText().toString();
-                        if (((ChartActivity) mContext).tvOther.getVisibility() == View.VISIBLE) {
-                            mListener.onValueClick(mDataList.get(getAdapterPosition()).key, line);
-                        }
-                    }
-                }
-            });
+//            tvKey.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    if (mListener != null) {
+//                        mListener.OnKeyClick(getAdapterPosition());
+//                    }
+//                }
+//            });
+//            tvValue.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    if (mListener != null && !mDataList.get(getAdapterPosition()).key.equals("总计")
+//                            && !mDataList.get(getAdapterPosition()).key.equals("总数") && !mDataList.get(getAdapterPosition()).key.equals("合计")) {
+//                        if (mDataList.get(getAdapterPosition()).value == null) {
+//                            return;
+//                        }
+//                        if (mDataList.get(getAdapterPosition()).value.equals("0")) {
+//                            ((ChartActivity) mContext).showToast("该项暂无数据");
+//                            return;
+//                        }
+//                        String line = ((ChartActivity) mContext).tvValue.getText().toString();
+//                        if (line.equals("数量")) {
+//                            line = "";
+//                        }
+//                        mListener.onValueClick(mDataList.get(getAdapterPosition()).key, line);
+//                    }
+//                }
+//            });
+//            tvPercent.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    if (mListener != null && !mDataList.get(getAdapterPosition()).key.equals("总计")
+//                            && !mDataList.get(getAdapterPosition()).key.equals("总数") && !mDataList.get(getAdapterPosition()).key.equals("合计")) {
+//                        if (mDataList.get(getAdapterPosition()).value1 == null) {
+//                            return;
+//                        }
+//                        if (mDataList.get(getAdapterPosition()).value1.equals("0")) {
+//                            ((ChartActivity) mContext).showToast("该项暂无数据");
+//                            return;
+//                        }
+//                        String line = ((ChartActivity) mContext).tvPercent.getText().toString();
+//                        if (!line.equals("所占比重")) {
+//                            mListener.onValueClick(mDataList.get(getAdapterPosition()).key, line);
+//                        }
+//                    }
+//                }
+//            });
+//            tvOther.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    if (mListener != null && !mDataList.get(getAdapterPosition()).key.equals("总计")
+//                            && !mDataList.get(getAdapterPosition()).key.equals("总数") && !mDataList.get(getAdapterPosition()).key.equals("合计")) {
+//                        if (mDataList.get(getAdapterPosition()).value2 == null) {
+//                            return;
+//                        }
+//                        if (mDataList.get(getAdapterPosition()).value2.equals("0")) {
+//                            ((ChartActivity) mContext).showToast("该项暂无数据");
+//                            return;
+//                        }
+//                        String line = ((ChartActivity) mContext).tvOther.getText().toString();
+//                        if (((ChartActivity) mContext).tvOther.getVisibility() == View.VISIBLE) {
+//                            mListener.onValueClick(mDataList.get(getAdapterPosition()).key, line);
+//                        }
+//                    }
+//                }
+//            });
         }
     }
 }

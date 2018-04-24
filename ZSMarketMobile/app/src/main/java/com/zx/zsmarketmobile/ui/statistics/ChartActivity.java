@@ -208,8 +208,7 @@ public class ChartActivity extends BaseActivity implements IChartListener {
             tvPercent.setVisibility(View.VISIBLE);
         }
 
-        if(mItemInfo.name.equals("状态排行"))
-        {
+        if (mItemInfo.name.equals("状态排行")) {
             findViewById(R.id.tvChart_percent1).setVisibility(View.VISIBLE);
             findViewById(R.id.tvChart_percent2).setVisibility(View.VISIBLE);
             findViewById(R.id.tvChart_percent3).setVisibility(View.VISIBLE);
@@ -424,7 +423,32 @@ public class ChartActivity extends BaseActivity implements IChartListener {
                 compDepart.loadData("");
                 break;
             case "增长率排行":
-                compType.loadData("", "");
+                tvPercent.setVisibility(View.GONE);
+                List<KeyValueInfo> tempList = new ArrayList<>();
+                KeyValueInfo info = new KeyValueInfo();
+                info.key = "直属街道";
+                info.value = "20";
+                tempList.add(info);
+
+                info = new KeyValueInfo();
+                info.key = "鱼复园区";
+                info.value = "15";
+                tempList.add(info);
+
+                info = new KeyValueInfo();
+                info.key = "龙兴园区";
+                info.value = "12";
+                tempList.add(info);
+
+                info = new KeyValueInfo();
+                info.key = "水土园区";
+                info.value = "10";
+                tempList.add(info);
+
+                initChart(tempList);
+                keyList.clear();
+                keyList.addAll(tempList);
+                mAdapter.notifyDataSetChanged();
                 break;
             case "数量变化":
                 String area = mQueryTypeSpinner.getSelectedItemPosition() == 0 ? "全部" : Util.area[mQueryTypeSpinner.getSelectedItemPosition()];
@@ -483,9 +507,9 @@ public class ChartActivity extends BaseActivity implements IChartListener {
                 break;
             case "纳税金额":
                 tvValue.setText(mItemInfo.name);
-                List<KeyValueInfo> tempList = new ArrayList<>();
+                tempList = new ArrayList<>();
                 for (int i = 0; i < 4; i++) {
-                    KeyValueInfo info = new KeyValueInfo();
+                    info = new KeyValueInfo();
                     info.key = String.valueOf(i + 2013);
                     switch (i) {
                         case 0:
@@ -616,7 +640,6 @@ public class ChartActivity extends BaseActivity implements IChartListener {
             case ApiData.HTTP_ID_statistics_case_queryIsCase:
             case ApiData.HTTP_ID_statistics_case_queryPunishCount:
             case ApiData.HTTP_ID_statistics_comp_countDepartment:
-            case ApiData.HTTP_ID_statistics_comp_countType:
             case ApiData.HTTP_ID_statistics_comp_countInfo:
             case ApiData.HTTP_ID_statistics_entity_enterpriseType:
             case ApiData.HTTP_ID_statistics_entity_enterpriseDev:
@@ -654,6 +677,8 @@ public class ChartActivity extends BaseActivity implements IChartListener {
                 } else {
                     tvBack.setVisibility(View.GONE);
                 }
+                break;
+            case ApiData.HTTP_ID_statistics_comp_countType:
                 break;
             case ApiData.HTTP_ID_drug_sample_parameter://药品检验
 //            case ApiData.HTTP_ID_industrial_product_parameter://工业产品检验

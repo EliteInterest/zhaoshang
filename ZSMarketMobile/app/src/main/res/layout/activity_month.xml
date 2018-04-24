@@ -29,17 +29,30 @@
             <android.support.v7.widget.AppCompatSpinner
                 android:id="@+id/sp_chart_area"
                 android:layout_width="80dp"
+                android:layout_height="wrap_content"></android.support.v7.widget.AppCompatSpinner>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="月份：" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/sp_chart_year"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content">
 
             </android.support.v7.widget.AppCompatSpinner>
 
             <TextView
+                android:id="@+id/__"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="月份" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="-" />
 
             <android.support.v7.widget.AppCompatSpinner
-                android:id="@+id/sp_chart_year"
+                android:id="@+id/sp_chart_year1"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content">
 

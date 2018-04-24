@@ -53,6 +53,7 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
     private LinearLayout llChartYear;
     private Spinner spChartArea;
     private Spinner spChartyear;
+    private Spinner spChartyear1;
     private TextView mTvStartTime, mTvEndTime, mTvQueryByTime;
     private StatisticsItemInfo mItemInfo;
     private ChartUtil mChartUtil;
@@ -138,6 +139,7 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
         mTvQueryByTime = (TextView) findViewById(R.id.tvActStatistics_query);
         llChartYear = findViewById(R.id.ll_chart_year);
         spChartyear = findViewById(R.id.sp_chart_year);
+        spChartyear1 = findViewById(R.id.sp_chart_year1);
         spChartArea = findViewById(R.id.sp_chart_area);
         monthView1 = findViewById(R.id.month_message);
         monthView2 = findViewById(R.id.month_message_content);
@@ -148,9 +150,13 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
             @Override
             public void onClick(View view) {
                 //处理按键处理：
-                monthView1.setText(year + "年" +
-                        month1 + "月" + "-" +
-                        month2 + "月" + mItemInfo.name.substring(3));
+                if (spChartyear1.getVisibility() == View.VISIBLE)
+                    monthView1.setText(year + "年" +
+                            month1 + "月" + "-" +
+                            month2 + "月" + mItemInfo.name.substring(3));
+                else
+                    monthView1.setText(year + "年" +
+                            month1 + "月" + mItemInfo.name.substring(3));
             }
         });
 
@@ -187,6 +193,20 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
                 }
             });
 
+            spChartyear1.setAdapter(queryTypeAdapter);
+            spChartyear1.setSelection(month - 1);
+            spChartyear1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    month2 = String.valueOf(position + 1);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
             typeList = new ArrayList<>();
             for (int i = 0; i < 5; i++) {
                 typeList.add(String.valueOf(year - i));
@@ -206,6 +226,9 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
                                 R.layout.spinner_item_layout, typeList);
                         spChartyear.setAdapter(queryTypeAdapter);
                         spChartyear.setSelection(0);
+
+                        spChartyear1.setAdapter(queryTypeAdapter);
+                        spChartyear1.setSelection(11);
                     } else {
                         List<String> typeList = new ArrayList<>();
                         for (int i = 1; i <= month; i++) {
@@ -216,6 +239,9 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
 
                         spChartyear.setAdapter(queryTypeAdapter);
                         spChartyear.setSelection(0);
+
+                        spChartyear1.setAdapter(queryTypeAdapter);
+                        spChartyear1.setSelection(month - 1);
                     }
 
                     TextView view1 = (TextView) view;
@@ -257,6 +283,8 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
             llChartYear.setVisibility(View.VISIBLE);
             monthView1.setVisibility(View.VISIBLE);
             monthView2.setVisibility(View.GONE);
+            findViewById(R.id.__).setVisibility(View.GONE);
+            findViewById(R.id.sp_chart_year1).setVisibility(View.GONE);
 
             List<String> typeList = new ArrayList<>();
             Calendar c = Calendar.getInstance();
@@ -324,8 +352,7 @@ public class MonthlyMagazineActivity extends BaseActivity implements IChartListe
 
             shengcheng.setVisibility(View.VISIBLE);
             monthView1.setText(year + "年" +
-                    month1 + "月" + "-" +
-                    month2 + "月" + mItemInfo.name.substring(3));
+                    month1 + "月" + mItemInfo.name.substring(3));
 
             findViewById(R.id.rvChart_table_layout).setVisibility(View.VISIBLE);
 
