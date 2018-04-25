@@ -107,7 +107,7 @@ import java.util.Map;
  * @author zx-wt
  */
 public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
-    public static final boolean ISRELEASE = true;//是否正式环境
+    public static final boolean ISRELEASE = false;//是否正式环境
     public static final String LOCAL_HOST = "wenzhe.nat300.top";
     public static final String LOCAL_HOST_TAG = "TJSSO";
     public static final String LOCAL_HOST_CASE = "TJCase";
