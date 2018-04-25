@@ -77,7 +77,7 @@ public class ZtPoiPagerAdapter extends PagerAdapter {
             //电话
             TextView tvZtTel = (TextView) view.findViewById(R.id.tv_zt_tel);
             final String phonenum = zt.getContractNum();
-            tvZtTel.setText(phonenum);
+            tvZtTel.setText(zt.getBusinessContactInfo());
             tvZtTel.setOnClickListener(new OnClickListener() {
 
                 @Override

@@ -107,11 +107,11 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
         mBtnLogin.setOnClickListener(this);
         mTvIpsetting = (TextView) findViewById(R.id.tv_ip_setting);
         mTvIpsetting.setOnClickListener(this);
-        if (ApiData.ISRELEASE) {
-            mTvIpsetting.setVisibility(View.GONE);
-        } else {
-            mTvIpsetting.setVisibility(View.VISIBLE);
-        }
+//        if (ApiData.ISRELEASE) {
+//            mTvIpsetting.setVisibility(View.GONE);
+//        } else {
+//            mTvIpsetting.setVisibility(View.VISIBLE);
+//        }
         mTvIpsetting.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         loginData.setLoadingListener(this);
         downLoadFile.setLoadingListener(this);

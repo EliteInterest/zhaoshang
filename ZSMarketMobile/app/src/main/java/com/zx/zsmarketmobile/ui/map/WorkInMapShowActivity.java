@@ -47,6 +47,9 @@ import com.zx.zsmarketmobile.util.MapMarkerTool;
 import com.zx.zsmarketmobile.util.Util;
 import com.zx.zsmarketmobile.view.ArcGISLocalDataLayer;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.Serializable;
 
@@ -73,6 +76,7 @@ public class WorkInMapShowActivity extends BaseActivity implements OnClickListen
     private String mKeyword = "";
     private ApiData ztsearchData = new ApiData(ApiData.HTTP_ID_searchzt);
     private ApiData ztSearchJyfwData = new ApiData(ApiData.HTTP_ID_searchzt_Jyfw);
+
 
     private ApiData mTaskCountData = new ApiData(ApiData.HTTP_ID_search_taskcount);
     private ApiData mTaskPageData = new ApiData(ApiData.HTTP_ID_search_task_bypage);
@@ -526,7 +530,7 @@ public class WorkInMapShowActivity extends BaseActivity implements OnClickListen
         mImgBtnSearch = (ImageButton) findViewById(id.ibtn_search);
         mImgBtnSearch.setOnClickListener(this);
 
-        mEditTextSearch =  findViewById(R.id.et_search);
+        mEditTextSearch = findViewById(R.id.et_search);
 //        mEditTextSearch.setOnEditorActionListener(new OnEditorActionListener() {
 //
 //            @Override
@@ -539,9 +543,30 @@ public class WorkInMapShowActivity extends BaseActivity implements OnClickListen
 //                return false;
 //            }
 //        });
-
-        ztsearchData.setLoadingListener(this);
-        ztSearchJyfwData.setLoadingListener(this);
+        if (ConstStrings.MapType_FromGuide == getIntent().getIntExtra("type", 0)) {
+            ztsearchData.setLoadingListener(this);
+            ztSearchJyfwData.setLoadingListener(this);
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("pageNo", 1);
+                jsonObject.put("pageSize", "10");
+                jsonObject.put("projName", "");
+                jsonObject.put("projCode", "");
+                jsonObject.put("projStage", "");
+                jsonObject.put("isForeign", "");
+                jsonObject.put("projType", "");
+                jsonObject.put("projIndustry", "");
+                jsonObject.put("projNewIns", "");
+                jsonObject.put("investAgreementNum", "");
+                jsonObject.put("supplementAgreementNum", "");
+                jsonObject.put("zshRecordNum", "");
+                jsonObject.put("BghRecordNum", "");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            String queryJson = jsonObject.toString();
+            ztsearchData.loadData(queryJson);
+        }
     }
 
     protected void onDestroy() {
@@ -594,6 +619,7 @@ public class WorkInMapShowActivity extends BaseActivity implements OnClickListen
             case id.btn_list:
                 this.finish();
                 break;
+            case id.ibtn_search:
             case R.id.workinmapshow_activity_searchview:
                 startActivity(new Intent(this, SearchZtListShowActivity.class));
                 break;
@@ -608,13 +634,14 @@ public class WorkInMapShowActivity extends BaseActivity implements OnClickListen
         switch (id) {
             case ApiData.HTTP_ID_searchzt: {
                 if (b.isSuccess()) {
-                    Intent intent = new Intent(this, SearchZtListShowActivity.class);
+//                    Intent intent = new Intent(this, SearchZtListShowActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("keyword", mKeyword);
                     bundle.putSerializable("entity", (Serializable) b.getEntry());
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-                    Util.activity_In(this);
+                    getIntent().putExtras(bundle);
+                    mapMarkerTool.initMarkerAndViewPager();
+//                    startActivity(intent);
+//                    Util.activity_In(this);
                 }
             }
             break;

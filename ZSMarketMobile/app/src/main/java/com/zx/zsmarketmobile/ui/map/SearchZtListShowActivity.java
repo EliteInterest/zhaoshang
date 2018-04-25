@@ -137,6 +137,31 @@ public class SearchZtListShowActivity extends BaseActivity implements MyItemClic
 
 //        loadData(true);
 
+        firstLoad();
+    }
+
+    private void firstLoad() {
+        JSONObject jsonObject = new JSONObject();
+        mPageNo = 1;
+        try {
+            jsonObject.put("pageNo", mPageNo);
+            jsonObject.put("pageSize", "10");
+            jsonObject.put("projName", "");
+            jsonObject.put("projCode", "");
+            jsonObject.put("projStage", "");
+            jsonObject.put("isForeign", "");
+            jsonObject.put("projType", "");
+            jsonObject.put("projIndustry", "");
+            jsonObject.put("projNewIns", "");
+            jsonObject.put("investAgreementNum", "");
+            jsonObject.put("supplementAgreementNum", "");
+            jsonObject.put("zshRecordNum", "");
+            jsonObject.put("BghRecordNum", "");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        queryJson = jsonObject.toString();
+        loadData();
     }
 
     @Override

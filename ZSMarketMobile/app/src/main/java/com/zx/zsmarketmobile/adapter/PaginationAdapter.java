@@ -53,7 +53,7 @@ public class PaginationAdapter extends MyRecycleAdapter {
 //            setDrawable(mEntity, myHolder.imgCreditLevel);
             myHolder.tvZtAddress.setText(mEntity.getProjAddr());
             if (mEntity.getContractNum() != null) {
-                myHolder.tvZtTel.setText(mEntity.getContractNum());
+                myHolder.tvZtTel.setText(mEntity.getBusinessContactInfo());
                 myHolder.tvZtTel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View arg0) {

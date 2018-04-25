@@ -17,7 +17,6 @@ import com.zx.zsmarketmobile.R;
 import com.zx.zsmarketmobile.R.id;
 import com.zx.zsmarketmobile.entity.GuideFunctionEntity;
 import com.zx.zsmarketmobile.ui.base.BaseActivity;
-import com.zx.zsmarketmobile.ui.infomanager.InfoManagerActivity;
 import com.zx.zsmarketmobile.ui.map.WorkInMapShowActivity;
 import com.zx.zsmarketmobile.ui.system.HelpActivity;
 import com.zx.zsmarketmobile.ui.system.SettingsActivity;
@@ -42,13 +41,13 @@ public class GuideActivity extends BaseActivity {
         addToolBar(false);
 
         guideFunctionEntityList = new ArrayList<>();
-        String[] names = new String[]{"项目查询", "项目审核", "数据分析", "统计月报", "帮助", "设置"};
+        String[] names = new String[]{"项目查询", "项目审核", "数据分析", "统计月报", "设置"};
         int[] ids = new int[]{0, 1, 2, 3, 4, 5, 6, 7};
         int[] imgs = new int[]{R.mipmap.guide_search,
                 R.mipmap.guide_case,
                 R.mipmap.guide_analysis,
                 R.mipmap.guide_info,
-                R.mipmap.guide_help,
+//                R.mipmap.guide_help,
                 R.mipmap.guide_setting};
 
         for (int i = 0; i < names.length; i++) {
@@ -89,7 +88,7 @@ public class GuideActivity extends BaseActivity {
                     switch (id) {
                         case 0://项目查询
                             Intent mapIntent = new Intent(GuideActivity.this, WorkInMapShowActivity.class);
-                            mapIntent.putExtra("type", ConstStrings.MapType_Main);
+                            mapIntent.putExtra("type", ConstStrings.MapType_FromGuide);
                             startActivity(mapIntent);
                             break;
                         case 1://项目审核
@@ -115,10 +114,10 @@ public class GuideActivity extends BaseActivity {
 //                        case 5: //设置
 //                            startActivity(new Intent(GuideActivity.this, EquipSearchActivity.class));
 //                            break;
+//                        case 4:
+//                            startActivity(new Intent(GuideActivity.this, HelpActivity.class));
+//                            break;
                         case 4:
-                            startActivity(new Intent(GuideActivity.this, HelpActivity.class));
-                            break;
-                        case 5:
                             startActivity(new Intent(GuideActivity.this, SettingsActivity.class));
                             break;
                         default:

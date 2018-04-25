@@ -41,7 +41,7 @@ public class TaskFlowAdapter extends MyRecycleAdapter {
         Holder myHolder = (Holder) holder;
         TaskLogInfoBean mEntify = dataList.get(position);
         myHolder.tvTime.setText(DateUtil.getDateFromMillis(mEntify.getOptDate()));
-        myHolder.tvPersion.setText(mEntify.getOptUser());
+        myHolder.tvPersion.setText(mEntify.getOptUserName());
         myHolder.tvOperate.setText(mEntify.getOptType());
         String lczz = "";
         myHolder.tvRemark.setText(mEntify.getOptRemark());

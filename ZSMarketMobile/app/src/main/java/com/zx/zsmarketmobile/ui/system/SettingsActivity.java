@@ -1,8 +1,10 @@
 package com.zx.zsmarketmobile.ui.system;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,7 +20,9 @@ import com.zx.zsmarketmobile.http.ApiData;
 import com.zx.zsmarketmobile.http.BaseHttpResult;
 import com.zx.zsmarketmobile.listener.MyItemClickListener;
 import com.zx.zsmarketmobile.ui.base.BaseActivity;
-import com.zx.zsmarketmobile.ui.camera.CameraActivity;
+import com.zx.zsmarketmobile.ui.mainbase.GuideActivity;
+import com.zx.zsmarketmobile.ui.mainbase.HomeActivity;
+import com.zx.zsmarketmobile.util.MyApplication;
 import com.zx.zsmarketmobile.util.SYSUtil;
 import com.zx.zsmarketmobile.util.Util;
 
@@ -108,11 +112,11 @@ public class SettingsActivity extends BaseActivity implements MyItemClickListene
 //        map = new HashMap<String, String>();
 //        map.put("name", "帮助");
 //        list.add(map);
-        if (!ApiData.ISRELEASE) {
+//        if (!ApiData.ISRELEASE) {
             map = new HashMap<String, String>();
             map.put("name", "服务器");
             list.add(map);
-        }
+//        }
     }
 
     //获取文件大小
@@ -134,20 +138,20 @@ public class SettingsActivity extends BaseActivity implements MyItemClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_settings_logout:// 用户退出登陆
-                startActivityForResult(new Intent(SettingsActivity.this, CameraActivity.class),RESULT_OK);
-//                Util.showDeleteDialog(SettingsActivity.this, "是否退出当前用户?", null, "确定", "取消", new OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        loginOut.loadData();
-//                        SharedPreferences.Editor edit = PreferenceManager.getDefaultSharedPreferences(SettingsActivity.this).edit();
-//                        edit.putString("curuser", "");
-//                        edit.apply();
-//                        userManager.setNoLogin(SettingsActivity.this);
-//                        MyApplication.getInstance().remove(HomeActivity.class);
-//                        MyApplication.getInstance().remove(GuideActivity.class);
-//                        finish();
-//                    }
-//                }, null);
+//                startActivityForResult(new Intent(SettingsActivity.this, CameraActivity.class),RESULT_OK);
+                Util.showDeleteDialog(SettingsActivity.this, "是否退出当前用户?", null, "确定", "取消", new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        loginOut.loadData();
+                        SharedPreferences.Editor edit = PreferenceManager.getDefaultSharedPreferences(SettingsActivity.this).edit();
+                        edit.putString("curuser", "");
+                        edit.apply();
+                        userManager.setNoLogin(SettingsActivity.this);
+                        MyApplication.getInstance().remove(HomeActivity.class);
+                        MyApplication.getInstance().remove(GuideActivity.class);
+                        finish();
+                    }
+                }, null);
                 break;
             default:
                 break;
@@ -176,7 +180,7 @@ public class SettingsActivity extends BaseActivity implements MyItemClickListene
             if (updateInfo != null && versionCode < updateInfo.versionCode) {
 //				showUpdateDialog(updateInfo);
             } else {
-                showToast("暂无更新！");
+//                showToast("暂无更新！");
             }
         }
     }
@@ -243,23 +247,23 @@ public class SettingsActivity extends BaseActivity implements MyItemClickListene
                 Util.activity_Out(this);
                 break;
             }
-            case 4:// 关于我们
-            {
-                Intent intent = new Intent();
-                intent.setClass(this, AboutActivity.class);
-                startActivity(intent);
-                Util.activity_Out(this);
-            }
-            break;
-            case 5:// 帮助
-            {
-                Intent intent = new Intent();
-                intent.setClass(this, HelpActivity.class);
-                startActivity(intent);
-                Util.activity_Out(this);
-            }
-            break;
-            case 6:// 设置服务器IP
+//            case 4:// 关于我们
+//            {
+//                Intent intent = new Intent();
+//                intent.setClass(this, AboutActivity.class);
+//                startActivity(intent);
+//                Util.activity_Out(this);
+//            }
+//            break;
+//            case 5:// 帮助
+//            {
+//                Intent intent = new Intent();
+//                intent.setClass(this, HelpActivity.class);
+//                startActivity(intent);
+//                Util.activity_Out(this);
+//            }
+//            break;
+            case 4:// 设置服务器IP
             {
                 Intent intent = new Intent();
                 intent.setClass(this, SettingsIPActivity.class);
