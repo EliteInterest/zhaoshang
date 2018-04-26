@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="MissingTranslation">
     <string name="title_activity_main">MainActivity</string>
-    <string name="app_name">招商监督管理系统</string>
-    <string name="systemname">招商监督管理系统</string>
+    <string name="app_name">招商引资项目监测系统</string>
+    <string name="systemname">招商引资项目监测系统</string>
     <string name="hello_world">Hello world!</string>
     <!-- <string name="action_settings">Settings</string> -->
 

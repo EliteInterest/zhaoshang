@@ -18,6 +18,8 @@
             android:layout_gravity="center"
             android:contentDescription="@string/app_name"
             android:scaleType="center"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
             android:src="@mipmap/logo_login" />
     </LinearLayout>
 

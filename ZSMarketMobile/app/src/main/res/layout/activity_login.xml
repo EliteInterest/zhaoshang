@@ -27,6 +27,8 @@
                 android:layout_height="@dimen/logo_height"
                 android:layout_marginTop="@dimen/widget_content_large_margin"
                 android:contentDescription="@string/app_name"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
                 android:src="@mipmap/logo_login" />
 
             <LinearLayout

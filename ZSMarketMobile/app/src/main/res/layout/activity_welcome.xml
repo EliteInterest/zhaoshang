@@ -11,6 +11,8 @@
         android:contentDescription="@string/app_name"
         android:paddingBottom="80dp"
         android:scaleType="center"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
         android:src="@mipmap/logo_login" />
 
 </RelativeLayout>
