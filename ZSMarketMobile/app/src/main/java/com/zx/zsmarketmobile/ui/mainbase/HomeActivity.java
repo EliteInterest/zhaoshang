@@ -20,7 +20,6 @@ import com.zx.zsmarketmobile.entity.StatisticsItemInfo;
 import com.zx.zsmarketmobile.ui.base.BaseActivity;
 import com.zx.zsmarketmobile.ui.map.WorkInMapShowActivity;
 import com.zx.zsmarketmobile.ui.statistics.StatisticsFragment;
-import com.zx.zsmarketmobile.ui.supervise.mytask.SuperviseMyTaskFragment;
 import com.zx.zsmarketmobile.ui.system.HelpActivity;
 import com.zx.zsmarketmobile.ui.system.SettingsActivity;
 import com.zx.zsmarketmobile.ui.taskexcute.TaskExcuteFragment;
@@ -41,6 +40,7 @@ public class HomeActivity extends BaseActivity implements OnClickListener {
     private StatisticsFragment mStatisticsFragment;// 统计分析
     private SharedPreferences mSharePreferences;
     private TextView mTextViewBottomMessage;/* 消息中心-消息通知 */
+    private TaskExcuteFragment taskExcuteFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,8 +92,8 @@ public class HomeActivity extends BaseActivity implements OnClickListener {
 //                if (!departName.equals("管理员")) {
 //                    myPagerAdapter.addFragment(SuperviseMyTaskFragment.newInstance(), "我的任务");
 //                }
-
-                myPagerAdapter.addFragment(TaskExcuteFragment.newInstance(), "我的任务");
+                taskExcuteFragment = TaskExcuteFragment.newInstance();
+                myPagerAdapter.addFragment(taskExcuteFragment, "我的任务");
 //                myPagerAdapter.addFragment(TaskNumFragment.newInstance(1), "状态监控");
 
 //                myPagerAdapter.addFragment(SuperviseClaimedFragment.newInstance(0), "坐标纠正");
@@ -264,9 +264,13 @@ public class HomeActivity extends BaseActivity implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case id.toolbar_right:
-                Intent mapIntent = new Intent(HomeActivity.this, WorkInMapShowActivity.class);
-                mapIntent.putExtra("type", ConstStrings.MapType_Main);
-                startActivity(mapIntent);
+                if (taskExcuteFragment != null) {
+                    taskExcuteFragment.onTooBarMapClick();
+                } else {
+                    Intent mapIntent = new Intent(HomeActivity.this, WorkInMapShowActivity.class);
+                    mapIntent.putExtra("type", ConstStrings.MapType_Main);
+                    startActivity(mapIntent);
+                }
                 break;
             case id.tvActHome_setting:
                 toActivity(SettingsActivity.class);

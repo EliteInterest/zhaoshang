@@ -8,6 +8,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -115,6 +116,11 @@ public class EntityDetailActivity extends BaseActivity implements OnClickListene
 //                    Ztentity.setLongitude(entity.getLongitude());
 //                    Ztentity.setLatitude(entity.getLatitude());
 //                }
+                if ((entity.getLatitude() == 0 || entity.getLongitude() == 0)
+                        || (TextUtils.isEmpty(entity.getProjName()) && TextUtils.isEmpty(entity.getProjAddr()))) {
+                    showToast("该主体暂无位置信息");
+                    return;
+                }
                 Intent intent = new Intent(EntityDetailActivity.this, WorkInMapShowActivity.class);
                 intent.putExtra("entity", entity);
                 intent.putExtra("type", ConstStrings.MapType_ZtDetail);

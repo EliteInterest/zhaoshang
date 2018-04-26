@@ -20,6 +20,8 @@ import com.zx.zsmarketmobile.listener.MyItemClickListener;
 import com.zx.zsmarketmobile.ui.base.BaseFragment;
 import com.zx.zsmarketmobile.ui.caselegal.CaseMyListFragment;
 import com.zx.zsmarketmobile.ui.map.EntityDetailActivity;
+import com.zx.zsmarketmobile.ui.map.WorkInMapShowActivity;
+import com.zx.zsmarketmobile.util.ConstStrings;
 import com.zx.zsmarketmobile.util.Util;
 
 import org.json.JSONObject;
@@ -115,13 +117,15 @@ public class TaskExcuteFragment extends BaseFragment implements LoadMoreListener
         getToDoPage.loadData(jsonObject.toString());
     }
 
+    HttpSearchZtEntity mSearchZtEntity;
+
     @Override
     public void onLoadComplete(int id, BaseHttpResult b) {
         super.onLoadComplete(id, b);
         srlTodo.setRefreshing(false);
         switch (id) {
             case ApiData.HTTP_ID_searchzt:
-                HttpSearchZtEntity mSearchZtEntity = (HttpSearchZtEntity) b.getEntry();
+                mSearchZtEntity = (HttpSearchZtEntity) b.getEntry();
                 mTotalNo = mSearchZtEntity.getTotal();
                 mAdapter.setStatus(0, mPageNo, mTotalNo);
                 List<HttpZtEntity> entityList = mSearchZtEntity.getZtList();
@@ -142,7 +146,7 @@ public class TaskExcuteFragment extends BaseFragment implements LoadMoreListener
 //                    intent.putExtra("fEntityType", fEntityType);
 //                    intent.putExtra("fEntityGuid", fEntityGuid);
 //                }
-                startActivityForResult(intent,0);
+                startActivityForResult(intent, 0);
                 Util.activity_In(getActivity());
                 break;
             default:
@@ -150,4 +154,17 @@ public class TaskExcuteFragment extends BaseFragment implements LoadMoreListener
         }
     }
 
+    public void onTooBarMapClick() {
+        if (mSearchZtEntity != null && mSearchZtEntity.getZtList() != null && mSearchZtEntity.getZtList().size() > 0) {
+            Intent intent = new Intent(getActivity(), WorkInMapShowActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("type", ConstStrings.MapType_SearchZt);
+            bundle.putSerializable("entity", mSearchZtEntity);
+            intent.putExtras(bundle);
+            startActivity(intent);
+            Util.activity_In(getActivity());
+        } else {
+            showToast("无查询结果，不可在地图上查看主体！");
+        }
+    }
 }

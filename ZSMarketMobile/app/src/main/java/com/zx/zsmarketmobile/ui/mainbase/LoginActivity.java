@@ -134,7 +134,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 //                    + mSharedPreferences.getString("ip4", ConstStrings.ip4) + ":"
 //                    + mSharedPreferences.getString("ipport", ConstStrings.ipport);
 //        }
-        downLoadFile.loadData(ApiData.baseUrl + url, "APK/天津移动监督" + getIntent().getStringExtra("version") + ".apk", true);
+        downLoadFile.loadData(ApiData.baseUrl + url, "APK/招商" + getIntent().getStringExtra("version") + ".apk", true);
 
     }
 
@@ -281,7 +281,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
                 break;
             case ApiData.FILE_DOWNLOAD:
                 Util.closeProgressDialog();
-                String path = ConstStrings.getDownloadPath() + "APK/天津移动监督" + getIntent().getStringExtra("version") + ".apk";
+                String path = ConstStrings.getDownloadPath() + "APK/招商" + getIntent().getStringExtra("version") + ".apk";
                 File apkFile = new File(path);
                 Intent intent = new Intent(Intent.ACTION_VIEW);
 //                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {

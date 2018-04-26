@@ -539,7 +539,7 @@ public class MapMarkerTool implements BaseRequestData.OnHttpLoadingListener<Base
                                 if (zt != null) {
                                     setfEntityType(zt.getProjType());
                                 }
-                                taskData.loadData( zt.getProjGuid());
+                                taskData.loadData(zt.getProjGuid());
                                 break;
                             case ConstStrings.MapType_ZtDetail:// 主体详情查看地图
                                 activity.finish();
@@ -569,6 +569,14 @@ public class MapMarkerTool implements BaseRequestData.OnHttpLoadingListener<Base
 
             }
         });
+        for (int i = 0; i < ztList.size(); i++) {
+            HttpZtEntity ztEntity = ztList.get(i);
+            if (ztEntity.getLatitude() != 0 && ztEntity.getLongitude() != 0) {
+                mPoiViewPager.setCurrentItem(i);//默认先选中一个
+                mMapView.setScale(2000);//这个我还真不确定
+                break;
+            }
+        }
         mPoiViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
@@ -890,7 +898,7 @@ public class MapMarkerTool implements BaseRequestData.OnHttpLoadingListener<Base
                         return;
                     }
                     try {
-                        Intent intent = Intent.getIntent("androidamap://viewMap?sourceApplication=移动监督管理执法&poiname=" + "天津执法主体位置" + "&" + "lat=" + endLatitude + "&lon=" + endLongitude + "&dev=0&style=2");
+                        Intent intent = Intent.getIntent("androidamap://viewMap?sourceApplication=移动监督管理执法&poiname=" + "项目所在地" + "&" + "lat=" + endLatitude + "&lon=" + endLongitude + "&dev=0&style=2");
                         activity.startActivity(intent);
                     } catch (Exception e) {
                         Toast.makeText(activity, "请确认手机已安装高德地图!", Toast.LENGTH_SHORT).show();
@@ -909,7 +917,7 @@ public class MapMarkerTool implements BaseRequestData.OnHttpLoadingListener<Base
                         return;
                     }
                     try {
-                        Intent intent = Intent.getIntent("baidumap://map/marker?location=" + endLatitude + "," + endLongitude + "&title=移动监督管理执法&content=天津执法主体位置&traffic=on");
+                        Intent intent = Intent.getIntent("baidumap://map/marker?location=" + endLatitude + "," + endLongitude + "&title=移动监督管理执法&content=项目所在地&traffic=on");
 //                        Intent intent = Intent.getIntent("http://api.map.baidu.com/direction?origin=" + latitude + "," + longitude + "&destination=" + endLatitude + "," + endLongitude + "&mode=driving&output=&src=移动监督管理执法&region=天津执法主体位置");
                         activity.startActivity(intent);
                     } catch (Exception e) {
