@@ -12,6 +12,7 @@ import com.zx.zsmarketmobile.adapter.TaskInfoAdapter;
 import com.zx.zsmarketmobile.entity.EntityDetail;
 import com.zx.zsmarketmobile.entity.KeyValueInfo;
 import com.zx.zsmarketmobile.ui.base.BaseFragment;
+import com.zx.zsmarketmobile.util.DateUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,10 +55,19 @@ public class TaskDetailFragment extends BaseFragment {
         taskList.add(new KeyValueInfo("合同投资额", mEntity.getContractAmountNational() + ""));
         taskList.add(new KeyValueInfo("到位投资额", mEntity.getRealAmountNational() + ""));
         taskList.add(new KeyValueInfo("预计达产产值", mEntity.getExpectedOutput() + ""));
+        taskList.add(new KeyValueInfo("开工日期", DateUtil.getDateFromMillis(mEntity.getRealStartDate())));
         taskList.add(new KeyValueInfo("税收", mEntity.getTaxTotal() + ""));
+        taskList.add(new KeyValueInfo("签约日期", DateUtil.getDateFromMillis(mEntity.getSignDate()) + ""));
+        taskList.add(new KeyValueInfo("最后修改时间", DateUtil.getDateFromMillis(mEntity.getLastmodifyDate()) + ""));
+        taskList.add(new KeyValueInfo("企业统一社会信用代码", mEntity.getUniscid() + ""));
+        taskList.add(new KeyValueInfo("是否涉密", mEntity.getIsClassified() == 1 ? "是" : "否"));
+        taskList.add(new KeyValueInfo("项目所属部门", mEntity.getProjZsDept() + ""));
+        taskList.add(new KeyValueInfo("外资国别", mEntity.getForeignCountry() + ""));
+        taskList.add(new KeyValueInfo("现代服务业局行业分类", mEntity.getProjServiceType() + ""));
         taskList.add(new KeyValueInfo("投资协议编号", mEntity.getInvestAgreementNum()));
         taskList.add(new KeyValueInfo("招商会纪要编号", mEntity.getZshRecordNum()));
         taskList.add(new KeyValueInfo("办公会纪要编号", mEntity.getBghRecordNum()));
+        taskList.add(new KeyValueInfo("时候阅读", mEntity.getIsRead() == 1 ? "是" : "否"));
         taskList.add(new KeyValueInfo("用地类型", ""));
         taskList.add(new KeyValueInfo("楼宇面积", mEntity.getBuildingArea() + ""));
         taskList.add(new KeyValueInfo("项目地址", mEntity.getProjAddr()));
