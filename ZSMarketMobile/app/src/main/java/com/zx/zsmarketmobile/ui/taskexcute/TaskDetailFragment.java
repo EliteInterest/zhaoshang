@@ -92,7 +92,7 @@ public class TaskDetailFragment extends BaseFragment {
         else
             taskList.add(new KeyValueInfo("楼宇面积", mEntity.getBuildingArea() + " 平米"));
         taskList.add(new KeyValueInfo("项目地址", mEntity.getProjAddr()));
-        taskList.add(new KeyValueInfo("地理位置", "经度：" + mEntity.getLatitude() + " 纬度：" + mEntity.getLongitude()));
+        taskList.add(new KeyValueInfo("地理位置", "经度：" + mEntity.getLongitude() + " 纬度：" + mEntity.getLatitude()));
         taskList.add(new KeyValueInfo("企业名称", mEntity.getEnterpriseName()));
         taskList.add(new KeyValueInfo("统一社会信用代码", mEntity.getUniscid() + ""));
         taskList.add(new KeyValueInfo("招商负责人姓名", mEntity.getAttractInvestmentPerson()));
