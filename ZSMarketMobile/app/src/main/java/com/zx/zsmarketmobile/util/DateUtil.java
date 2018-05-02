@@ -90,6 +90,8 @@ public final class DateUtil {
      * @return yyyy-MM-dd
      */
     public static String getDateFromMillis(long timeInMillis) {
+        if (timeInMillis <= 0)
+            return "";
         return getDateFormat(new Date(timeInMillis));
     }
 

@@ -199,7 +199,7 @@ public class EntityDetail implements Serializable{
     }
 
     public String getUniscid() {
-        return uniscid;
+        return (uniscid == null || uniscid.equals("null")) ? "" : uniscid;
     }
 
     public void setUniscid(String uniscid) {
