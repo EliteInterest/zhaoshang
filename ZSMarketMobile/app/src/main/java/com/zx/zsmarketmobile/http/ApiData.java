@@ -1536,18 +1536,21 @@ public class ApiData extends BaseRequestData<Object, Object, BaseHttpResult> {
                     params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countByNumContrast.do");
                     params.setRequestMothod(HTTP_MOTHOD.GET);
                     params.putParams("date", objects[0]);
+//                    params.putParams("dept", objects[1]);
 //                    params.putParams("regDateMax", objects[1]);
                     break;
                 case HTTP_ID_statistics_case_queryType:
                     params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countByStageContrast.do");
                     params.setRequestMothod(HTTP_MOTHOD.GET);
                     params.putParams("date", objects[0]);
+                    params.putParams("dept", objects[1]);
 //                    params.putParams("regDateMax", objects[1]);
                     break;
                 case HTTP_ID_statistics_case_queryIsCase:
                     params.setApiUrl(baseUrl + "/investpromotion_portal/statistic/countByMoneyContrast.do");
                     params.setRequestMothod(HTTP_MOTHOD.GET);
                     params.putParams("date", objects[0]);
+                    params.putParams("dept", objects[1]);
 //                    params.putParams("regDateMax", objects[1]);
                     break;
                 case HTTP_ID_statistics_case_queryClosedCount:

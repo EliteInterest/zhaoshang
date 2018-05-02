@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.iflytek.thirdparty.ar;
 import com.zx.zsmarketmobile.R;
 import com.zx.zsmarketmobile.adapter.ChartTableAdapter;
 import com.zx.zsmarketmobile.entity.DeviceSecurityRiskEntity;
@@ -65,6 +66,7 @@ public class ChartActivity extends BaseActivity implements IChartListener {
     private List<KeyValueInfo> keyList = new ArrayList<>();
     private List<String> tableCodes = new ArrayList<>();
     private String mStartTime = DrawChartUtil.getDate(true, false), mEndTime = DrawChartUtil.getDate(false, true), mType = "";
+    private String area = "";
     private String meld1 = "2017";
     private String meld2 = "2018";
 
@@ -348,6 +350,22 @@ public class ChartActivity extends BaseActivity implements IChartListener {
             default:
                 break;
         }
+
+        spChartArea.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                area = spChartArea.getSelectedItem().toString();
+                if(area.equals("全部"))
+                    area = "";
+                loadData();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         spChartyear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -403,10 +421,10 @@ public class ChartActivity extends BaseActivity implements IChartListener {
                 caseDep.loadData(meld1 + "," + meld2);
                 break;
             case "状态对比":
-                caseType.loadData(meld1 + "," + meld2);
+                caseType.loadData(meld1 + "," + meld2, area);
                 break;
             case "资金对比":
-                caseIsCase.loadData(meld1 + "," + meld2);
+                caseIsCase.loadData(meld1 + "," + meld2, area);
                 break;
             case "增长对比":
                 caseIsCase.loadData(spChartyear.getSelectedItem());
@@ -451,7 +469,7 @@ public class ChartActivity extends BaseActivity implements IChartListener {
                 mAdapter.notifyDataSetChanged();
                 break;
             case "数量变化":
-                String area = mQueryTypeSpinner.getSelectedItemPosition() == 0 ? "全部" : Util.area[mQueryTypeSpinner.getSelectedItemPosition()];
+                area = mQueryTypeSpinner.getSelectedItemPosition() == 0 ? "" : Util.area[mQueryTypeSpinner.getSelectedItemPosition()];
                 String queryType = "year";
                 switch (mQueryTypeSpinner1.getSelectedItemPosition()) {
                     case 0:
@@ -465,11 +483,11 @@ public class ChartActivity extends BaseActivity implements IChartListener {
                         break;
 
                 }
-                area = "";
+//                area = "";
                 compInfo.loadData(area, queryType, mTvStartTime.getText().toString(), mTvEndTime.getText().toString());
                 break;
             case "状态变化":
-                area = mQueryTypeSpinner.getSelectedItemPosition() == 0 ? "全部" : Util.area[mQueryTypeSpinner.getSelectedItemPosition()];
+                area = mQueryTypeSpinner.getSelectedItemPosition() == 0 ? "" : Util.area[mQueryTypeSpinner.getSelectedItemPosition()];
                 queryType = "year";
                 switch (mQueryTypeSpinner1.getSelectedItemPosition()) {
                     case 0:
@@ -483,12 +501,12 @@ public class ChartActivity extends BaseActivity implements IChartListener {
                         break;
 
                 }
-                area = "";
+//                area = "";
                 compBussiniss.loadData(area, queryType, mTvStartTime.getText().toString(), mTvEndTime.getText().toString());
                 break;
             case "投资金额":
                 tvValue.setText(mItemInfo.name);
-                area = mQueryTypeSpinner.getSelectedItemPosition() == 0 ? "全部" : Util.area[mQueryTypeSpinner.getSelectedItemPosition()];
+                area = mQueryTypeSpinner.getSelectedItemPosition() == 0 ? "" : Util.area[mQueryTypeSpinner.getSelectedItemPosition()];
                 queryType = "year";
                 switch (mQueryTypeSpinner1.getSelectedItemPosition()) {
                     case 0:
@@ -502,7 +520,7 @@ public class ChartActivity extends BaseActivity implements IChartListener {
                         break;
 
                 }
-                area = "";
+//                area = "";
                 getChartInfo.loadData(area, queryType, mTvStartTime.getText().toString(), mTvEndTime.getText().toString());
                 break;
             case "纳税金额":
