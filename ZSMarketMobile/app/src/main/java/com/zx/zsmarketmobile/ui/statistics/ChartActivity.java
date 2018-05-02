@@ -355,7 +355,7 @@ public class ChartActivity extends BaseActivity implements IChartListener {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 area = spChartArea.getSelectedItem().toString();
-                if(area.equals("全部"))
+                if (area.equals("全部"))
                     area = "";
                 loadData();
             }
@@ -469,7 +469,7 @@ public class ChartActivity extends BaseActivity implements IChartListener {
                 mAdapter.notifyDataSetChanged();
                 break;
             case "数量变化":
-                area = mQueryTypeSpinner.getSelectedItemPosition() == 0 ? "" : Util.area[mQueryTypeSpinner.getSelectedItemPosition()];
+                area = mQueryTypeSpinner.getSelectedItemPosition() == 0 ? "" : Util.area[mQueryTypeSpinner.getSelectedItemPosition() - 1];
                 String queryType = "year";
                 switch (mQueryTypeSpinner1.getSelectedItemPosition()) {
                     case 0:
@@ -487,7 +487,7 @@ public class ChartActivity extends BaseActivity implements IChartListener {
                 compInfo.loadData(area, queryType, mTvStartTime.getText().toString(), mTvEndTime.getText().toString());
                 break;
             case "状态变化":
-                area = mQueryTypeSpinner.getSelectedItemPosition() == 0 ? "" : Util.area[mQueryTypeSpinner.getSelectedItemPosition()];
+                area = mQueryTypeSpinner.getSelectedItemPosition() == 0 ? "" : Util.area[mQueryTypeSpinner.getSelectedItemPosition() - 1];
                 queryType = "year";
                 switch (mQueryTypeSpinner1.getSelectedItemPosition()) {
                     case 0:
@@ -506,7 +506,7 @@ public class ChartActivity extends BaseActivity implements IChartListener {
                 break;
             case "投资金额":
                 tvValue.setText(mItemInfo.name);
-                area = mQueryTypeSpinner.getSelectedItemPosition() == 0 ? "" : Util.area[mQueryTypeSpinner.getSelectedItemPosition()];
+                area = mQueryTypeSpinner.getSelectedItemPosition() == 0 ? "" : Util.area[mQueryTypeSpinner.getSelectedItemPosition() - 1];
                 queryType = "year";
                 switch (mQueryTypeSpinner1.getSelectedItemPosition()) {
                     case 0:
